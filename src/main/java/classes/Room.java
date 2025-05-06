@@ -1,4 +1,16 @@
 package classes;
 
-public class Room {
+public abstract class Room {
+    protected String question;
+    protected String objective;
+    protected String name;
+    protected Monster monster;
+
+    public (String question, String objective, String name, Monster monster){
+        this.question = question;
+        this.objective = objective;
+        this.name = name;
+        this.monster = monster;
+
+    }
 }
