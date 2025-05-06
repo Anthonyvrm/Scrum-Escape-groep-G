@@ -16,16 +16,16 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
+
     public String getName() {
         return name;
     }
-    public void whatisyourname() {
+
+    public void whatIsYourName() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is your name?");
         String name = scanner.nextLine();
         setName(name);
-
-
     }
 
     public void printStatus() {
