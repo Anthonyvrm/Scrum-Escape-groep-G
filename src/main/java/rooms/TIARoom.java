@@ -1,5 +1,6 @@
 package rooms;
 
+import classes.Monster;
 import classes.Room;
 
 public class TIARoom extends Room {
