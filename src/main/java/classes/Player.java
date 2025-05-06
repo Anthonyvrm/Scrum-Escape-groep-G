@@ -1,4 +1,5 @@
 package classes;
+import java.util.Scanner;
 
 public class Player {
 
@@ -11,4 +12,20 @@ public class Player {
         this.name = name;
         this.position = position;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
+    public void whatisyourname() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What is your name?");
+        String name = scanner.nextLine();
+        setName(name);
+
+
+    }
 }
+
