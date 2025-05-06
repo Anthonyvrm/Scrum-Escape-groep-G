@@ -16,6 +16,16 @@ public class Player {
         this.status = status;
         this.name = name;
     }
+    public Player () {}
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getStatus() {
+
+        return this.status;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -25,15 +35,39 @@ public class Player {
         return name;
     }
 
+    public void createCharacter () {
+
+        System.out.println("Create your character!");
+        System.out.println("");
+        whatIsYourName();
+        setStatus(150);
+        Player player = new Player(getStatus(),getName(),position);
+
+    }
+
     public void whatIsYourName() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("What is your name?");
+        System.out.print("What is your name: ");
         String name = scanner.nextLine();
         setName(name);
     }
 
+    public void showStartPlayerInfo() {
+
+
+        for (int i = 0; i < 3; i++) { System.out.println();}
+        System.out.printf("%s.........\n", getName());
+        System.out.println("Wait I know you....");
+        System.out.printf("You are %s! You are one of the wisest beings to ever exist in this realm!\n", getName());
+        System.out.println("You... You are the chosen one! You are the only one who can escape these horrifying rooms.....");
+        System.out.println();
+        System.out.printf("%s.... Are you sure, you want to start this journey?\n", getName());
+        System.out.println("Oh wait, you have no choice..... WHAHAAHA!");
+
+    }
+
     public void printStatus() {
-        System.out.printf("%s has %dHP left and is in room %s.", name, status, position);
+        System.out.printf("%s has %dHP left and is in room %s.", getName(), getStatus(), position);
     }
 
     public void isAlive(){

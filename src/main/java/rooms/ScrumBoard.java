@@ -5,10 +5,13 @@ import classes.Room;
 
 public class ScrumBoard extends Room {
 
-    public ScrumBoard (String question, String object, String name, Monster monster ) {
-        super(question, object, name, monster);
+    public ScrumBoard (String question, String objective, String name, Monster monster ) {
+        super(question, objective, name, monster);
 
 
+    }
+    public ScrumBoard(String question, String objective, String name) {
+        super(question, objective, name);
     }
 
 }
