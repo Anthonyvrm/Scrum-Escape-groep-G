@@ -12,6 +12,10 @@ public class Player {
         this.name = name;
         this.position = position;
     }
+    public Player (int status, String name) {
+        this.status = status;
+        this.name = name;
+    }
 
     public void setName(String name) {
         this.name = name;

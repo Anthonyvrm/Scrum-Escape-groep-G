@@ -2,11 +2,13 @@ package classes;
 
 public class Game {
 
-    Game game;
-    Player player;
 
-    public Game (Game game, Player player) {
-        this.game = game;
+    Player player;
+    Room room;
+
+    public Game (Room room,Player player) {
+        this.room = room;
+
         this.player = player;
     }
 
