@@ -9,4 +9,8 @@ public class Game {
         this.game = game;
         this.player = player;
     }
+
+    public static void endGame(){
+        System.exit(0);
+    }
 }
