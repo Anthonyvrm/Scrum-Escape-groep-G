@@ -6,7 +6,7 @@ public abstract class Room {
     protected String name;
     protected Monster monster;
 
-    public (String question, String objective, String name, Monster monster){
+    public Room (String question, String objective, String name, Monster monster){
         this.question = question;
         this.objective = objective;
         this.name = name;
