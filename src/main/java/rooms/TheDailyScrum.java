@@ -1,6 +1,9 @@
-package classes;
+package rooms;
 
-public class TheDailyScrum extends Room{
+import classes.Monster;
+import classes.Room;
+
+public class TheDailyScrum extends Room {
     public TheDailyScrum(String question, String objective, String name, Monster monster) {
         super(question, objective, name, monster);
     }

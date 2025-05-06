@@ -1,4 +1,6 @@
-package classes;
+package rooms;
+
+import classes.Room;
 
 public class ScrumBoard extends Room {
 
