@@ -13,4 +13,9 @@ public abstract class Room {
         this.monster = monster;
 
     }
+    public Room (String question, String objective, String name) {
+        this.question = question;
+        this.objective = objective;
+        this.name = name;
+    }
 }
