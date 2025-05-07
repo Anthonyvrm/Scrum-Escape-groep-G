@@ -47,6 +47,7 @@ public class Player {
     }
 
     public void whatIsYourName() {
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("What is your name: ");
         String name = scanner.nextLine();
@@ -56,7 +57,6 @@ public class Player {
     }
 
     public void showStartingDialogue() {
-
 
         System.out.printf("%s.........\n", getName());
         System.out.println("Wait I know you....");

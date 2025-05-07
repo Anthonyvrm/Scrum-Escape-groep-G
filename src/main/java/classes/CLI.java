@@ -12,7 +12,6 @@ public class CLI {
         Player player = new Player();
         player.createCharacter();
 
-
         Game game = new Game(player);
         game.startGame();
         player.showStartingDialogue();
