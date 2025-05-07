@@ -8,17 +8,19 @@ public class Game {
         this.room = room;
         this.player = player;
     }
-
-    public Game () {
-        this.room = room;
+    public Game (Player player) {
         this.player = player;
     }
 
+    public Game () {}
+
+
     public void startGame() {
 
+        System.out.println();
+        System.out.println("Starting game...");
         System.out.println("==== Scrum Escape Building ===");
         System.out.println();
-
 
     }
 

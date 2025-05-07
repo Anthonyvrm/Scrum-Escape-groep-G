@@ -37,11 +37,12 @@ public class Player {
 
     public void createCharacter () {
 
+        System.out.println("Starting Character Creation...");
+        System.out.println();
         System.out.println("Create your character!");
         System.out.println("");
         whatIsYourName();
         setStatus(150);
-        Player player = new Player(getStatus(),getName(),position);
 
     }
 
@@ -50,12 +51,13 @@ public class Player {
         System.out.print("What is your name: ");
         String name = scanner.nextLine();
         setName(name);
+        System.out.println();
+
     }
 
-    public void showStartPlayerInfo() {
+    public void showStartingDialogue() {
 
 
-        for (int i = 0; i < 3; i++) { System.out.println();}
         System.out.printf("%s.........\n", getName());
         System.out.println("Wait I know you....");
         System.out.printf("You are %s! You are one of the wisest beings to ever exist in this realm!\n", getName());

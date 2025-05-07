@@ -2,18 +2,26 @@ package classes;
 
 import monster.ScopeCreep;
 import rooms.ScrumBoard;
+import rooms.SprintPlanning;
+
+import java.util.Scanner;
 
 public class CLI {
     public static void CLI() {
 
-        Game game = new Game();
-        game.startGame();
-
         Player player = new Player();
-
         player.createCharacter();
 
-        player.showStartPlayerInfo();
+
+        Game game = new Game(player);
+        game.startGame();
+        player.showStartingDialogue();
+
+
+
+
+
+
 
     }
 
