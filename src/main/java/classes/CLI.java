@@ -14,7 +14,7 @@ public class CLI {
 
         Game game = new Game(player);
         game.startGame();
-        player.showStartingDialogue();
+
 
 
 

@@ -56,18 +56,6 @@ public class Player {
 
     }
 
-    public void showStartingDialogue() {
-
-        System.out.printf("%s.........\n", getName());
-        System.out.println("Wait I know you....");
-        System.out.printf("You are %s! You are one of the wisest beings to ever exist in this realm!\n", getName());
-        System.out.println("You... You are the chosen one! You are the only one who can escape these horrifying rooms.....");
-        System.out.println();
-        System.out.printf("%s.... Are you sure, you want to start this journey?\n", getName());
-        System.out.println("Oh wait, you have no choice..... WHAHAAHA!");
-
-    }
-
     public void printStatus() {
         System.out.printf("%s has %dHP left and is in room %s.", getName(), getStatus(), position);
     }
