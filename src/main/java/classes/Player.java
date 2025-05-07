@@ -2,7 +2,6 @@ package classes;
 import java.util.Scanner;
 
 public class Player {
-
     private int status;
     private String name;
     private Room position;
@@ -23,7 +22,6 @@ public class Player {
     }
 
     public int getStatus() {
-
         return this.status;
     }
 
@@ -67,4 +65,3 @@ public class Player {
         }
     }
 }
-
