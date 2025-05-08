@@ -1,5 +1,8 @@
 package classes;
 
+import monster.ScopeCreep;
+import rooms.SprintPlanning;
+
 public abstract class Room {
     protected String question;
     protected String objective;

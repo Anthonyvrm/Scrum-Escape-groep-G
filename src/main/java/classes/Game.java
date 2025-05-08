@@ -28,7 +28,13 @@ public class Game {
         System.out.println();
         showStartingDialogue();
 
-        SprintPlanning.createSprintPlanningRoom();
+        SprintPlanning.createRoom();
+        TheDailyScrum.createRoom();
+        ScrumBoard.createRoom();
+        SprintReview.createRoom();
+        SprintRetrospective.createRoom();
+        TIARoom.createRoom();
+
         Room room = SprintPlanning.sprintPlanningRoom;
         player.setPosition(room);
         System.out.println("You have entered the " + player.getPosition().name);
@@ -43,32 +49,35 @@ public class Game {
     public void handleCommands(String input){
         switch (input) {
             case "go to room SprintPlanning":
-                SprintPlanning.createSprintPlanningRoom();
-                Room room = SprintPlanning.sprintPlanningRoom;
-                player.setPosition(room);
+                Room room0 = SprintPlanning.sprintPlanningRoom;
+                player.setPosition(room0);
                 System.out.println("You have entered the SprintPlanning room.");
                 break;
-                /*
             case "go to room TheDailyScrum":
-                player.setPosition(new TheDailyScrum());
+                Room room1 = TheDailyScrum.theDailyScrumRoom;
+                player.setPosition(room1);
                 System.out.println("You have entered the TheDailyScrum room.");
                 break;
             case "go to room ScrumBoard":
-                player.setPosition(new ScrumBoard());
+                Room room2 = ScrumBoard.scrumBoardRoom;
+                player.setPosition(room2);
                 System.out.println("You have entered the ScrumBoard room.");
                 break;
             case "go to room SprintReview":
-                player.setPosition(new SprintReview());
+                Room room3 = SprintReview.sprintReviewRoom;
+                player.setPosition(room3);
                 System.out.println("You have entered the SprintReview room.");
                 break;
             case "go to room SprintRetrospective":
-                player.setPosition(new SprintRetrospective());
+                Room room4 = SprintRetrospective.sprintRetrospectiveRoom;
+                player.setPosition(room4);
                 System.out.println("You have entered the SprintRetrospective room.");
                 break;
             case "go to room TIARoom":
-                player.setPosition(new TIARoom());
+                Room room5 = TIARoom.TIARoomRoom;
+                player.setPosition(room5);
                 System.out.println("You have entered the TIARoom room.");
-                break;*/
+                break;
         }
     }
 
