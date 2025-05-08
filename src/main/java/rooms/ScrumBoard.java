@@ -1,6 +1,6 @@
 package rooms;
 
-import classes.Monster;
+import classes.Monster; //Trollo
 import classes.Room;
 
 public class ScrumBoard extends Room {

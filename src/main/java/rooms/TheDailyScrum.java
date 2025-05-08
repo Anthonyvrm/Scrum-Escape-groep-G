@@ -1,6 +1,6 @@
 package rooms;
 
-import classes.Monster;
+import classes.Monster; //Slowness
 import classes.Room;
 
 public class TheDailyScrum extends Room {

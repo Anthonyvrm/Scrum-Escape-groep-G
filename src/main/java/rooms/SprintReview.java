@@ -1,6 +1,6 @@
 package rooms;
 
-import classes.Monster; //Monster Feedback phantom. This ghost appears when feedback from stakeholders is not taken seriously or is misinterpreted. It whispers false conclusions and causes the team to go in the wrong direction.
+import classes.Monster; //Feedback Phantom
 import classes.Room;
 
 public class SprintReview extends Room {
