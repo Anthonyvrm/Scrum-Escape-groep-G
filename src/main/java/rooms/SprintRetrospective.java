@@ -1,6 +1,6 @@
 package rooms;
 
-import classes.Monster; //Monster stagnator: does not learn from mistakes
+import classes.Monster; //Stagnator
 import classes.Room;
 
 public class SprintRetrospective extends Room {

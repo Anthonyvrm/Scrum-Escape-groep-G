@@ -1,6 +1,6 @@
 package rooms;
 
-import classes.Monster;
+import classes.Monster; //Scope Creep
 import classes.Room;
 import monster.ScopeCreep;
 
