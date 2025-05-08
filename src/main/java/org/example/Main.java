@@ -1,7 +1,13 @@
 package org.example;
 
+import classes.CLI;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        CLI.CLI();
+
+
+
     }
 }
