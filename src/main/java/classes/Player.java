@@ -33,6 +33,14 @@ public class Player {
         return name;
     }
 
+    public void setPosition(Room room) {
+        this.position = room;
+    }
+
+    public Room getPosition() {
+        return this.position;
+    }
+
     public void createCharacter () {
 
         System.out.println("Starting Character Creation...");

@@ -1,8 +1,13 @@
 package classes;
 
+import rooms.*;
+
+import java.util.Scanner;
+
 public class Game {
     Player player;
     Room room;
+    Scanner scanner = new Scanner(System.in);
 
     public Game (Room room, Player player) {
         this.room = room;
@@ -23,6 +28,48 @@ public class Game {
         System.out.println();
         showStartingDialogue();
 
+        SprintPlanning.createSprintPlanningRoom();
+        Room room = SprintPlanning.sprintPlanningRoom;
+        player.setPosition(room);
+        System.out.println("You have entered the " + player.getPosition().name);
+
+        while(true) {
+            System.out.println();
+            String input = scanner.nextLine();
+            handleCommands(input);
+        }
+    }
+
+    public void handleCommands(String input){
+        switch (input) {
+            case "go to room SprintPlanning":
+                SprintPlanning.createSprintPlanningRoom();
+                Room room = SprintPlanning.sprintPlanningRoom;
+                player.setPosition(room);
+                System.out.println("You have entered the SprintPlanning room.");
+                break;
+                /*
+            case "go to room TheDailyScrum":
+                player.setPosition(new TheDailyScrum());
+                System.out.println("You have entered the TheDailyScrum room.");
+                break;
+            case "go to room ScrumBoard":
+                player.setPosition(new ScrumBoard());
+                System.out.println("You have entered the ScrumBoard room.");
+                break;
+            case "go to room SprintReview":
+                player.setPosition(new SprintReview());
+                System.out.println("You have entered the SprintReview room.");
+                break;
+            case "go to room SprintRetrospective":
+                player.setPosition(new SprintRetrospective());
+                System.out.println("You have entered the SprintRetrospective room.");
+                break;
+            case "go to room TIARoom":
+                player.setPosition(new TIARoom());
+                System.out.println("You have entered the TIARoom room.");
+                break;*/
+        }
     }
 
     public void showStartingDialogue() {
@@ -36,6 +83,8 @@ public class Game {
         System.out.println("Oh wait, you have no choice..... WHAHAAHA!");
 
     }
+
+
 
     public static void endGame(){
         System.exit(0);
