@@ -10,11 +10,9 @@ public class SprintPlanning extends Room {
         super(question, objective, name, monster);
     }
 
-    public static void createSprintPlanningRoom () {
-
+    public static void createRoom() {
         Monster scopeCreep = new ScopeCreep(10, 50);
         sprintPlanningRoom = new SprintPlanning("Question", "Objective", "Sprint Planning Room", scopeCreep);
-
     }
 
 
