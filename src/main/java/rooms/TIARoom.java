@@ -1,6 +1,6 @@
 package rooms;
 
-import classes.Monster;
+import classes.Monster; //The Scrum Reaper
 import classes.Room;
 
 public class TIARoom extends Room {
