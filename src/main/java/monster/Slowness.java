@@ -9,11 +9,7 @@ import classes.Monster;
 //Hij fluistert irrelevante updates, stelt eindeloze vragen en houdt iedereen net te lang vast in het gesprek.
 
 
-public class Slowness extends Monster implements IMonster {
-    public Slowness(int damage, int healthPoints) {
-        super(damage, healthPoints);
-    }
-
+public class Slowness implements IMonster {
     @Override
     public void exercise(){
 

@@ -10,11 +10,7 @@ import classes.Monster;
 //Hij fluistert “zo doen we het altijd al” en onderdrukt initiatief, reflectie en groei.
 
 
-public class Stagnator extends Monster implements IMonster {
-    Stagnator(int damage, int healthPoints){
-        super(damage,healthPoints);
-    }
-
+public class Stagnator  implements IMonster {
     @Override
     public void exercise(){
 

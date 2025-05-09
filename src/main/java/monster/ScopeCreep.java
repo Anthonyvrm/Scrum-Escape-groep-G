@@ -8,11 +8,7 @@ import classes.Monster;
 //Voor je het weet zit je sprint vol met werk dat nooit is besproken of geprioriteerd.
 
 
-public class ScopeCreep extends Monster implements IMonster {
-    public ScopeCreep(int damage, int healthPoints) {
-        super(damage, healthPoints);
-    }
-
+public class ScopeCreep implements IMonster {
     @Override
     public void exercise(){
 
