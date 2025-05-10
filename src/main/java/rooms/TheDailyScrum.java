@@ -8,4 +8,25 @@ public class TheDailyScrum extends Room {
         super(question, objective, name, monster);
     }
 
+    @Override
+    public void introductionText() {
+
+    }
+    @Override
+    public void roomTask() {
+
+    }
+    @Override
+    public void roomCheckAnswer() {
+
+    }
+    @Override
+    public void roomResult() {
+
+    }
+    @Override
+    public void roomFeedback() {
+
+    }
+
 }
