@@ -1,10 +1,11 @@
 package rooms;
 
+import classes.IRoom;
 import classes.Monster; //Scope Creep
 import classes.Room;
 import monster.ScopeCreep;
 
-public class SprintPlanning extends Room {
+public class SprintPlanning extends Room implements IRoom {
 
     public static Room sprintPlanningRoom;
 
@@ -42,6 +43,21 @@ public class SprintPlanning extends Room {
 
     @Override
     public void roomFeedback() {
+
+    }
+
+    @Override
+    public void multipleChoiceQuestion() {
+
+    }
+
+    @Override
+    public void openQuestion() {
+
+    }
+
+    @Override
+    public void puzzle() {
 
     }
 

@@ -1,9 +1,10 @@
 package rooms;
 
+import classes.IRoom;
 import classes.Monster; //Trollo
 import classes.Room;
 
-public class ScrumBoard extends Room {
+public class ScrumBoard extends Room implements IRoom {
 
     public ScrumBoard (String question, String objective, String name, Monster monster ) {
         super(question, objective, name, monster);
@@ -38,6 +39,21 @@ public class ScrumBoard extends Room {
 
     @Override
     public void roomFeedback() {
+
+    }
+
+    @Override
+    public void multipleChoiceQuestion() {
+
+    }
+
+    @Override
+    public void openQuestion() {
+
+    }
+
+    @Override
+    public void puzzle() {
 
     }
 
