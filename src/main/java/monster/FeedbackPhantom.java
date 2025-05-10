@@ -15,8 +15,15 @@ public class FeedbackPhantom implements IMonster {
     }
 
     @Override
-    public void takeDamage(){
-
+    public static void takeDamage(){
+        int randomInt = (int)(Math.random() * 5);
+        switch (randomInt) {
+            case 0: System.out.println("Ugh... do I really have to pay attention?");
+            case 1: System.out.println("Such a waste... just like all feedback.");
+            case 2: System.out.println("Ugh... feedback again? Like I care...");
+            case 3: System.out.println("Meh... even when I’m hurt, I’m still doing nothing with feedback.");
+            case 4: System.out.println("Alright, alright... I don’t care... but that hurts.");
+        }
     }
 
     @Override
