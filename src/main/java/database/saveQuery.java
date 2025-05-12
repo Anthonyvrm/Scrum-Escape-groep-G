@@ -17,9 +17,9 @@ public class saveQuery {
              PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
-                String name = rs.getString("name");
-                Player player = new Player(name);
-                player.setName(name);
+
+                Player player = new Player();
+                player.setName(rs.getString("name"));
                 player.setStatus(rs.getInt("status"));
                 player.setVoortgang(rs.getInt("voortgang"));
             }

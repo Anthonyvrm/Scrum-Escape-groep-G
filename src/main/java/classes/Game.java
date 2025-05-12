@@ -1,6 +1,8 @@
 package classes;
 
+
 import rooms.*;
+import database.*;
 
 import java.util.Scanner;
 
@@ -8,6 +10,8 @@ public class Game {
     Player player;
     Room room;
     Scanner scanner = new Scanner(System.in);
+
+
 
     public Game (Room room, Player player) {
         this.room = room;
@@ -37,6 +41,17 @@ public class Game {
             System.out.println();
             String input = scanner.nextLine();
             handleCommands(input);
+        }
+        if (room.isCorrect()) {
+            System.out.println("You have completed the room!");
+            System.out.println("You can now go to the next room.");
+            database.saveDAO.insertSave(player);
+
+
+
+        } else {
+            System.out.println("You have failed the room.");
+            endGame();
         }
     }
 

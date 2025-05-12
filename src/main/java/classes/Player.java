@@ -5,7 +5,7 @@ public class Player {
     private int status;
     private String name;
     private Room position;
-    private int voortgang
+    private int voortgang;
 
     public Player (int status, String name, Room position, int voortgang) {
         this.status = status;
@@ -17,6 +17,12 @@ public class Player {
         this.status = status;
         this.name = name;
     }
+    public Player (int status, String name, int voortgang) {
+        this.status = status;
+        this.name = name;
+        this.voortgang = voortgang;
+    }
+
     public Player () {}
 
     public void setStatus(int status) {

@@ -1,9 +1,8 @@
-package dao;
+package database;
 
 import classes.Player;
 import database.DatabaseConnection;
-import queries.QueryChats;
-import queries.QueryEpics;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
