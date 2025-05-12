@@ -5,11 +5,13 @@ public class Player {
     private int status;
     private String name;
     private Room position;
+    private int voortgang
 
-    public Player (int status, String name, Room position) {
+    public Player (int status, String name, Room position, int voortgang) {
         this.status = status;
         this.name = name;
         this.position = position;
+        this.voortgang = voortgang;
     }
     public Player (int status, String name) {
         this.status = status;
@@ -39,6 +41,14 @@ public class Player {
 
     public Room getPosition() {
         return this.position;
+    }
+
+    public int getVoortgang() {
+        return voortgang;
+    }
+
+    public void setVoortgang(int voortgang) {
+        this.voortgang = voortgang;
     }
 
     public void createCharacter () {
