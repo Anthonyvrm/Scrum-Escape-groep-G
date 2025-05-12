@@ -9,7 +9,7 @@ import classes.Monster;
 
 
 public class Trollo extends Monster implements IMonster {
-    Trollo(int damage, int healthPoints){
+    public Trollo(int damage, int healthPoints){
         super(damage,healthPoints);
     }
 

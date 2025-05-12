@@ -14,6 +14,8 @@ public class TIARoom extends Room implements IRoom {
         super(question, object, name, monster, isCorrect);
     }
 
+    //public static void createTIARoom() {}
+
     @Override
     public void introductionText() {
         System.out.println ("Welcome to the TIARoom!");

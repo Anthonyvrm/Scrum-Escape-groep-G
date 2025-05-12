@@ -11,7 +11,7 @@ import classes.Monster;
 
 
 public class Stagnator extends Monster implements IMonster {
-    Stagnator(int damage, int healthPoints){
+    public Stagnator(int damage, int healthPoints){
         super(damage,healthPoints);
     }
 

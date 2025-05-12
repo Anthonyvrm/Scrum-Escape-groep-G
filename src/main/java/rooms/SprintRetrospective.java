@@ -3,6 +3,7 @@ package rooms;
 import classes.IRoom;
 import classes.Monster; //Stagnator
 import classes.Room;
+import monster.Stagnator;
 
 import java.util.Scanner;
 
@@ -19,6 +20,11 @@ public class SprintRetrospective extends Room implements IRoom {
         System.out.println ("Welcome to the SprintRetrospective room!");
         System.out.println("In this room, you will reflect on how a Scrum Team can learn from their experiences.");
         System.out.println ("Use your knowledge to identify what can be improved by the Scrum Team.");
+    }
+
+    public static void createSprintRetrospectiveRoom() {
+        Monster stagnator = new Stagnator(1, 1);
+        SprintRetrospective sprintRetrospective = new SprintRetrospective("Question", "object", "Name", stagnator, false);
     }
 
     @Override
