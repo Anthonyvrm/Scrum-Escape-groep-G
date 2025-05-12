@@ -5,12 +5,14 @@ public abstract class Room {
     protected String objective;
     protected String name;
     protected Monster monster;
+    protected boolean isCorrect;
 
-    public Room(String question, String objective, String name, Monster monster) {
+    public Room(String question, String objective, String name, Monster monster, boolean isCorrect) {
         this.question = question;
         this.objective = objective;
         this.name = name;
         this.monster = monster;
+        this.isCorrect = isCorrect;
     }
     public Room(String question, String objective, String name) {
         this.question = question;
