@@ -9,15 +9,15 @@ public class SprintPlanning extends Room implements IRoom {
 
     public static Room sprintPlanningRoom;
 
-    public SprintPlanning(String question, String objective, String name, Monster monster){
-        super(question, objective, name, monster);
+    public SprintPlanning(String question, String objective, String name, Monster monster, boolean isCorrect){
+        super(question, objective, name, monster, isCorrect);
 
     }
 
     public static void createSprintPlanningRoom () {
 
         Monster scopeCreep = new ScopeCreep(10, 50);
-        sprintPlanningRoom = new SprintPlanning("Question", "Objective", "Sprint Planning Room", scopeCreep);
+        sprintPlanningRoom = new SprintPlanning("Question", "Objective", "Sprint Planning Room", scopeCreep, false);
 
     }
 

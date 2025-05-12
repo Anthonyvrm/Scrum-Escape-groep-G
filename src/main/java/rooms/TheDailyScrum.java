@@ -5,8 +5,8 @@ import classes.Monster; //Slowness
 import classes.Room;
 
 public class TheDailyScrum extends Room implements IRoom {
-    public TheDailyScrum(String question, String objective, String name, Monster monster) {
-        super(question, objective, name, monster);
+    public TheDailyScrum(String question, String objective, String name, Monster monster, boolean isCorrect) {
+        super(question, objective, name, monster, isCorrect);
     }
 
     @Override

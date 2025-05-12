@@ -5,8 +5,8 @@ import classes.Monster; //Feedback Phantom
 import classes.Room;
 
 public class SprintReview extends Room implements IRoom {
-    public SprintReview(String question, String objective, String name, Monster monster){
-        super(question, objective, name, monster);
+    public SprintReview(String question, String objective, String name, Monster monster, boolean isCorrect){
+        super(question, objective, name, monster, isCorrect);
     }
 
     @Override

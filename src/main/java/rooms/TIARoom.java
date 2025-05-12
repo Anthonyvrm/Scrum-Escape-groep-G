@@ -10,8 +10,8 @@ public class TIARoom extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
     private boolean isCorrect;
 
-    public TIARoom (String question, String object, String name, Monster monster) {
-        super(question, object, name, monster);
+    public TIARoom (String question, String object, String name, Monster monster, boolean isCorrect) {
+        super(question, object, name, monster, isCorrect);
     }
 
     @Override
