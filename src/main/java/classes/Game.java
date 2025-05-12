@@ -23,6 +23,16 @@ public class Game {
 
     public Game () {}
 
+    public void createRooms() {
+        System.out.println("Creating rooms...");
+        ScrumBoard.createScrumBoardRoom();
+        SprintPlanning.createSprintPlanningRoom();
+        SprintRetrospective.createSprintRetrospectiveRoom();
+        SprintReview.createSprintReviewRoom();
+        TheDailyScrum.createTheDailyScrumRoom();
+        //TIARoom.createTIARoom();
+    }
+
 
     public void startGame() {
 

@@ -13,6 +13,7 @@ public class CLI {
         player.createCharacter();
 
         Game game = new Game(player);
+        game.createRooms();
         game.startGame();
 
 
