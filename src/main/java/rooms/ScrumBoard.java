@@ -38,11 +38,13 @@ public class ScrumBoard extends Room implements IRoom {
         System.out.println("Scenario: ");
         System.out.println("You have been transformed to a Scrum Master.");
         System.out.println("All the people are looking at the board, they are clueless as to what they need to do next.");
+        openQuestion();
 
     }
 
     @Override
     public void roomCheckAnswer() {
+
         Scanner scanner = new Scanner(System.in);
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Daily Stand Up")) {
@@ -56,8 +58,11 @@ public class ScrumBoard extends Room implements IRoom {
     @Override
     public void roomResult() {
         if (isCorrect) {
+            System.out.println(" ");
             System.out.println("Correct! With a daily stand up you can see how everyone is doing, and talk about what they need to do next.");
+
         } else {
+            System.out.println(" ");
             System.out.println("Incorrect. A strange fog fills the room...");
             System.out.println("Trollo appears!");
         }

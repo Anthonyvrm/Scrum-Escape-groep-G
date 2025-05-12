@@ -1,6 +1,7 @@
 package monster;
 
 import classes.IMonster;
+import classes.Monster;
 
 
 //Slowness is een schaduwachtig wezen dat zich voedt met inefficiëntie.
@@ -9,7 +10,11 @@ import classes.IMonster;
 
 //Mogelijke defeat line: "My time... has run out..."
 
-public class Slowness implements IMonster {
+public class Slowness extends Monster implements IMonster {
+    public Slowness (int damage, int healthPoints){
+        super(damage,healthPoints);
+    }
+
     @Override
     public void exercise(){
 
