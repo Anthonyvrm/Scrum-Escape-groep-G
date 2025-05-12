@@ -3,6 +3,7 @@ package rooms;
 import classes.IRoom;
 import classes.Monster; //Trollo
 import classes.Room;
+import monster.Trollo;
 
 import java.util.Scanner;
 
@@ -17,6 +18,11 @@ public class ScrumBoard extends Room implements IRoom {
     public ScrumBoard(String question, String objective, String name) {
 
         super(question, objective, name);
+    }
+
+    public static void createScrumBoardRoom() {
+        Monster trollo = new Trollo(10, 50);
+        Room scrumboard = new ScrumBoard("Question", "Objective", "Scrum Board", trollo, false);
     }
 
     @Override

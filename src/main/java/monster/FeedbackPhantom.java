@@ -9,7 +9,7 @@ import classes.Monster;
 //Hoe meer ongebruikte feedback, hoe sterker hij wordt.
 
 public class FeedbackPhantom extends Monster implements IMonster {
-    FeedbackPhantom(int damage, int healthPoints){
+    public FeedbackPhantom(int damage, int healthPoints){
         super(damage,healthPoints);
     }
 

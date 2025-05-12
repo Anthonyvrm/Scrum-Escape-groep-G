@@ -10,9 +10,14 @@ public class TIARoom extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
     private boolean isCorrect;
 
-    public TIARoom (String question, String object, String name, Monster monster, boolean isCorrect) {
+    public TIARoom(String question, String object, String name, Monster monster, boolean isCorrect) {
         super(question, object, name, monster, isCorrect);
     }
+
+    //public static void createTIARoom() {
+    //Monster scrumReaper = new ScrumReaper(10, 50);
+    //Room tiaroom = new TIARoom("Question", "Objective", "TIA Room", scrumReaper, false);
+//}
 
     @Override
     public void introductionText() {
