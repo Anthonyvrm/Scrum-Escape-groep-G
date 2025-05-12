@@ -8,8 +8,6 @@ import java.util.Scanner;
 
 public class TIARoom extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
-    private boolean isCorrect;
-
     public TIARoom (String question, String object, String name, Monster monster, boolean isCorrect) {
         super(question, object, name, monster, isCorrect);
     }
@@ -26,9 +24,8 @@ public class TIARoom extends Room implements IRoom {
 
     @Override
     public void roomTask() {
-        System.out.println ("Answer the following question.");
-        System.out.println ("What does the 'T' in TIA stand for?");
-        System.out.println ("Type your answer:");
+        System.out.println ("Answer the following question about TIA, :");
+        System.out.println (" ");
     }
 
     @Override
@@ -71,7 +68,8 @@ public class TIARoom extends Room implements IRoom {
 
     @Override
     public void openQuestion() {
-
+        System.out.println ("What does the 'T' in TIA stand for?");
+        System.out.println ("Type your answer:");
     }
 
     @Override
