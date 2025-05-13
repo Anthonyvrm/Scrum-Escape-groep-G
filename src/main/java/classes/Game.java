@@ -33,6 +33,14 @@ public class Game {
         //TIARoom.createTIARoom();
     }
 
+    public void playerStartingPosition() {
+        Room sprintPlanningRoom = SprintPlanning.sprintPlanningRoom;
+        player.setPosition(sprintPlanningRoom);
+        System.out.println("You have entered the " + player.getPosition().name);
+        System.out.println(" ");
+        sprintPlanningRoom.runEscapeRoom();
+    }
+
 
     public void startGame() {
 
@@ -41,29 +49,25 @@ public class Game {
         System.out.println("==== Scrum Escape Building ===");
         System.out.println();
         showStartingDialogue();
+        playerStartingPosition();
 
-        SprintPlanning.createSprintPlanningRoom();
-        Room room = SprintPlanning.sprintPlanningRoom;
-        player.setPosition(room);
-        System.out.println("You have entered the " + player.getPosition().name);
-
-        while(true) {
-            System.out.println();
-            String input = scanner.nextLine();
-            handleCommands(input);
-        }
-        if (room.isCorrect()) {
-            System.out.println("You have completed the room!");
-            System.out.println("You can now go to the next room.");
-            database.saveDAO.insertSave(player);
+        //while(true) {
+            //System.out.println();
+            //String input = scanner.nextLine();
+            //handleCommands(input);
+        //}
+        //if (room.isCorrect()) {
+            //System.out.println("You have completed the room!");
+            //System.out.println("You can now go to the next room.");
+            //database.saveDAO.insertSave(player);
 
 
 
-        } else {
-            System.out.println("You have failed the room.");
-            endGame();
-        }
-    }
+       // } else {
+            //System.out.println("You have failed the room.");
+            //endGame();
+        //}
+   }
 
     public void handleCommands(String input){
         switch (input) {

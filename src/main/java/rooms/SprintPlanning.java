@@ -2,6 +2,7 @@ package rooms;
 
 import classes.IRoom;
 import classes.Monster; //Scope Creep
+import classes.Player;
 import classes.Room;
 import monster.ScopeCreep;
 
@@ -13,7 +14,6 @@ public class SprintPlanning extends Room implements IRoom {
 
     public SprintPlanning(String question, String objective, String name, Monster monster, boolean isCorrect){
         super(question, objective, name, monster, isCorrect);
-
     }
 
     public static void createSprintPlanningRoom () {
@@ -25,19 +25,26 @@ public class SprintPlanning extends Room implements IRoom {
 
     @Override
     public void introductionText(){
+        System.out.println("======== Sprint Planning Room ======== ");
         System.out.println("Welcome to the Sprint Planning room!");
+        System.out.println(" ");
 
     }
 
     @Override
     public void roomTask() {
         System.out.println("The team is waiting at the table for you.");
-        System.out.println("What are we going to do this next sprint is everyone asking and we have no clue on how to plan this...");
-
+        System.out.println("The tasks are overwhelming... we have no idea how to plan this.");
+        System.out.println("And someone just realized—we've forgotten the name of the game!");
+        System.out.println("*A voice breaks from the corner, barely holding back tears*");
+        System.out.println("We need your help, Scrum Master.....");
+        System.out.println(" ");
+        openQuestion();
     }
 
     @Override
     public void roomCheckAnswer() {
+
         Scanner scanner = new Scanner(System.in);
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Planning Poker")) {
@@ -50,22 +57,35 @@ public class SprintPlanning extends Room implements IRoom {
 
     @Override
     public void roomResult() {
+
         if (isCorrect) {
-            System.out.println("Correct! In order to to plan the sprint, we need to use Planning Poker.");
-            System.out.println("With this we are able to plan the sprint and have an overview and see how much time a task takes.");
+            System.out.println();
+            System.out.println("The room falls silent...");
+            System.out.println("A cold wind brushes past. The lights flicker.");
+            System.out.println();
+            System.out.println("Correct... You remembered the forbidden ritual: *Planning Poker*.");
+            System.out.println("It's the only way to unveil the true weight of the tasks that haunt this sprint.");
+            System.out.println("Only then can we hope to survive... and finish before the deadline claims us.");
+            System.out.println("Thank you Scrum Master you have saved us....");
+            System.out.println();
         } else {
+            System.out.println(" ");
             System.out.println("Incorrect. You hear a scary sound behind you...");
             System.out.println("You look behind you and , a wild Scope Screep appears!");
+            System.out.println(" ");
 
         }
     }
 
     @Override
     public void roomFeedback() {
-        System.out.println("The correct answer was: Planning Poker.");
-        System.out.println("In Scrum, Planning Poker is a technique to plan the sprint.");
-        System.out.println("It is a technique where the team members vote on the story points of the tasks.");
-        System.out.println("This helps the team to stay on track and keep the project on track.");
+        if (!isCorrect) {
+            System.out.println("The correct answer was: Planning Poker.");
+            System.out.println("In Scrum, Planning Poker is a technique used to estimate the effort required for tasks.");
+            System.out.println("It helps the team agree on task complexity and effort.");
+            System.out.println("This helps the team plan effectively and keep the project on schedule.");
+            System.out.println(" ");
+        }
 
     }
 
@@ -76,7 +96,8 @@ public class SprintPlanning extends Room implements IRoom {
 
     @Override
     public void openQuestion() {
-        System.out.println("So Scrum master, in order to give tasks story points, what is the name of the game you play with the team?");
+        System.out.println("So as the Scrum Master... You should know this!");
+        System.out.println("To assign story points to tasks, what is the name of the game you play with the team?");
 
     }
 
