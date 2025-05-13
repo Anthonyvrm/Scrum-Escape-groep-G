@@ -1,4 +1,5 @@
 import classes.Player;
+import database.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,3 +30,4 @@ public class saveQuery {
         }
         return players;
     }
+}
