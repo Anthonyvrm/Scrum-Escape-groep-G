@@ -22,11 +22,45 @@ public class Stagnator extends Monster implements IMonster {
 
     @Override
     public void takeDamage(){
-
+        int randomInt = (int)(Math.random() * 5);
+        switch (randomInt) {
+            case 0:
+                System.out.println("Initiative? That’s not how we do things here.");
+                break;
+            case 1:
+                System.out.println("Stop trying. Nothing ever really changes.");
+                break;
+            case 2:
+                System.out.println("You... changed something...");
+                break;
+            case 3:
+                System.out.println("You moved me... barely.");
+                break;
+            case 4:
+                System.out.println("Stop... breaking tradition...");
+                break;
+        }
     }
 
     @Override
     public void dealDamage(){
-
+        int randomInt = (int)(Math.random() * 5);
+        switch (randomInt) {
+            case 0:
+                System.out.println("I just buried your initiative under ten years of habit.");
+                break;
+            case 1:
+                System.out.println("I hit hard—with the full weight of 'how it’s always been'.");
+                break;
+            case 2:
+                System.out.println("That spark of change? Extinguished.");
+                break;
+            case 3:
+                System.out.println("Feel that? That's your motivation... crushed.");
+                break;
+            case 4:
+                System.out.println("Every hit reminds you: nothing ever changes.");
+                break;
+        }
     }
 }
