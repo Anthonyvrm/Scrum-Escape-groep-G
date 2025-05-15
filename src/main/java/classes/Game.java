@@ -23,33 +23,24 @@ public class Game {
 
     public Game () {}
 
-    public void createRooms() {
-        System.out.println("Creating rooms...");
-        ScrumBoard.createScrumBoardRoom();
-        SprintPlanning.createSprintPlanningRoom();
-        SprintRetrospective.createSprintRetrospectiveRoom();
-        SprintReview.createSprintReviewRoom();
-        TheDailyScrum.createTheDailyScrumRoom();
-        //TIARoom.createTIARoom();
-    }
 
-    public void playerStartingPosition() {
-        Room sprintPlanningRoom = SprintPlanning.sprintPlanningRoom;
-        player.setPosition(sprintPlanningRoom);
+    public void playerStartingPosition(Room room) {
+        player.setPosition(room);
         System.out.println("You have entered the " + player.getPosition().name);
         System.out.println(" ");
-        sprintPlanningRoom.runEscapeRoom();
+        room.runEscapeRoom();
     }
 
 
-    public void startGame() {
+    public void startGame(Room room) {
 
         System.out.println();
         System.out.println("Starting game...");
         System.out.println("==== Scrum Escape Building ===");
         System.out.println();
         showStartingDialogue();
-        playerStartingPosition();
+        playerStartingPosition(room);
+
 
         //while(true) {
             //System.out.println();
@@ -69,7 +60,7 @@ public class Game {
         //}
    }
 
-    public void handleCommands(String input){
+    /*public void handleCommands(String input){
         switch (input) {
             case "go to room SprintPlanning":
                 SprintPlanning.createSprintPlanningRoom();

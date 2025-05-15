@@ -9,6 +9,6 @@ public class MonsterObserver implements Observer{
 
     @Override
     public void update() {
-        System.out.println("[Observer] " + monster.getClass().getSimpleName() + " heeft nu " + monster.getHealthPoints() + " HP over.");
+        //System.out.println(monster.getClass().getSimpleName() + " has " + monster.getHealthPoints() + " HP left.");
     }
 }

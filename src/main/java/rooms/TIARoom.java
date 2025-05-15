@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class TIARoom extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
-    public TIARoom (String question, String object, String name, Monster monster, boolean isCorrect) {
-        super(question, object, name, monster, isCorrect);
+    public TIARoom (String name, Monster monster, boolean isCorrect) {
+        super(name, monster, isCorrect);
     }
 
     //public static void createTIARoom() {}

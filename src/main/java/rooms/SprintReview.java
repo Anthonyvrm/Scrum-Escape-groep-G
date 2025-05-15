@@ -9,13 +9,8 @@ import java.util.Scanner;
 
 public class SprintReview extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
-    public SprintReview(String question, String objective, String name, Monster monster, boolean isCorrect){
-        super(question, objective, name, monster, isCorrect);
-    }
-
-    public static void createSprintReviewRoom() {
-            Monster feedbackPhantom = new FeedbackPhantom(10, 50);
-            Room sprintReview = new SprintReview("Question", "Objective", "Sprint Review Room", feedbackPhantom, false);
+    public SprintReview(String name, Monster monster, boolean isCorrect){
+        super(name, monster, isCorrect);
     }
 
     @Override

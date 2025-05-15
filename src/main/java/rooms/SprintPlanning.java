@@ -12,16 +12,10 @@ public class SprintPlanning extends Room implements IRoom {
 
     public static Room sprintPlanningRoom;
 
-    public SprintPlanning(String question, String objective, String name, Monster monster, boolean isCorrect){
-        super(question, objective, name, monster, isCorrect);
+    public SprintPlanning(String name, Monster monster, boolean isCorrect){
+        super(name, monster, isCorrect);
     }
 
-    public static void createSprintPlanningRoom () {
-
-        Monster scopeCreep = new ScopeCreep(10, 50);
-        sprintPlanningRoom = new SprintPlanning("Question", "Objective", "Sprint Planning Room", scopeCreep, false);
-
-    }
 
     @Override
     public void introductionText(){
@@ -68,6 +62,7 @@ public class SprintPlanning extends Room implements IRoom {
             System.out.println("Only then can we hope to survive... and finish before the deadline claims us.");
             System.out.println("Thank you Scrum Master you have saved us....");
             System.out.println();
+
         } else {
             System.out.println(" ");
             System.out.println("Incorrect. You hear a scary sound behind you...");

@@ -9,13 +9,8 @@ import java.util.Scanner;
 
 public class TheDailyScrum extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
-    public TheDailyScrum(String question, String objective, String name, Monster monster, boolean isCorrect) {
-        super(question, objective, name, monster, isCorrect);
-    }
-
-    public static void createTheDailyScrumRoom() {
-        Monster slowness = new Slowness(10, 50);
-        Room theDailyScrum = new TheDailyScrum("Question", "Objective", "Name", slowness, true);
+    public TheDailyScrum(String name, Monster monster, boolean isCorrect) {
+        super(name, monster, isCorrect);
     }
 
     @Override

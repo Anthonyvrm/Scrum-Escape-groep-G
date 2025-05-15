@@ -1,13 +1,13 @@
 package classes;
 
-public abstract class Room {
+public abstract class Room implements Subject{
     protected String question;
     protected String objective;
     protected String name;
     protected Monster monster;
     protected boolean isCorrect;
 
-    public Room(String question, String objective, String name, Monster monster, boolean isCorrect) {
+    public Room(String name, Monster monster, boolean isCorrect) {
         this.question = question;
         this.objective = objective;
         this.name = name;
@@ -20,6 +20,23 @@ public abstract class Room {
         this.name = name;
     }
 
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer o : observers) {
+            o.update();
+        }
+    }
+    
     public final void runEscapeRoom() {
         introductionText();
         roomTask();

@@ -10,13 +10,8 @@ import java.util.Scanner;
 public class SprintRetrospective extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
 
-    public SprintRetrospective(String question, String object, String name, Monster monster, boolean isCorrect) {
-        super(question, object, name, monster, isCorrect);
-    }
-
-    public static void createSprintRetrospectiveRoom() {
-        Monster stagnator = new Stagnator(1, 1);
-        SprintRetrospective sprintRetrospective = new SprintRetrospective("Question", "object", "Name", stagnator, false);
+    public SprintRetrospective(String name, Monster monster, boolean isCorrect) {
+        super(name, monster, isCorrect);
     }
 
     @Override
