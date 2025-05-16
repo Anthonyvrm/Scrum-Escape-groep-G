@@ -8,7 +8,7 @@ public class MonsterObserver implements Observer{
     }
 
     @Override
-    public void update() {
+    public void update(boolean isCorrect) {
         //System.out.println(monster.getClass().getSimpleName() + " has " + monster.getHealthPoints() + " HP left.");
     }
 }

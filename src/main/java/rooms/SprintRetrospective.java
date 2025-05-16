@@ -33,9 +33,10 @@ public class SprintRetrospective extends Room implements IRoom {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("B")) {
             isCorrect = true;
-            notifyObservers();
+            notifyObservers(isCorrect);
         } else {
             isCorrect = false;
+            notifyObservers(isCorrect);
         }
     }
 

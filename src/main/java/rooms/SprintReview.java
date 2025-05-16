@@ -28,9 +28,10 @@ public class SprintReview extends Room implements IRoom {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("C")) {
             isCorrect = true;
-            notifyObservers();
+            notifyObservers(isCorrect);
         } else {
             isCorrect = false;
+            notifyObservers(isCorrect);
         }
     }
 

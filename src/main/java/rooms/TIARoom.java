@@ -31,10 +31,11 @@ public class TIARoom extends Room implements IRoom {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Transparency")) {
             isCorrect = true;
-            notifyObservers();
+            notifyObservers(isCorrect);
         }
         else {
             isCorrect = false;
+            notifyObservers(isCorrect);
         }
     }
 

@@ -36,9 +36,9 @@ public abstract class Room implements Subject{
     }
 
     @Override
-    public void notifyObservers() {
+    public void notifyObservers(boolean isCorrect) {
         for (Observer o : observers) {
-            o.update();
+            o.update(isCorrect);
         }
     }
     

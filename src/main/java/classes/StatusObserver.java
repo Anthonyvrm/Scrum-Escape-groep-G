@@ -8,7 +8,7 @@ public class StatusObserver implements Observer {
     }
 
     @Override
-    public void update() {
+    public void update(boolean isCorrect) {
         System.out.printf("Name: %s, Health: %d, Position: %s\n", player.getName(), player.getStatus(), player.getPosition());
     }
 }
