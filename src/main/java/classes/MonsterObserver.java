@@ -9,6 +9,10 @@ public class MonsterObserver implements Observer{
 
     @Override
     public void update(boolean isCorrect) {
-        //System.out.println(monster.getClass().getSimpleName() + " has " + monster.getHealthPoints() + " HP left.");
+        if (!isCorrect) {
+            System.out.println(monster.getClass().getSimpleName() + " appeared!");
+        } else {
+            System.out.println(monster.getClass().getSimpleName() + " vanished!");
+        }
     }
 }

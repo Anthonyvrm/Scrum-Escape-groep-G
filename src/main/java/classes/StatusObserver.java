@@ -1,7 +1,7 @@
 package classes;
 
 public class StatusObserver implements Observer {
-    Player player;
+    private Player player;
 
     public StatusObserver(Player player) {
         this.player = player;
@@ -9,6 +9,13 @@ public class StatusObserver implements Observer {
 
     @Override
     public void update(boolean isCorrect) {
-        System.out.printf("Name: %s, Health: %d, Position: %s\n", player.getName(), player.getStatus(), player.getPosition());
+        System.out.printf("Status: %s | HP: %d | Locatie: %s\n",
+                player.getName(),
+                player.getStatus(),
+                player.getPosition().name
+        );
+        if (!isCorrect) {
+            System.out.println("Wrong answer! look at your HP and Try again.");
+        }
     }
 }

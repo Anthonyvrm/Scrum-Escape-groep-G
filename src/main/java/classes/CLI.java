@@ -31,7 +31,8 @@ public class CLI {
         for (Room room : rooms) {
             room.registerObserver(new DeurObserver(room));
             room.registerObserver(new MonsterObserver(room.monster));
-            room.registerObserver(new StatusObserver(room));
+            room.registerObserver(new StatusObserver(player));
+
         }
 
         Game game = new Game(player);
