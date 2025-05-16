@@ -7,51 +7,34 @@ import java.util.Scanner;
 
 public class CLI {
     public static void CLI() {
-
         Player player = new Player();
         player.createCharacter();
 
-        monster.FeedbackPhantom feedbackPhantom = new FeedbackPhantom(1,10);
-        monster.ScopeCreep scopeCreep = new ScopeCreep(1, 10);
-        monster.Slowness slowness = new Slowness(1, 10);
-        monster.Stagnator stagnator = new Stagnator(1, 10);
-        monster.Trollo trollo = new Trollo(1, 10);
-        monster.TheScrumReaper TheScrumReaper = new TheScrumReaper(1, 25);
+        Monster[] monsters = {
+                new FeedbackPhantom(1, 10),
+                new ScopeCreep(1, 10),
+                new Slowness(1, 10),
+                new Stagnator(1, 10),
+                new Trollo(1, 10),
+                new TheScrumReaper(1, 25)
+        };
 
-        rooms.ScrumBoard scrumBoard = new ScrumBoard("Scrumboard Room", trollo, false);
-        rooms.SprintPlanning sprintPlanning = new SprintPlanning("Sprint Planning Room", scopeCreep, false);
-        rooms.SprintRetrospective sprintRetrospective = new SprintRetrospective("Sprint Retrospective Room", stagnator, false);
-        rooms.SprintReview sprintReview = new SprintReview("Sprint Review Room", feedbackPhantom, false);
-        rooms.TheDailyScrum theDailyScrum = new TheDailyScrum("The Daily Scrum Room", slowness, false);
-        rooms.TIARoom tiaRoom = new TIARoom("TIA Room", TheScrumReaper, false);
+        Room[] rooms = {
+                new ScrumBoard("Scrumboard Room", monsters[4], false),
+                new SprintPlanning("Sprint Planning Room", monsters[1], false),
+                new SprintRetrospective("Sprint Retrospective Room", monsters[3], false),
+                new SprintReview("Sprint Review Room", monsters[0], false),
+                new TheDailyScrum("The Daily Scrum Room", monsters[2], false),
+                new TIARoom("TIA Room", monsters[5], false)
+        };
 
-        scrumBoard.registerObserver(new DeurObserver(scrumBoard));
-        theDailyScrum.registerObserver(new DeurObserver(theDailyScrum));
-        sprintRetrospective.registerObserver(new DeurObserver(sprintRetrospective));
-        sprintReview.registerObserver(new DeurObserver(sprintReview));
-        sprintPlanning.registerObserver(new DeurObserver(sprintPlanning));
-        theDailyScrum.registerObserver(new DeurObserver(theDailyScrum));
-        tiaRoom.registerObserver(new DeurObserver(tiaRoom));
-
-        scrumBoard.registerObserver(new MonsterObserver(trollo));
-        sprintPlanning.registerObserver(new MonsterObserver(scopeCreep));
-        sprintRetrospective.registerObserver(new MonsterObserver(stagnator));
-        sprintReview.registerObserver(new MonsterObserver(feedbackPhantom));
-        theDailyScrum.registerObserver(new MonsterObserver(slowness));
-        tiaRoom.registerObserver(new MonsterObserver(TheScrumReaper));
+        for (Room room : rooms) {
+            room.registerObserver(new DeurObserver(room));
+            room.registerObserver(new MonsterObserver(room.monster));
+            room.registerObserver(new StatusObserver(room));
+        }
 
         Game game = new Game(player);
-        game.startGame(sprintPlanning);
-
-
-
-        
-
-
-
-
-
+        game.startGame(rooms[1]);
     }
-
 }
-
