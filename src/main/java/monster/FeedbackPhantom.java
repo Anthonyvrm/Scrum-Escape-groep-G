@@ -37,6 +37,7 @@ public class FeedbackPhantom extends Monster implements IMonster {
                 System.out.println("Alright, alright... I don’t care... but that hurts.");
                 break;
         }
+        //reduceHealthPoints((int)(Math.random() * 50));
     }
 
     @Override

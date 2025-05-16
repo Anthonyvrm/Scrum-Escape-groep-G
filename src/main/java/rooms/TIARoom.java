@@ -8,11 +8,9 @@ import java.util.Scanner;
 
 public class TIARoom extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
-    public TIARoom (String question, String object, String name, Monster monster, boolean isCorrect) {
-        super(question, object, name, monster, isCorrect);
+    public TIARoom (String name, Monster monster, boolean isCorrect) {
+        super(name, monster, isCorrect);
     }
-
-    //public static void createTIARoom() {}
 
     @Override
     public void introductionText() {
@@ -33,10 +31,11 @@ public class TIARoom extends Room implements IRoom {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Transparency")) {
             isCorrect = true;
+            notifyObservers(isCorrect);
         }
         else {
             isCorrect = false;
-            //System.out.println ("Wrong answer, the 'T' in TIA stands for 'Transparency'.");
+            notifyObservers(isCorrect);
         }
     }
 

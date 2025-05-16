@@ -1,13 +1,18 @@
 package classes;
+import rooms.ScrumBoard;
 
-public abstract class Room {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Room implements Subject{
     protected String question;
     protected String objective;
     protected String name;
     protected Monster monster;
     protected boolean isCorrect;
+    private List<Observer> observers = new ArrayList<>();
 
-    public Room(String question, String objective, String name, Monster monster, boolean isCorrect) {
+    public Room(String name, Monster monster, boolean isCorrect) {
         this.question = question;
         this.objective = objective;
         this.name = name;
@@ -20,6 +25,23 @@ public abstract class Room {
         this.name = name;
     }
 
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+
+    @Override
+    public void notifyObservers(boolean isCorrect) {
+        for (Observer o : observers) {
+            o.update(isCorrect);
+        }
+    }
+    
     public final void runEscapeRoom() {
         introductionText();
         roomTask();

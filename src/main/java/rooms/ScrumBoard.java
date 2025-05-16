@@ -9,10 +9,8 @@ import java.util.Scanner;
 
 public class ScrumBoard extends Room implements IRoom {
 
-    public ScrumBoard (String question, String objective, String name, Monster monster, boolean isCorrect) {
-        super(question, objective, name, monster, isCorrect);
-
-
+    public ScrumBoard (String name, Monster monster, boolean isCorrect) {
+        super(name, monster, isCorrect);
     }
 
     public ScrumBoard(String question, String objective, String name) {
@@ -20,10 +18,6 @@ public class ScrumBoard extends Room implements IRoom {
         super(question, objective, name);
     }
 
-    public static void createScrumBoardRoom() {
-        Monster trollo = new Trollo(10, 50);
-        Room scrumboard = new ScrumBoard("Question", "Objective", "Scrum Board Room", trollo, false);
-    }
 
     @Override
     public void introductionText() {
@@ -34,7 +28,6 @@ public class ScrumBoard extends Room implements IRoom {
 
     @Override
     public void roomTask() {
-
         System.out.println("Scenario: ");
         System.out.println("You have been transformed to a Scrum Master.");
         System.out.println("All the people are looking at the board, they are clueless as to what they need to do next.");
@@ -49,8 +42,12 @@ public class ScrumBoard extends Room implements IRoom {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Daily Stand Up")) {
             isCorrect = true;
+            notifyObservers(isCorrect);
+
+
         } else {
             isCorrect = false;
+            notifyObservers(isCorrect);
         }
 
     }
@@ -86,9 +83,8 @@ public class ScrumBoard extends Room implements IRoom {
 
     @Override
     public void openQuestion() {
-        System.out.println("In order to tell the people what to this day, what is the name of the first thing you should do with this team?");
+        System.out.println("In order to tell the people what to do this day, what is the name of the first thing you should do with this team?");
         System.out.println("Type your answer: ");
-
     }
 
     @Override
