@@ -3,7 +3,7 @@ package classes;
 
 import rooms.*;
 import database.*;
-
+import java.util.*;
 import java.util.Scanner;
 
 public class Game {
@@ -22,6 +22,13 @@ public class Game {
     }
 
     public Game () {}
+    // nieuwee variabelen voor vaste kamer volgorde
+    private List<Room> rooms;
+    private int currentRoomIndex = 0;
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
 
 
     public void playerStartingPosition(Room room) {
@@ -40,6 +47,7 @@ public class Game {
         System.out.println();
         showStartingDialogue();
         playerStartingPosition(room);
+        commandLoop();
 
 
         //while(true) {
@@ -92,6 +100,42 @@ public class Game {
       //  }
     //}
 
+
+    //logica voor commando's
+    private void commandLoop() {
+        while (true) {
+            System.out.print("> ");
+            String input = scanner.nextLine().trim();
+
+            if (input.equalsIgnoreCase("go to next")) {
+                goToNextRoom();
+            } else if (input.equalsIgnoreCase("status")) {
+                player.printStatus();
+            } else {
+                System.out.println("unknownq command");
+            }
+        }
+    }
+
+    public void goToNextRoom() {
+        Room currentRoom = rooms.get(currentRoomIndex);
+
+        if (!currentRoom.isCorrect) {
+            System.out.println("You gotta finish the room" + player.getName() + "!");
+            return;
+        }
+// logica voor naar de volgende kamer gaan
+        currentRoomIndex++;
+        if (currentRoomIndex < rooms.size()) {
+            Room nextRoom = rooms.get(currentRoomIndex);
+            player.setPosition(nextRoom);
+            System.out.println("You are going to the next room called: " + nextRoom.name);
+            nextRoom.runEscapeRoom();
+        } else {
+            System.out.println("You finished the game YIPPIEEE!");
+            endGame();
+        }
+    }
     public void showStartingDialogue() {
 
         System.out.printf("%s.........\n", player.getName());

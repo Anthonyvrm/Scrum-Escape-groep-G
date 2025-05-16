@@ -21,6 +21,7 @@ public class TheDailyScrum extends Room implements IRoom {
     public void roomTask() {
         System.out.println("Scenario:");
         System.out.println("The Scrum Team gathers each morning to show their task progress to the Scrum Master.");
+        multipleChoiceQuestion();
     }
     @Override
     public void roomCheckAnswer() {
