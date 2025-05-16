@@ -89,8 +89,8 @@ public class Game {
                 player.setPosition(new TIARoom());
                 System.out.println("You have entered the TIARoom room.");
                 break;*/
-        }
-    }
+      //  }
+    //}
 
     public void showStartingDialogue() {
 

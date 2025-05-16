@@ -1,4 +1,8 @@
 package classes;
+import rooms.ScrumBoard;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Room implements Subject{
     protected String question;
@@ -6,6 +10,7 @@ public abstract class Room implements Subject{
     protected String name;
     protected Monster monster;
     protected boolean isCorrect;
+    private List<Observer> observers = new ArrayList<>();
 
     public Room(String name, Monster monster, boolean isCorrect) {
         this.question = question;

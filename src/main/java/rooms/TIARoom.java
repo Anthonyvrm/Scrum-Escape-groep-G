@@ -12,8 +12,6 @@ public class TIARoom extends Room implements IRoom {
         super(name, monster, isCorrect);
     }
 
-    //public static void createTIARoom() {}
-
     @Override
     public void introductionText() {
         System.out.println ("Welcome to the TIARoom!");
@@ -33,10 +31,10 @@ public class TIARoom extends Room implements IRoom {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Transparency")) {
             isCorrect = true;
+            notifyObservers();
         }
         else {
             isCorrect = false;
-            //System.out.println ("Wrong answer, the 'T' in TIA stands for 'Transparency'.");
         }
     }
 

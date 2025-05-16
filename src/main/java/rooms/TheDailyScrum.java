@@ -27,6 +27,7 @@ public class TheDailyScrum extends Room implements IRoom {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("C")) {
             isCorrect = true;
+            notifyObservers();
         } else {
             isCorrect = false;
         }

@@ -42,6 +42,9 @@ public class ScrumBoard extends Room implements IRoom {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Daily Stand Up")) {
             isCorrect = true;
+            notifyObservers(
+
+            );
         } else {
             isCorrect = false;
         }

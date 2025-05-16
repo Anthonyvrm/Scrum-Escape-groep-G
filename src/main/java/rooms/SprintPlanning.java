@@ -43,6 +43,7 @@ public class SprintPlanning extends Room implements IRoom {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Planning Poker")) {
             isCorrect = true;
+            notifyObservers();
         } else {
             isCorrect = false;
         }
