@@ -33,6 +33,13 @@ public class CLI {
         theDailyScrum.registerObserver(new DeurObserver(theDailyScrum));
         tiaRoom.registerObserver(new DeurObserver(tiaRoom));
 
+        scrumBoard.registerObserver(new MonsterObserver(trollo));
+        sprintPlanning.registerObserver(new MonsterObserver(scopeCreep));
+        sprintRetrospective.registerObserver(new MonsterObserver(stagnator));
+        sprintReview.registerObserver(new MonsterObserver(feedbackPhantom));
+        theDailyScrum.registerObserver(new MonsterObserver(slowness));
+        tiaRoom.registerObserver(new MonsterObserver(TheScrumReaper));
+
         Game game = new Game(player);
         game.startGame(sprintPlanning);
 

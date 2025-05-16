@@ -12,7 +12,6 @@ public class DeurObserver implements Observer{
     @Override
     public void update(boolean isCorrect) {
 
-
         if (isCorrect) {
             System.out.println("The door is open.");
         }
