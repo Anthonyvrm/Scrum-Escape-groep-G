@@ -1,8 +1,6 @@
 package monster;
 
 import classes.IMonster;
-import classes.Monster;
-
 //Trollo is een chaotische trol dat door digitale borden kruipt, kaartjes versleept en verantwoordelijkheden vervaagt.
 //Hij leeft van onduidelijke statusupdates, vergeten taken en kaarten zonder eigenaar.
 //Zijn aanwezigheid zorgt ervoor dat niemand nog weet wat “To Do”, “Doing” of “Done” betekent.
@@ -15,7 +13,7 @@ public class Trollo implements IMonster {
     }
 
     @Override
-    public void takeDamage(){
+    public void takeDamageQuote(){
         int randomInt = (int)(Math.random() * 5);
         switch (randomInt) {
             case 0:
@@ -37,7 +35,7 @@ public class Trollo implements IMonster {
     }
 
     @Override
-    public void dealDamage(){
+    public void dealDamageQuote(){
         int randomInt = (int)(Math.random() * 5);
         switch (randomInt) {
             case 0:

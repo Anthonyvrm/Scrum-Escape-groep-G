@@ -14,7 +14,7 @@ public class FeedbackPhantom implements IMonster {
     }
 
     @Override
-    public void takeDamage(){
+    public void takeDamageQuote(){
         int randomInt = (int)(Math.random() * 5);
         switch (randomInt) {
             case 0:
@@ -36,7 +36,7 @@ public class FeedbackPhantom implements IMonster {
     }
 
     @Override
-    public void dealDamage(){
+    public void dealDamageQuote(){
         int randomInt = (int)(Math.random() * 5);
         switch (randomInt) {
             case 0:
