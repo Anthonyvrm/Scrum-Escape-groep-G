@@ -14,7 +14,7 @@ public class TheDailyScrum extends Room implements IRoom {
     }
 
     public static void createTheDailyScrumRoom() {
-        Monster slowness = new Slowness(10, 50);
+        Monster slowness = new Monster(10, 50, "Slowness", new Slowness());
         Room theDailyScrum = new TheDailyScrum("Question", "Objective", "Name", slowness, true);
     }
 

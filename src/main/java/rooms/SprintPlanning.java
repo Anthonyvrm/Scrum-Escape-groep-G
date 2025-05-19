@@ -17,10 +17,8 @@ public class SprintPlanning extends Room implements IRoom {
     }
 
     public static void createSprintPlanningRoom () {
-
-        Monster scopeCreep = new ScopeCreep(10, 50);
+        Monster scopeCreep = new Monster(10, 50, "Scope Creep", new ScopeCreep());
         sprintPlanningRoom = new SprintPlanning("Question", "Objective", "Sprint Planning Room", scopeCreep, false);
-
     }
 
     @Override

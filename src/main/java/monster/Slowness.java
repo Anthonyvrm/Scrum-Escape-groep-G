@@ -10,11 +10,7 @@ import classes.Monster;
 
 //Mogelijke defeat line: "My time... has run out..."
 
-public class Slowness extends Monster implements IMonster {
-    public Slowness (int damage, int healthPoints){
-        super(damage,healthPoints);
-    }
-
+public class Slowness implements IMonster {
     @Override
     public void exercise(){
 

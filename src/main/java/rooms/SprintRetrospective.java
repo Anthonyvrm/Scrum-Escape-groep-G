@@ -15,7 +15,7 @@ public class SprintRetrospective extends Room implements IRoom {
     }
 
     public static void createSprintRetrospectiveRoom() {
-        Monster stagnator = new Stagnator(1, 1);
+        Monster stagnator = new Monster(10, 50, "Stagnator", new Stagnator());
         SprintRetrospective sprintRetrospective = new SprintRetrospective("Question", "object", "Name", stagnator, false);
     }
 

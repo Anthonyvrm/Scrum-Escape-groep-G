@@ -16,13 +16,6 @@ public class CLI {
         game.createRooms();
         game.startGame();
 
-
-
-
-
-
-
-
     }
 
 }

@@ -14,7 +14,7 @@ public class SprintReview extends Room implements IRoom {
     }
 
     public static void createSprintReviewRoom() {
-            Monster feedbackPhantom = new FeedbackPhantom(10, 50);
+            Monster feedbackPhantom = new Monster(10, 50, "Feedback Phantom", new FeedbackPhantom());
             Room sprintReview = new SprintReview("Question", "Objective", "Sprint Review Room", feedbackPhantom, false);
     }
 

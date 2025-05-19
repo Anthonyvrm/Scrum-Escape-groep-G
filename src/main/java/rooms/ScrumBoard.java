@@ -21,7 +21,7 @@ public class ScrumBoard extends Room implements IRoom {
     }
 
     public static void createScrumBoardRoom() {
-        Monster trollo = new Trollo(10, 50);
+        Monster trollo = new Monster(10, 50, "Trollo", new Trollo());
         Room scrumboard = new ScrumBoard("Question", "Objective", "Scrum Board Room", trollo, false);
     }
 
