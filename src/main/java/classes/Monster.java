@@ -13,12 +13,28 @@ public class Monster {
         this.monsterStrategy = monsterStrategy;
     }
 
-    public void dealDamage(){
-        monsterStrategy.dealDamage();
+    public void dealDamage(Player player){
+        monsterStrategy.dealDamageQuote();
+        player.setStatus(player.getStatus() - damage);
+        if(player.getStatus() <= 0) {
+            System.out.println("You have been defeated by " + name + "!");
+            System.out.println("G A M E   O V E R . . .");
+            Game.endGame();
+        }
+        else {
+            //mogelijke observer notifier.
+        }
     }
 
     public void takeDamage(){
-        monsterStrategy.takeDamage();
+        monsterStrategy.takeDamageQuote();
+        healthPoints -= 5;
+        if(healthPoints <= 0) {
+            System.out.println("You have defeated " + name + "!");
+        }
+        else {
+            //mogelijke observer notifier.
+        }
     }
 
     public void exercise(){
