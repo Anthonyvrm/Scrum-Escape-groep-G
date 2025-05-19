@@ -1,46 +1,27 @@
 package classes;
 
-import java.util.ArrayList;
+public class Monster {
+    private int damage;
+    private int healthPoints;
+    private String name;
+    private IMonster monsterStrategy;
 
-public abstract class Monster {
-    protected int damage;
-    protected int healthPoints;
-    //private ArrayList<Observer> observers = new ArrayList<>();
-
-    public Monster(int damage, int healthPoints) {
+    public Monster(int damage, int healthPoints, String name, IMonster monsterStrategy){
         this.damage = damage;
         this.healthPoints = healthPoints;
+        this.name = name;
+        this.monsterStrategy = monsterStrategy;
     }
 
-
-    /*public void reduceHealthPoints(int damage){
-        this.healthPoints -= damage;
-        if(getHealthPoints() <= 0){
-            hasDied();
-            notifyObservers();
-        }
+    public void dealDamage(){
+        monsterStrategy.dealDamage();
     }
 
-    @Override
-    /public void registerObserver(Observer observer) {
-        observers.add(observer);
+    public void takeDamage(){
+        monsterStrategy.takeDamage();
     }
 
-    @Override
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
+    public void exercise(){
+        monsterStrategy.exercise();
     }
-
-    @Override
-    public void notifyObservers() {
-        observers.forEach(Observer::update);
-    }
-
-    public int getHealthPoints() {
-        return healthPoints;
-    }
-
-    public void hasDied(){
-        System.out.println("You defeated the monster!");
-    }*/
 }

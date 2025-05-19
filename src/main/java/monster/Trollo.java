@@ -8,11 +8,7 @@ import classes.Monster;
 //Zijn aanwezigheid zorgt ervoor dat niemand nog weet wat “To Do”, “Doing” of “Done” betekent.
 
 
-public class Trollo extends Monster implements IMonster {
-    public Trollo(int damage, int healthPoints){
-        super(damage,healthPoints);
-    }
-
+public class Trollo implements IMonster {
     @Override
     public void exercise(){
 

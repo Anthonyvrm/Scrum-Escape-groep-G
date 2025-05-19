@@ -9,13 +9,7 @@ import classes.Monster;
 
 //Mogelijke defeat line: "This isn't over — I’ll be back next sprint planning..."
 
-public class ScopeCreep extends Monster implements IMonster {
-    public ScopeCreep(int damage, int healthPoints){
-        super(damage,healthPoints);
-    }
-
-
-
+public class ScopeCreep implements IMonster {
     @Override
     public void exercise(){
 
