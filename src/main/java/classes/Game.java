@@ -11,8 +11,6 @@ public class Game {
     Room room;
     Scanner scanner = new Scanner(System.in);
 
-
-
     public Game (Room room, Player player) {
         this.room = room;
         this.player = player;
@@ -104,6 +102,9 @@ public class Game {
     //logica voor commando's
     private void commandLoop() {
         while (true) {
+
+            System.out.println("- If you want to go to the next room type: Go to next");
+            System.out.println("- If you want to check your status type: Status");
             System.out.print("> ");
             String input = scanner.nextLine().trim();
 
@@ -112,7 +113,7 @@ public class Game {
             } else if (input.equalsIgnoreCase("status")) {
                 player.printStatus();
             } else {
-                System.out.println("unknownq command");
+                System.out.println("Unknown command");
             }
         }
     }
@@ -121,7 +122,7 @@ public class Game {
         Room currentRoom = rooms.get(currentRoomIndex);
 
         if (!currentRoom.isCorrect) {
-            System.out.println("You gotta finish the room" + player.getName() + "!");
+            System.out.println("You gotta finish the room " + player.getName() + " !");
             return;
         }
 // logica voor naar de volgende kamer gaan
@@ -129,7 +130,7 @@ public class Game {
         if (currentRoomIndex < rooms.size()) {
             Room nextRoom = rooms.get(currentRoomIndex);
             player.setPosition(nextRoom);
-            System.out.println("You are going to the next room called: " + nextRoom.name);
+            System.out.println("You are going to the next room called: " + player.getPosition().name);
             nextRoom.runEscapeRoom();
         } else {
             System.out.println("You finished the game YIPPIEEE!");
