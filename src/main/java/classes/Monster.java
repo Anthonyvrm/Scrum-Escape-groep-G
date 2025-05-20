@@ -4,7 +4,7 @@ public class Monster {
     private int damage;
     private int healthPoints;
     private String name;
-    private IMonster monsterStrategy;
+    private IMonster monsterStrategy; // Monster babababab = new Monster(5, 10, "Babababab", new ScopeCreep())
 
     public Monster(int damage, int healthPoints, String name, IMonster monsterStrategy){
         this.damage = damage;

@@ -8,23 +8,20 @@ import java.util.Scanner;
 
 public class SprintReview extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
-    public SprintReview(String question, String objective, String name, Monster monster, boolean isCorrect){
-        super(question, objective, name, monster, isCorrect);
-    }
 
-    public static void createSprintReviewRoom() {
-            Monster feedbackPhantom = new Monster(10, 50, "Feedback Phantom", new FeedbackPhantom());
-            Room sprintReview = new SprintReview("Question", "Objective", "Sprint Review Room", feedbackPhantom, false);
+    public SprintReview(String name, Monster monster, boolean isCorrect) {
+        super(name, monster, isCorrect);
     }
 
     @Override
     public void introductionText() {
-        System.out.println ("Welcome to the SprintReview room!");
+        System.out.println("Welcome to the SprintReview room!");
     }
 
     @Override
     public void roomTask() {
-        System.out.println ("In this room you will display your knowledge, about the subject in SCRUM: the Sprint Review!");
+        System.out.println("In this room you will display your knowledge, about the subject in SCRUM: the Sprint Review!");
+        question();
     }
 
     @Override
@@ -32,8 +29,10 @@ public class SprintReview extends Room implements IRoom {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("C")) {
             isCorrect = true;
+            notifyObservers(isCorrect);
         } else {
             isCorrect = false;
+            notifyObservers(isCorrect);
         }
     }
 
@@ -42,9 +41,11 @@ public class SprintReview extends Room implements IRoom {
         if (isCorrect) {
             System.out.println("Correct! You've displayed your knowledge about the Sprint Review!");
             System.out.println("A portal appears to have spawned in the Sprint Review room...!");
+
         } else {
             System.out.println("Incorrect. The walls start ttttremblinggg...");
             System.out.println("The Feedback Phantom has appeared from the shadows of the room...!");
+
         }
     }
 
@@ -60,7 +61,7 @@ public class SprintReview extends Room implements IRoom {
     }
 
     @Override
-    public void multipleChoiceQuestion() {
+    public void question() {
         System.out.println("Question:");
         System.out.println("To whom does the Scrum Team show their results during the Sprint Review?");
         System.out.println("A) To the Scrum Master.");
@@ -68,15 +69,5 @@ public class SprintReview extends Room implements IRoom {
         System.out.println("C) To all the stakeholders.");
         System.out.println("D) They dont show it to anybody outside the Scrum Team.");
         System.out.println("Type the letter of your answer: ");
-    }
-
-    @Override
-    public void openQuestion() {
-
-    }
-
-    @Override
-    public void puzzle() {
-
     }
 }

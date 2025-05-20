@@ -1,6 +1,6 @@
 package classes;
 
-public class DeurObserver implements Observer{
+public class DeurObserver implements QuestionObserver {
     private Room room;
 
 

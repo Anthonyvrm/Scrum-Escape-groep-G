@@ -1,6 +1,6 @@
 package classes;
 
-public class StatusObserver implements Observer {
+public class StatusObserver implements QuestionObserver {
     private Player player;
     private Room room;
 
@@ -11,7 +11,7 @@ public class StatusObserver implements Observer {
 
     @Override
     public void update(boolean isCorrect) {
-        System.out.printf("Status: %s | HP: %d | Locatie: %s\n",
+        System.out.printf("Name: %s | HP: %d | Locatie: %s\n",
                 player.getName(),
                 player.getStatus(),
                 player.getPosition().name

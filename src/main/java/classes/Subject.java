@@ -1,7 +1,7 @@
 package classes;
 
 public interface Subject {
-    void registerObserver(Observer observer);
-    void removeObserver(Observer observer);
+    void registerObserver(QuestionObserver questionObserver);
+    void removeObserver(QuestionObserver questionObserver);
     void notifyObservers(boolean isCorrect);
 }

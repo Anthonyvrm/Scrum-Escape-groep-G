@@ -1,43 +1,37 @@
 package classes;
-import rooms.ScrumBoard;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Room implements Subject{
-    protected String question;
-    protected String objective;
     protected String name;
     protected Monster monster;
     protected boolean isCorrect;
-    private List<Observer> observers = new ArrayList<>();
+    private List<QuestionObserver> questionObservers = new ArrayList<>();
 
-    public Room(String question,String objective,String name, Monster monster, boolean isCorrect) {
-        this.question = question;
-        this.objective = objective;
+    public Room(String name, Monster monster, boolean isCorrect) {
         this.name = name;
         this.monster = monster;
         this.isCorrect = isCorrect;
     }
-    public Room(String question, String objective, String name) {
-        this.question = question;
-        this.objective = objective;
-        this.name = name;
+
+    public String getName() {
+        return name;
     }
 
     @Override
-    public void registerObserver(Observer o) {
-        observers.add(o);
+    public void registerObserver(QuestionObserver o) {
+        questionObservers.add(o);
     }
 
     @Override
-    public void removeObserver(Observer o) {
-        observers.remove(o);
+    public void removeObserver(QuestionObserver o) {
+        questionObservers.remove(o);
     }
 
     @Override
     public void notifyObservers(boolean isCorrect) {
-        for (Observer o : observers) {
+        for (QuestionObserver o : questionObservers) {
             o.update(isCorrect);
         }
     }

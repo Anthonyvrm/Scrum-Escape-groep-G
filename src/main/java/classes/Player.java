@@ -57,29 +57,8 @@ public class Player {
         this.voortgang = voortgang;
     }
 
-    public void createCharacter () {
-
-        System.out.println("Starting Character Creation...");
-        System.out.println();
-        System.out.println("Create your character!");
-        System.out.println("");
-        whatIsYourName();
-        setStatus(150);
-
-    }
-
-    public void whatIsYourName() {
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("What is your name: ");
-        String name = scanner.nextLine();
-        setName(name);
-        System.out.println();
-
-    }
-
     public void printStatus() {
-        System.out.printf("%s has %dHP left and is in room %s.", getName(), getStatus(), position);
+        System.out.printf("%s has %dHP left and is in room %s.", getName(), getStatus(), getPosition().getName());
     }
 
     public void isAlive(){

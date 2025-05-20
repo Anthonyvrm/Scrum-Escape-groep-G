@@ -1,6 +1,6 @@
 package classes;
 
-public class MonsterObserver implements Observer{
+public class MonsterObserver implements QuestionObserver {
     private Monster monster;
 
     public MonsterObserver(Monster monster) {

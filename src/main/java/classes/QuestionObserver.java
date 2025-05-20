@@ -1,5 +1,5 @@
 package classes;
 
-public interface Observer {
+public interface QuestionObserver {
     void update(boolean isCorrect);
 }

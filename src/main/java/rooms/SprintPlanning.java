@@ -12,13 +12,8 @@ public class SprintPlanning extends Room implements IRoom {
 
     public static Room sprintPlanningRoom;
 
-    public SprintPlanning(String question, String objective, String name, Monster monster, boolean isCorrect){
-        super(question, objective, name, monster, isCorrect);
-    }
-
-    public static void createSprintPlanningRoom () {
-        Monster scopeCreep = new Monster(10, 50, "Scope Creep", new ScopeCreep());
-        sprintPlanningRoom = new SprintPlanning("Question", "Objective", "Sprint Planning Room", scopeCreep, false);
+    public SprintPlanning(String name, Monster monster, boolean isCorrect){
+        super(name, monster, isCorrect);
     }
 
     @Override
@@ -37,7 +32,7 @@ public class SprintPlanning extends Room implements IRoom {
         System.out.println("*A voice breaks from the corner, barely holding back tears*");
         System.out.println("We need your help, Scrum Master.....");
         System.out.println(" ");
-        openQuestion();
+        question();
     }
 
     @Override
@@ -47,8 +42,10 @@ public class SprintPlanning extends Room implements IRoom {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Planning Poker")) {
             isCorrect = true;
+            notifyObservers(isCorrect);
         } else {
             isCorrect = false;
+            notifyObservers(isCorrect);
         }
 
     }
@@ -88,22 +85,8 @@ public class SprintPlanning extends Room implements IRoom {
     }
 
     @Override
-    public void multipleChoiceQuestion() {
-
-    }
-
-    @Override
-    public void openQuestion() {
+    public void question() {
         System.out.println("So as the Scrum Master... You should know this!");
         System.out.println("To assign story points to tasks, what is the name of the game you play with the team?");
-
     }
-
-    @Override
-    public void puzzle() {
-
-    }
-
-
-
 }

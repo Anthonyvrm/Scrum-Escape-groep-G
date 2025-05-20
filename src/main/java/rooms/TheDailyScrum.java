@@ -9,14 +9,11 @@ import java.util.Scanner;
 
 public class TheDailyScrum extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
-    public TheDailyScrum(String question, String objective, String name, Monster monster, boolean isCorrect) {
-        super(question, objective, name, monster, isCorrect);
+    public TheDailyScrum(String name, Monster monster, boolean isCorrect) {
+        super(name, monster, isCorrect);
     }
 
-    public static void createTheDailyScrumRoom() {
-        Monster slowness = new Monster(10, 50, "Slowness", new Slowness());
-        Room theDailyScrum = new TheDailyScrum("Question", "Objective", "Name", slowness, true);
-    }
+
 
     @Override
     public void introductionText() {
@@ -26,14 +23,17 @@ public class TheDailyScrum extends Room implements IRoom {
     public void roomTask() {
         System.out.println("Scenario:");
         System.out.println("The Scrum Team gathers each morning to show their task progress to the Scrum Master.");
+        question();
     }
     @Override
     public void roomCheckAnswer() {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("C")) {
             isCorrect = true;
+            notifyObservers(isCorrect);
         } else {
             isCorrect = false;
+            notifyObservers(isCorrect);
         }
     }
     @Override
@@ -55,7 +55,7 @@ public class TheDailyScrum extends Room implements IRoom {
         }
     }
     @Override
-    public void multipleChoiceQuestion() {
+    public void question() {
         System.out.println("Question:");
         System.out.println("What is the main purpose of TheDailyScrum?");
         System.out.println("A) To report to the Scrum Master.");
@@ -63,15 +63,6 @@ public class TheDailyScrum extends Room implements IRoom {
         System.out.println("C) To synchronize and create a plan for the next 24 hours.");
         System.out.println("D) To assign tasks to developers.");
         System.out.println("Type the letter of your answer: ");
-    }
-
-    @Override
-    public void openQuestion() {
-
-    }
-
-    @Override
-    public void puzzle() {
     }
 
 }

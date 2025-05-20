@@ -24,6 +24,7 @@ public class TIARoom extends Room implements IRoom {
     public void roomTask() {
         System.out.println ("Answer the following question about TIA, :");
         System.out.println (" ");
+        question();
     }
 
     @Override
@@ -60,18 +61,10 @@ public class TIARoom extends Room implements IRoom {
             System.out.println("Everyone collaborates for the common purpose that they have decided to achieve");
         }
     }
-    @Override
-    public void multipleChoiceQuestion() {
-
-    }
 
     @Override
-    public void openQuestion() {
+    public void question() {
         System.out.println ("What does the 'T' in TIA stand for?");
         System.out.println ("Type your answer:");
-    }
-
-    @Override
-    public void puzzle() {
     }
 }
