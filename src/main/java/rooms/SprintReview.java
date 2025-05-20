@@ -4,7 +4,6 @@ import classes.IRoom;
 import classes.Monster; //Feedback Phantom
 import classes.Room;
 import monster.FeedbackPhantom;
-
 import java.util.Scanner;
 
 public class SprintReview extends Room implements IRoom {
