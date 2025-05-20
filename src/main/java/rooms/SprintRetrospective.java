@@ -10,8 +10,13 @@ import java.util.Scanner;
 public class SprintRetrospective extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
 
-    public SprintRetrospective(String name, Monster monster, boolean isCorrect) {
-        super(name, monster, isCorrect);
+    public SprintRetrospective(String question, String object, String name, Monster monster, boolean isCorrect) {
+        super(question, object, name, monster, isCorrect);
+    }
+
+    public static void createSprintRetrospectiveRoom() {
+        Monster stagnator = new Monster(10, 50, "Stagnator", new Stagnator());
+        SprintRetrospective sprintRetrospective = new SprintRetrospective("Question", "object", "Name", stagnator, false);
     }
 
     @Override
@@ -33,10 +38,8 @@ public class SprintRetrospective extends Room implements IRoom {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("B")) {
             isCorrect = true;
-            notifyObservers(isCorrect);
         } else {
             isCorrect = false;
-            notifyObservers(isCorrect);
         }
     }
 

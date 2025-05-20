@@ -9,8 +9,13 @@ import java.util.Scanner;
 
 public class TheDailyScrum extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
-    public TheDailyScrum(String name, Monster monster, boolean isCorrect) {
-        super(name, monster, isCorrect);
+    public TheDailyScrum(String question, String objective, String name, Monster monster, boolean isCorrect) {
+        super(question, objective, name, monster, isCorrect);
+    }
+
+    public static void createTheDailyScrumRoom() {
+        Monster slowness = new Monster(10, 50, "Slowness", new Slowness());
+        Room theDailyScrum = new TheDailyScrum("Question", "Objective", "Name", slowness, true);
     }
 
     @Override
@@ -21,17 +26,14 @@ public class TheDailyScrum extends Room implements IRoom {
     public void roomTask() {
         System.out.println("Scenario:");
         System.out.println("The Scrum Team gathers each morning to show their task progress to the Scrum Master.");
-        multipleChoiceQuestion();
     }
     @Override
     public void roomCheckAnswer() {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("C")) {
             isCorrect = true;
-            notifyObservers(isCorrect);
         } else {
             isCorrect = false;
-            notifyObservers(isCorrect);
         }
     }
     @Override

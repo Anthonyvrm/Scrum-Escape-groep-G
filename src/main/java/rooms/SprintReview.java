@@ -9,8 +9,13 @@ import java.util.Scanner;
 
 public class SprintReview extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
-    public SprintReview(String name, Monster monster, boolean isCorrect){
-        super(name, monster, isCorrect);
+    public SprintReview(String question, String objective, String name, Monster monster, boolean isCorrect){
+        super(question, objective, name, monster, isCorrect);
+    }
+
+    public static void createSprintReviewRoom() {
+            Monster feedbackPhantom = new Monster(10, 50, "Feedback Phantom", new FeedbackPhantom());
+            Room sprintReview = new SprintReview("Question", "Objective", "Sprint Review Room", feedbackPhantom, false);
     }
 
     @Override
@@ -28,10 +33,8 @@ public class SprintReview extends Room implements IRoom {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("C")) {
             isCorrect = true;
-            notifyObservers(isCorrect);
         } else {
             isCorrect = false;
-            notifyObservers(isCorrect);
         }
     }
 

@@ -7,18 +7,14 @@ import classes.Monster;
 //Hij spookt door de kamer met vage opmerkingen, onduidelijke verwachtingen en eindeloze meningen zonder actie.
 //Hoe meer ongebruikte feedback, hoe sterker hij wordt.
 
-public class FeedbackPhantom extends Monster implements IMonster {
-    public FeedbackPhantom(int damage, int healthPoints){
-        super(damage,healthPoints);
-    }
-
+public class FeedbackPhantom implements IMonster {
     @Override
     public void exercise(){
 
     }
 
     @Override
-    public void takeDamage(){
+    public void takeDamageQuote(){
         int randomInt = (int)(Math.random() * 5);
         switch (randomInt) {
             case 0:
@@ -41,7 +37,7 @@ public class FeedbackPhantom extends Monster implements IMonster {
     }
 
     @Override
-    public void dealDamage(){
+    public void dealDamageQuote(){
         int randomInt = (int)(Math.random() * 5);
         switch (randomInt) {
             case 0:
