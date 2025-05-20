@@ -3,18 +3,14 @@ package monster;
 import classes.IMonster;
 import classes.Monster;
 
-public class TheScrumReaper extends Monster implements IMonster {
-    public TheScrumReaper(int damage, int healthPoints){
-        super(damage,healthPoints);
-    }
-
+public class TheScrumReaper implements IMonster {
     @Override
     public void exercise(){
 
     }
 
     @Override
-    public void takeDamage(){
+    public void takeDamageQuote(){
         int randomInt = (int)(Math.random() * 5);
         switch (randomInt) {
             case 0:
@@ -36,7 +32,7 @@ public class TheScrumReaper extends Monster implements IMonster {
     }
 
     @Override
-    public void dealDamage(){
+    public void dealDamageQuote(){
         int randomInt = (int)(Math.random() * 5);
         switch (randomInt) {
             case 0:
