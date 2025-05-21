@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ScrumBoard extends Room implements IRoom {
 
-    public ScrumBoard (String name, Monster monster, boolean isCorrect) {
+    public ScrumBoard(String name, Monster monster, boolean isCorrect) {
         super(name, monster, isCorrect);
     }
 
@@ -44,12 +44,10 @@ public class ScrumBoard extends Room implements IRoom {
         if (isCorrect) {
             System.out.println(" ");
             System.out.println("Correct! With a daily stand up you can see how everyone is doing, and talk about what they need to do next.");
-            notifyObservers(isCorrect);
         } else {
             System.out.println(" ");
             System.out.println("Incorrect. A strange fog fills the room...");
             System.out.println("Trollo appears!");
-            notifyObservers(isCorrect);
         }
     }
 
@@ -61,10 +59,11 @@ public class ScrumBoard extends Room implements IRoom {
             System.out.println("This helps the team to stay on track and keep the project on track.");
         }
     }
-
-    @Override
-    public void question() {
-        System.out.println("In order to tell the people what to do this day, what is the name of the first thing you should do with this team?");
-        System.out.println("Type your answer: ");
-    }
 }
+
+    //@Override
+    //public void question() {
+        //System.out.println("In order to tell the people what to do this day, what is the name of the first thing you should do with this team?");
+        //System.out.println("Type your answer: ");
+    //}
+//}

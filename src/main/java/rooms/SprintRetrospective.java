@@ -15,12 +15,11 @@ public class SprintRetrospective extends Room implements IRoom {
     }
 
 
-
     @Override
     public void introductionText() {
-        System.out.println ("Welcome to the SprintRetrospective room!");
+        System.out.println("Welcome to the SprintRetrospective room!");
         System.out.println("In this room, you will reflect on how a Scrum Team can learn from their experiences.");
-        System.out.println ("Use your knowledge to identify what can be improved by the Scrum Team.");
+        System.out.println("Use your knowledge to identify what can be improved by the Scrum Team.");
     }
 
     @Override
@@ -65,15 +64,16 @@ public class SprintRetrospective extends Room implements IRoom {
             System.out.println("This helps ensure that future sprints are more effective.");
         }
     }
-
-    @Override
-    public void question() {
-        System.out.println("Question:");
-        System.out.println("What can the Scrum Team learn from this experience?");
-        System.out.println("A) The team should work harder");
-        System.out.println("B) The team should regularly involve the stakeholders during Sprint Reviews.");
-        System.out.println("C) That stakeholders don’t understand the technical work anyway, so it’s fine to exclude them.");
-        System.out.println("D) That the Sprint Review is optional and can be skipped if the team is busy.");
-        System.out.println("Type the letter of your answer: ");
-    }
 }
+
+    //@Override
+    //public void question() {
+        //System.out.println("Question:");
+        //System.out.println("What can the Scrum Team learn from this experience?");
+        //System.out.println("A) The team should work harder");
+        //System.out.println("B) The team should regularly involve the stakeholders during Sprint Reviews.");
+        //System.out.println("C) That stakeholders don’t understand the technical work anyway, so it’s fine to exclude them.");
+        //System.out.println("D) That the Sprint Review is optional and can be skipped if the team is busy.");
+        //System.out.println("Type the letter of your answer: ");
+    //}
+//}

@@ -59,15 +59,16 @@ public class SprintReview extends Room implements IRoom {
             System.out.println("on how to proceed with the project.");
         }
     }
-
-    @Override
-    public void question() {
-        System.out.println("Question:");
-        System.out.println("To whom does the Scrum Team show their results during the Sprint Review?");
-        System.out.println("A) To the Scrum Master.");
-        System.out.println("B) Only to the Product Owner.");
-        System.out.println("C) To all the stakeholders.");
-        System.out.println("D) They dont show it to anybody outside the Scrum Team.");
-        System.out.println("Type the letter of your answer: ");
-    }
 }
+
+    //@Override
+    //public void question() {
+        //System.out.println("Question:");
+        //System.out.println("To whom does the Scrum Team show their results during the Sprint Review?");
+        //System.out.println("A) To the Scrum Master.");
+        //System.out.println("B) Only to the Product Owner.");
+        //System.out.println("C) To all the stakeholders.");
+        //System.out.println("D) They dont show it to anybody outside the Scrum Team.");
+        //System.out.println("Type the letter of your answer: ");
+    //}
+//}
