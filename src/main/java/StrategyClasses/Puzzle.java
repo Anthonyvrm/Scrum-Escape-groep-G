@@ -3,7 +3,7 @@ package StrategyClasses;
 import classes.IRoom;
 
 public class Puzzle implements IRoom {
-    private String question;
+    private final String question;
 
     public Puzzle(String question) {
         this.question = question;

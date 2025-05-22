@@ -3,7 +3,6 @@ package monster;
 import classes.IMonster;
 import classes.Monster;
 
-
 //Slowness is een schaduwachtig wezen dat zich voedt met inefficiëntie.
 //Elke keer dat een teamlid afwijkt van het doel van de stand-up, groeit Slowness groter en sterker.
 //Hij fluistert irrelevante updates, stelt eindeloze vragen en houdt iedereen net te lang vast in het gesprek.
@@ -12,13 +11,13 @@ import classes.Monster;
 
 public class Slowness implements IMonster {
     @Override
-    public void exercise(){
+    public void exercise() {
 
     }
 
     @Override
-    public void takeDamageQuote(){
-        int randomInt = (int)(Math.random() * 5);
+    public void takeDamageQuote() {
+        int randomInt = (int) (Math.random() * 5);
         switch (randomInt) {
             case 0:
                 System.out.println("Fine... keep your 'efficiency'...");
@@ -39,8 +38,8 @@ public class Slowness implements IMonster {
     }
 
     @Override
-    public void dealDamageQuote(){
-        int randomInt = (int)(Math.random() * 5);
+    public void dealDamageQuote() {
+        int randomInt = (int) (Math.random() * 5);
         switch (randomInt) {
             case 0:
                 System.out.println("Wait... before we move on, one more thing...");

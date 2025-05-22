@@ -13,10 +13,12 @@ public class Player {
         this.position = position;
         this.voortgang = voortgang;
     }
+
     public Player (int status, String name) {
         this.status = status;
         this.name = name;
     }
+
     public Player (int status, String name, int voortgang) {
         this.status = status;
         this.name = name;
@@ -61,10 +63,10 @@ public class Player {
         System.out.printf("%s has %dHP left and is in room %s.", getName(), getStatus(), getPosition().getName());
     }
 
-    public void isAlive(){
-        if(status <= 0) {
-            System.out.println("G A M E   O V E R . . .");
-            Game.endGame();
-        }
-    }
+//    public void isAlive(){
+//        if(status <= 0) {
+//            System.out.println("G A M E   O V E R . . .");
+//            Game.endGame();
+//        }
+//    }
 }

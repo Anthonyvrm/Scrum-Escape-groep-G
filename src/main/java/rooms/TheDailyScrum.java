@@ -80,16 +80,3 @@ public class TheDailyScrum extends Room implements IRoom {
         }
     }
 }
-
-    //@Override
-    //public void question() {
-        //System.out.println("Question:");
-        //System.out.println("What is the main purpose of TheDailyScrum?");
-        //System.out.println("A) To report to the Scrum Master.");
-        //System.out.println("B) To plan the next sprint.");
-        //System.out.println("C) To synchronize and create a plan for the next 24 hours.");
-        //System.out.println("D) To assign tasks to developers.");
-        //System.out.println("Type the letter of your answer: ");
-    //}
-
-//}

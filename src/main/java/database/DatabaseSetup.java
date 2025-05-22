@@ -5,9 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseSetup {
-
     public static void createTables() {
-
         String createSaveTable = """
     CREATE TABLE IF NOT EXISTS Save (
         Status INTEGER NOT NULL,
@@ -16,16 +14,11 @@ public class DatabaseSetup {
     );
     """;
 
-
-
-
-
         try (Connection conn = DatabaseConnection.connect();
              Statement stmt = conn.createStatement()) {
             stmt.execute(createSaveTable);
         } catch (SQLException e) {
             System.out.println("Error creating table: " + e.getMessage());
-
         }
     }
 

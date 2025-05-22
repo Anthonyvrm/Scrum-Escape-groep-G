@@ -3,7 +3,7 @@ package StrategyClasses;
 import classes.IRoom;
 
 public class MultipleChoiceQuestion implements IRoom {
-    private String question;
+    private final String question;
 
     public MultipleChoiceQuestion(String question) {
         this.question = question;

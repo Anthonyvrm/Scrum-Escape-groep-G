@@ -15,12 +15,12 @@ public class StartGame {
     }
 
     public static void whatIsYourName(Player player) {
-
         Scanner scanner = new Scanner(System.in);
+
         System.out.print("What is your name: ");
         String name = scanner.nextLine();
         player.setName(name);
-        System.out.println();
 
+        System.out.println();
     }
 }

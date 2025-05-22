@@ -5,16 +5,13 @@ import classes.*;
 import java.util.Scanner;
 
 public class SprintPlanning extends Room implements IRoom {
-
-
     public SprintPlanning(Monster monster, boolean isCorrect) {
         super("Sprintplanning Room", monster, isCorrect);
         setQuestionStrategy(new OpenQuestion("To assign story points to tasks, what is the name of the game you play with the team?"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
-        //Dit is wat in het boek staat.
+        //!Dit is wat in het boek staat.
         this.bookinfo = new BookInfo("It says: " + "What a horrible day, this room is full with calenders! This room is all about planning!");
-
-        //Dit is het wapen wat je mee krijgt, kunnen we van alles mee doen in specifieke kamers.
+        //!Dit is het wapen wat je mee krijgt, kunnen we van alles mee doen in specifieke kamers.
         this.weapon = new Weapon();
     }
 
@@ -34,9 +31,8 @@ public class SprintPlanning extends Room implements IRoom {
         System.out.println("Welcome to the Sprint Planning room!");
         System.out.println(" ");
 
-        //Hier pak je het object op. Deze methode staat in de abstracte klasse Room. (Wist geen betere plek).
+        //!Hier pak je het object op. Deze methode staat in de abstracte klasse Room. (Wist geen betere plek).
         interactWithObject();
-
     }
 
     @Override
@@ -54,6 +50,7 @@ public class SprintPlanning extends Room implements IRoom {
     public void roomCheckAnswer() {
         Scanner scanner = new Scanner(System.in);
         String answer = scanner.nextLine();
+
         if (answer.equalsIgnoreCase("Planning Poker")) {
             isCorrect = true;
             notifyObservers(isCorrect);
@@ -62,12 +59,10 @@ public class SprintPlanning extends Room implements IRoom {
             askForHint(scanner);
             notifyObservers(isCorrect);
         }
-
     }
 
     @Override
     public void roomResult() {
-
         if (isCorrect) {
             System.out.println();
             System.out.println("The room falls silent...");
@@ -79,11 +74,10 @@ public class SprintPlanning extends Room implements IRoom {
             System.out.println("Thank you Scrum Master you have saved us....");
             System.out.println();
         } else {
-            System.out.println(" ");
+            System.out.println();
             System.out.println("Incorrect. You hear a scary sound behind you...");
             System.out.println("You look behind you and , a wild Scope Screep appears!");
-            System.out.println(" ");
-
+            System.out.println();
         }
     }
 
@@ -94,15 +88,7 @@ public class SprintPlanning extends Room implements IRoom {
             System.out.println("In Scrum, Planning Poker is a technique used to estimate the effort required for tasks.");
             System.out.println("It helps the team agree on task complexity and effort.");
             System.out.println("This helps the team plan effectively and keep the project on schedule.");
-            System.out.println(" ");
+            System.out.println();
         }
-
     }
 }
-
-    //@Override
-    //public void question() {
-        //System.out.println("So as the Scrum Master... You should know this!");
-        //System.out.println("To assign story points to tasks, what is the name of the game you play with the team?");
-    //}
-

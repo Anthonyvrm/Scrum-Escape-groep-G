@@ -7,6 +7,7 @@ import java.sql.SQLException;
 public class DatabaseConnection {
     public static Connection connect() {
         String url = "jdbc:sqlite:src/main/resources/database/database.db";
+
         try {
             Connection conn = DriverManager.getConnection(url);
             System.out.println("Connection to SQLite has been established.");

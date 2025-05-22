@@ -1,6 +1,5 @@
 package rooms;
 
-import FactoryClasses.HintProviderFactory;
 import StrategyClasses.OpenQuestion;
 import classes.IRoom;
 import classes.Monster; //The Scrum Reaper
@@ -9,10 +8,7 @@ import classes.Room;
 import java.util.Scanner;
 
 public class TIARoom extends Room implements IRoom {
-    private final Scanner scanner = new Scanner(System.in);
-
     public TIARoom(Monster monster, boolean isCorrect) {
-
         super("TIA Room", monster, isCorrect);
         setQuestionStrategy(new OpenQuestion("What does the 'T' in TIA stand for?"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
@@ -46,7 +42,9 @@ public class TIARoom extends Room implements IRoom {
 
     @Override
     public void roomCheckAnswer() {
+        Scanner scanner = new Scanner(System.in);
         String answer = scanner.nextLine();
+
         if (answer.equalsIgnoreCase("Transparency")) {
             isCorrect = true;
             notifyObservers(isCorrect);
@@ -63,7 +61,7 @@ public class TIARoom extends Room implements IRoom {
             System.out.println("You have completed the TIARoom challenge and the SCRUM game!");
         } else {
             System.out.println("You have failed!");
-            // Summon monster
+            //!Summon monster
             System.out.println("The BOSS monster has appeared in the TIARoom!!!");
         }
     }
@@ -79,10 +77,3 @@ public class TIARoom extends Room implements IRoom {
         }
     }
 }
-
-    //@Override
-    //public void question() {
-        //System.out.println ("What does the 'T' in TIA stand for?");
-        //System.out.println ("Type your answer:");
-    //}
-//}

@@ -1,3 +1,5 @@
+package database;
+
 import classes.Player;
 import database.DatabaseConnection;
 
@@ -15,16 +17,15 @@ public class saveQuery {
         ArrayList<Player> players = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
-            while (rs.next()) {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery()) {
 
+            while (rs.next()) {
                 Player player = new Player();
                 player.setName(rs.getString("name"));
                 player.setStatus(rs.getInt("status"));
                 player.setVoortgang(rs.getInt("voortgang"));
             }
-
         } catch (SQLException e) {
             System.out.println("Query failed: " + e.getMessage());
         }

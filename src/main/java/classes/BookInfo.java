@@ -9,9 +9,7 @@ public class BookInfo implements IBook {
 
     @Override
     public void readBook() {
-
         //De info wordt meegegeven vanaf de constructor in de specifieke kamer.
-
         System.out.println(info);
     }
 }

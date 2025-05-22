@@ -1,9 +1,5 @@
 package classes;
 
-import FactoryClasses.FunnyHintProvider;
-import FactoryClasses.HelpHintProvider;
-import StrategyClasses.MultipleChoiceQuestion;
-import StrategyClasses.OpenQuestion;
 import monster.*;
 import rooms.*;
 import monster.ScopeCreep;
@@ -15,9 +11,7 @@ import java.util.List;
 
 public class CLI {
     public static void CLI() {
-
         Player player = StartGame.createCharacter();
-
 
         Monster feedbackPhantom = new Monster(1, 10, "Feedback Phantom", new FeedbackPhantom());
         Monster scopeCreep = new Monster(1, 10, "Scope Creep", new ScopeCreep());
@@ -26,17 +20,14 @@ public class CLI {
         Monster trollo = new Monster(1, 10, "Trollo", new Trollo());
         Monster theScrumReaper = new Monster (1, 25, "Scrum Reaper", new TheScrumReaper());
 
-
         Room sprintPlanning = new SprintPlanning(scopeCreep, false); //!Goede constuctor!
-        Room scrumBoard = new ScrumBoard(trollo, false); //!Goede constructor!
+        Room scrumBoard = new ScrumBoard(trollo, false);
         Room theDailyScrum = new TheDailyScrum(slowness, false);
         Room sprintReview = new SprintReview(feedbackPhantom, false);
         Room sprintRetrospective = new SprintRetrospective(stagnator, false);
         Room tiaRoom = new TIARoom(theScrumReaper, false);
 
-
-
-// vaste volgorde van kamers ik word gek btw
+        //Vaste volgorde van kamers
         List<Room> allRooms = new ArrayList<>(List.of(
                 sprintPlanning,
                 theDailyScrum,
@@ -46,18 +37,17 @@ public class CLI {
                 tiaRoom
         ));
 
-
         Game game = new Game(player);
         game.setRooms(allRooms);
 
-// enge for loop voor de obervererers
+        //Enge for loop voor de obervererers
         for (Room room : allRooms) {
             room.registerObserver(new DeurObserver(room));
             room.registerObserver(new MonsterObserver(room.monster));
             room.registerObserver(new StatusObserver(player, room));
         }
 
-        game.startGame(allRooms.get(0));
+        //Start de game
+        game.startGame(allRooms.getFirst());
     }
-
 }

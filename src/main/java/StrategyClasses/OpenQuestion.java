@@ -3,7 +3,7 @@ package StrategyClasses;
 import classes.IRoom;
 
 public class OpenQuestion implements IRoom {
-    private String question;
+    private final String question;
 
     public OpenQuestion(String question) {
         this.question = question;

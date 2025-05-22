@@ -26,13 +26,13 @@ public abstract class Room implements Subject {
     public void askForHint(Scanner scanner) {
         System.out.println("Would you like a hint? Type 'Y' of 'N':");
         String input = scanner.nextLine();
+
         if (input.equalsIgnoreCase("Y")) {
             System.out.println("Hint: " + hintProvider.getHint());
         }
     }
 
     public void interactWithObject() {
-
         if (bookinfo == null && weapon == null) {
             System.out.println("There are no objects in this room!");
             return;
@@ -68,6 +68,7 @@ public abstract class Room implements Subject {
     public void setQuestionStrategy(IRoom questionStrategy) {
         this.questionStrategy = questionStrategy;
     }
+
     public void setHintProvider(HintProvider hintProvider) {
         this.hintProvider = hintProvider;
     }
@@ -96,8 +97,6 @@ public abstract class Room implements Subject {
     public void question() {
         questionStrategy.question();
     }
-
-    public void hint () {hintProvider.getHint();}
     
     public final void runEscapeRoom() {
         introductionText();

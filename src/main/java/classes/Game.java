@@ -1,8 +1,5 @@
 package classes;
 
-
-import rooms.*;
-import database.*;
 import java.util.*;
 import java.util.Scanner;
 
@@ -20,7 +17,8 @@ public class Game {
     }
 
     public Game () {}
-    // nieuwee variabelen voor vaste kamer volgorde
+
+    //Variabelen voor vaste kamer volgorde
     private List<Room> rooms;
     private int currentRoomIndex = 0;
 
@@ -28,17 +26,14 @@ public class Game {
         this.rooms = rooms;
     }
 
-
     public void playerStartingPosition(Room room) {
         player.setPosition(room);
         System.out.println("You have entered the " + player.getPosition().name);
-        System.out.println(" ");
+        System.out.println();
         room.runEscapeRoom();
     }
 
-
     public void startGame(Room room) {
-
         System.out.println();
         System.out.println("Starting game...");
         System.out.println("==== Scrum Escape Building ===");
@@ -46,7 +41,6 @@ public class Game {
         showStartingDialogue();
         playerStartingPosition(room);
         commandLoop();
-
 
         //while(true) {
             //System.out.println();
@@ -98,11 +92,9 @@ public class Game {
       //  }
     //}
 
-
-    //logica voor commando's
+    //Logica voor commando's
     private void commandLoop() {
         while (true) {
-
             System.out.println("- If you want to go to the next room type: Go to next");
             System.out.println("- If you want to check your status type: Status");
             System.out.print("> ");
@@ -127,7 +119,8 @@ public class Game {
             System.out.println("You gotta finish the room " + player.getName() + " !");
             return;
         }
-// logica voor naar de volgende kamer gaan
+
+        //Logica voor naar de volgende kamer gaan
         currentRoomIndex++;
         if (currentRoomIndex < rooms.size()) {
             Room nextRoom = rooms.get(currentRoomIndex);
@@ -139,8 +132,8 @@ public class Game {
             endGame();
         }
     }
-    public void showStartingDialogue() {
 
+    public void showStartingDialogue() {
         System.out.printf("%s.........\n", player.getName());
         System.out.println("Wait I know you....");
         System.out.printf("You are %s! You are one of the wisest beings to ever exist in this realm!\n", player.getName());
@@ -148,10 +141,7 @@ public class Game {
         System.out.println();
         System.out.printf("%s.... Are you sure, you want to start this journey?\n", player.getName());
         System.out.println("Oh wait, you have no choice..... WHAHAAHA!");
-
     }
-
-
 
     public static void endGame(){
         System.exit(0);

@@ -1,16 +1,12 @@
 package rooms;
 
-import FactoryClasses.HintProviderFactory;
 import StrategyClasses.MultipleChoiceQuestion;
 import classes.IRoom;
 import classes.Monster; //Feedback Phantom
 import classes.Room;
-import monster.FeedbackPhantom;
 import java.util.Scanner;
 
 public class SprintReview extends Room implements IRoom {
-    private final Scanner scanner = new Scanner(System.in);
-
     public SprintReview(Monster monster, boolean isCorrect) {
         super("Sprint Review Room", monster, isCorrect);
         setQuestionStrategy(new MultipleChoiceQuestion("To whom does the Scrum Team show their results during the Sprint Review?\n" +
@@ -45,7 +41,9 @@ public class SprintReview extends Room implements IRoom {
 
     @Override
     public void roomCheckAnswer() {
+        Scanner scanner = new Scanner(System.in);
         String answer = scanner.nextLine();
+
         if (answer.equalsIgnoreCase("C")) {
             isCorrect = true;
             notifyObservers(isCorrect);
@@ -61,11 +59,9 @@ public class SprintReview extends Room implements IRoom {
         if (isCorrect) {
             System.out.println("Correct! You've displayed your knowledge about the Sprint Review!");
             System.out.println("A portal appears to have spawned in the Sprint Review room...!");
-
         } else {
             System.out.println("Incorrect. The walls start ttttremblinggg...");
             System.out.println("The Feedback Phantom has appeared from the shadows of the room...!");
-
         }
     }
 
@@ -80,15 +76,3 @@ public class SprintReview extends Room implements IRoom {
         }
     }
 }
-
-    //@Override
-    //public void question() {
-        //System.out.println("Question:");
-        //System.out.println("To whom does the Scrum Team show their results during the Sprint Review?");
-        //System.out.println("A) To the Scrum Master.");
-        //System.out.println("B) Only to the Product Owner.");
-        //System.out.println("C) To all the stakeholders.");
-        //System.out.println("D) They dont show it to anybody outside the Scrum Team.");
-        //System.out.println("Type the letter of your answer: ");
-    //}
-//}

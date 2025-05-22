@@ -15,12 +15,11 @@ public class StatusObserver implements QuestionObserver {
                 player.getName(),
                 player.getStatus(),
                 player.getPosition().name
-
-
         );
+
         if (!isCorrect) {
             System.out.println("Wrong answer! look at your HP and Try again.");
-            //room.roomFeedback();
+            //!room.roomFeedback();
         }
     }
 }
