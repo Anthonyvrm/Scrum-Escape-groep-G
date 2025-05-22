@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public abstract class Room implements Subject, IRoom{
+public class Room implements Subject{
     protected String name;
     protected Monster monster;
     protected boolean isCorrect;

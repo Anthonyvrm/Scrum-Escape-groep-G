@@ -8,13 +8,11 @@ import rooms.SprintPlanning;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class CLI {
     public static void CLI() {
 
         Player player = StartGame.createCharacter();
-
 
         Monster feedbackPhantom = new Monster(1, 10, "Feedback Phantom", new FeedbackPhantom());
         Monster scopeCreep = new Monster(1, 10, "Scope Creep", new ScopeCreep());
@@ -22,7 +20,6 @@ public class CLI {
         Monster stagnator = new Monster(1, 10, "Stagnator", new Stagnator());
         Monster trollo = new Monster(1, 10, "Trollo", new Trollo());
         Monster theScrumReaper = new Monster (1, 25, "Scrum Reaper", new TheScrumReaper());
-
 
         Room sprintPlanning = new Room("Sprint Planning Room", scopeCreep, false, new SprintPlanning());
         Room theDailyScrum = new Room("The Daily Scrum Room", slowness, false, new TheDailyScrum());
