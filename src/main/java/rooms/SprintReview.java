@@ -1,6 +1,7 @@
 package rooms;
 
 import FactoryClasses.HintProviderFactory;
+import StrategyClasses.MultipleChoiceQuestion;
 import classes.IRoom;
 import classes.Monster; //Feedback Phantom
 import classes.Room;
@@ -12,6 +13,12 @@ public class SprintReview extends Room implements IRoom {
 
     public SprintReview(String name, Monster monster, boolean isCorrect) {
         super(name, monster, isCorrect);
+        setQuestionStrategy(new MultipleChoiceQuestion("To whom does the Scrum Team show their results during the Sprint Review?\n" +
+                "A) To the Scrum Master.\n" +
+                "B) Only to the Product Owner.\n" +
+                "C) To all the stakeholders.\n" +
+                "D) They dont show it to anybody outside the Scrum Team.\n"));
+        setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
     }
 
     @Override

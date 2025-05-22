@@ -1,6 +1,7 @@
 package rooms;
 
 import FactoryClasses.HintProviderFactory;
+import StrategyClasses.MultipleChoiceQuestion;
 import classes.IRoom;
 import classes.Monster; //Stagnator
 import classes.Room;
@@ -13,6 +14,12 @@ public class SprintRetrospective extends Room implements IRoom {
 
     public SprintRetrospective(String name, Monster monster, boolean isCorrect) {
         super(name, monster, isCorrect);
+        setQuestionStrategy(new MultipleChoiceQuestion("What can the Scrum Team learn from this experience?\n" +
+                "A) The team should work harder\n" +
+                "B) The team should regularly involve the stakeholders during Sprint Reviews.\n" +
+                "C) That stakeholders don’t understand the technical work anyway, so it’s fine to exclude them.\n" +
+                "D) That the Sprint Review is optional and can be skipped if the team is busy.\n"));
+        setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
     }
 
     @Override
