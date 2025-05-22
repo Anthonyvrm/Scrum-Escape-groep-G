@@ -27,16 +27,16 @@ public class CLI {
         Monster theScrumReaper = new Monster (1, 25, "Scrum Reaper", new TheScrumReaper());
 
 
-        Room sprintPlanning = new SprintPlanning(scopeCreep, false);
-
+        Room sprintPlanning = new SprintPlanning(scopeCreep, false); //!Goede constuctor!
+        Room scrumBoard = new ScrumBoard(trollo, false); //!Goede constructor!
         Room theDailyScrum = new TheDailyScrum("The Daily Scrum Room", slowness, false);
+
+        //Slechtste consctructors :(
         theDailyScrum.setQuestionStrategy(new MultipleChoiceQuestion("What is the main purpose of TheDailyScrum?\n" +
                 "A) To report to the Scrum Master.\n" +
                 "B) To plant the next sprint.\n" +
                 "C) To synchronize and create a plan for then next 24 hours.\n" +
                 "D) To assign tasks to developers.\n"));
-
-        Room scrumBoard = new ScrumBoard(trollo, false);
 
         Room sprintReview = new SprintReview("Sprint Review Room", feedbackPhantom, false);
         sprintReview.setQuestionStrategy(new MultipleChoiceQuestion("To whom does the Scrum Team show their results during the Sprint Review?\n" +
