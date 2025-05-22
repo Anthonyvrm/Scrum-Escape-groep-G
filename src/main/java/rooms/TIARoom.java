@@ -1,5 +1,6 @@
 package rooms;
 
+import FactoryClasses.HintProviderFactory;
 import classes.IRoom;
 import classes.Monster; //The Scrum Reaper
 import classes.Room;
@@ -11,6 +12,16 @@ public class TIARoom extends Room implements IRoom {
 
     public TIARoom(String name, Monster monster, boolean isCorrect) {
         super(name, monster, isCorrect);
+    }
+
+    @Override
+    public String getHelpHint() {
+        return "Help hint TIARoom";
+    }
+
+    @Override
+    public String getFunnyHint(){
+        return "Funny hint TIARoom";
     }
 
     @Override
@@ -36,6 +47,7 @@ public class TIARoom extends Room implements IRoom {
             notifyObservers(isCorrect);
         } else {
             isCorrect = false;
+            askForHint(scanner);
             notifyObservers(isCorrect);
         }
     }

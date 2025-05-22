@@ -1,5 +1,6 @@
 package rooms;
 
+import FactoryClasses.HintProviderFactory;
 import classes.IRoom;
 import classes.Monster; //Feedback Phantom
 import classes.Room;
@@ -11,6 +12,16 @@ public class SprintReview extends Room implements IRoom {
 
     public SprintReview(String name, Monster monster, boolean isCorrect) {
         super(name, monster, isCorrect);
+    }
+
+    @Override
+    public String getHelpHint() {
+        return "Maybe if you did a stand-up this morning, you'd know the answer?";
+    }
+
+    @Override
+    public String getFunnyHint(){
+        return "Without legs you cant stand up!";
     }
 
     @Override
@@ -32,6 +43,7 @@ public class SprintReview extends Room implements IRoom {
             notifyObservers(isCorrect);
         } else {
             isCorrect = false;
+            askForHint(scanner);
             notifyObservers(isCorrect);
         }
     }

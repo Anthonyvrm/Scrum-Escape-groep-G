@@ -1,5 +1,6 @@
 package rooms;
 
+import FactoryClasses.HintProviderFactory;
 import classes.IRoom;
 import classes.Monster; //Slowness
 import classes.Room;
@@ -12,6 +13,16 @@ public class TheDailyScrum extends Room implements IRoom {
 
     public TheDailyScrum(String name, Monster monster, boolean isCorrect) {
         super(name, monster, isCorrect);
+    }
+
+    @Override
+    public String getFunnyHint(){
+        return "Funny hint Daily Scrum";
+    }
+
+    @Override
+    public String getHelpHint() {
+        return "Helphint DailyScrum";
     }
 
 
@@ -35,6 +46,7 @@ public class TheDailyScrum extends Room implements IRoom {
             notifyObservers(isCorrect);
         } else {
             isCorrect = false;
+            askForHint(scanner);
             notifyObservers(isCorrect);
         }
     }
@@ -59,6 +71,7 @@ public class TheDailyScrum extends Room implements IRoom {
         }
     }
 }
+
     //@Override
     //public void question() {
         //System.out.println("Question:");

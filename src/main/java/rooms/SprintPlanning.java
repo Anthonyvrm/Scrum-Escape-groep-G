@@ -1,19 +1,27 @@
 package rooms;
 
+import StrategyClasses.OpenQuestion;
 import classes.IRoom;
 import classes.Monster; //Scope Creep
-import classes.Player;
 import classes.Room;
-import monster.ScopeCreep;
 
 import java.util.Scanner;
 
 public class SprintPlanning extends Room implements IRoom {
+    public SprintPlanning(Monster monster, boolean isCorrect) {
+        super("Sprintplanning Room", monster, isCorrect);
+        setQuestionStrategy(new OpenQuestion("To assign story points to tasks, what is the name of the game you play with the team?"));
+        setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
+    }
 
-    public static Room sprintPlanningRoom;
+    @Override
+    public String getHelpHint() {
+        return "It’s a collaborative estimation technique where everyone 'plays' a card — and it’s not at a casino.";
+    }
 
-    public SprintPlanning(String name, Monster monster, boolean isCorrect) {
-        super(name, monster, isCorrect);
+    @Override
+    public String getFunnyHint(){
+        return "Come on, I bet you plan to go to the casino soon!";
     }
 
     @Override
@@ -37,7 +45,6 @@ public class SprintPlanning extends Room implements IRoom {
 
     @Override
     public void roomCheckAnswer() {
-
         Scanner scanner = new Scanner(System.in);
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Planning Poker")) {
@@ -45,6 +52,7 @@ public class SprintPlanning extends Room implements IRoom {
             notifyObservers(isCorrect);
         } else {
             isCorrect = false;
+            askForHint(scanner);
             notifyObservers(isCorrect);
         }
 
