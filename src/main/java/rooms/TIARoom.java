@@ -11,9 +11,9 @@ import java.util.Scanner;
 public class TIARoom extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
 
-    public TIARoom(String name, Monster monster, boolean isCorrect) {
+    public TIARoom(Monster monster, boolean isCorrect) {
 
-        super(name, monster, isCorrect);
+        super("TIA Room", monster, isCorrect);
         setQuestionStrategy(new OpenQuestion("What does the 'T' in TIA stand for?"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
     }

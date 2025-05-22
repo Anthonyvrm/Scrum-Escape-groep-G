@@ -13,8 +13,8 @@ import java.util.Scanner;
 public class TheDailyScrum extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
 
-    public TheDailyScrum(String name, Monster monster, boolean isCorrect) {
-        super(name, monster, isCorrect);
+    public TheDailyScrum(Monster monster, boolean isCorrect) {
+        super("The Daily Scrum Room", monster, isCorrect);
         setQuestionStrategy(new MultipleChoiceQuestion("What is the main purpose of TheDailyScrum?\n" +
                 "A) To report to the Scrum Master.\n" +
                 "B) To plan the next sprint.\n" +

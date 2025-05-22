@@ -12,8 +12,8 @@ import java.util.Scanner;
 public class SprintRetrospective extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
 
-    public SprintRetrospective(String name, Monster monster, boolean isCorrect) {
-        super(name, monster, isCorrect);
+    public SprintRetrospective(Monster monster, boolean isCorrect) {
+        super("Sprint Retrospective Room", monster, isCorrect);
         setQuestionStrategy(new MultipleChoiceQuestion("What can the Scrum Team learn from this experience?\n" +
                 "A) The team should work harder\n" +
                 "B) The team should regularly involve the stakeholders during Sprint Reviews.\n" +

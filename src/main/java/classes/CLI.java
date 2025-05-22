@@ -29,10 +29,10 @@ public class CLI {
 
         Room sprintPlanning = new SprintPlanning(scopeCreep, false); //!Goede constuctor!
         Room scrumBoard = new ScrumBoard(trollo, false); //!Goede constructor!
-        Room theDailyScrum = new TheDailyScrum("The Daily Scrum Room", slowness, false);
-        Room sprintReview = new SprintReview("Sprint Review Room", feedbackPhantom, false);
-        Room sprintRetrospective = new SprintRetrospective("Sprint Retrospective Room", stagnator, false);
-        Room tiaRoom = new TIARoom("TIA Room", theScrumReaper, false);
+        Room theDailyScrum = new TheDailyScrum(slowness, false);
+        Room sprintReview = new SprintReview(feedbackPhantom, false);
+        Room sprintRetrospective = new SprintRetrospective(stagnator, false);
+        Room tiaRoom = new TIARoom(theScrumReaper, false);
 
 
 

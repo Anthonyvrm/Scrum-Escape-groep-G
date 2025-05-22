@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class SprintReview extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
 
-    public SprintReview(String name, Monster monster, boolean isCorrect) {
-        super(name, monster, isCorrect);
+    public SprintReview(Monster monster, boolean isCorrect) {
+        super("Sprint Review Room", monster, isCorrect);
         setQuestionStrategy(new MultipleChoiceQuestion("To whom does the Scrum Team show their results during the Sprint Review?\n" +
                 "A) To the Scrum Master.\n" +
                 "B) Only to the Product Owner.\n" +
