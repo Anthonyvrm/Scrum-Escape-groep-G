@@ -1,18 +1,10 @@
 package rooms;
 
 import classes.IRoom;
-import classes.Monster; //The Scrum Reaper
-import classes.Room;
 
 import java.util.Scanner;
 
-public class TIARoom extends Room implements IRoom {
-    private final Scanner scanner = new Scanner(System.in);
-
-    public TIARoom(String name, Monster monster, boolean isCorrect) {
-        super(name, monster, isCorrect);
-    }
-
+public class TIARoom implements IRoom {
     @Override
     public void introductionText() {
         System.out.println("Welcome to the TIARoom!");
@@ -29,19 +21,13 @@ public class TIARoom extends Room implements IRoom {
     }
 
     @Override
-    public void roomCheckAnswer() {
+    public boolean roomCheckAnswer(Scanner scanner) {
         String answer = scanner.nextLine();
-        if (answer.equalsIgnoreCase("Transparency")) {
-            isCorrect = true;
-            notifyObservers(isCorrect);
-        } else {
-            isCorrect = false;
-            notifyObservers(isCorrect);
-        }
+        return answer.equalsIgnoreCase("Transparency");
     }
 
     @Override
-    public void roomResult() {
+    public void roomResult(boolean isCorrect) {
         if (isCorrect) {
             System.out.println("You have completed the TIARoom challenge and the SCRUM game!");
         } else {
@@ -52,7 +38,7 @@ public class TIARoom extends Room implements IRoom {
     }
 
     @Override
-    public void roomFeedback() {
+    public void roomFeedback(boolean isCorrect) {
         if (!isCorrect) {
             System.out.println("The correct answer was: Transparency.");
             System.out.println("In Scrum, Transparency is one of the three pillars.");
@@ -61,11 +47,10 @@ public class TIARoom extends Room implements IRoom {
             System.out.println("Everyone collaborates for the common purpose that they have decided to achieve");
         }
     }
-}
 
-    //@Override
-    //public void question() {
-        //System.out.println ("What does the 'T' in TIA stand for?");
-        //System.out.println ("Type your answer:");
-    //}
-//}
+    @Override
+    public void question() {
+        System.out.println ("What does the 'T' in TIA stand for?");
+        System.out.println ("Type your answer:");
+    }
+}

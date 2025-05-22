@@ -1,18 +1,10 @@
 package rooms;
 
 import classes.IRoom;
-import classes.Monster; //Trollo
-import classes.Room;
-import monster.Trollo;
 
 import java.util.Scanner;
 
-public class ScrumBoard extends Room implements IRoom {
-
-    public ScrumBoard(String name, Monster monster, boolean isCorrect) {
-        super(name, monster, isCorrect);
-    }
-
+public class ScrumBoard  implements IRoom {
     @Override
     public void introductionText() {
         System.out.println("You are in the Scrum Board room! You can see many people talking about the project.");
@@ -27,20 +19,13 @@ public class ScrumBoard extends Room implements IRoom {
     }
 
     @Override
-    public void roomCheckAnswer() {
-        Scanner scanner = new Scanner(System.in);
+    public boolean roomCheckAnswer(Scanner scanner) {
         String answer = scanner.nextLine();
-        if (answer.equalsIgnoreCase("Daily Stand Up")) {
-            isCorrect = true;
-            notifyObservers(isCorrect);
-        } else {
-            isCorrect = false;
-            notifyObservers(isCorrect);
-        }
+        return answer.equalsIgnoreCase("Daily Stand Up");
     }
 
     @Override
-    public void roomResult() {
+    public void roomResult(boolean isCorrect) {
         if (isCorrect) {
             System.out.println(" ");
             System.out.println("Correct! With a daily stand up you can see how everyone is doing, and talk about what they need to do next.");
@@ -52,18 +37,17 @@ public class ScrumBoard extends Room implements IRoom {
     }
 
     @Override
-    public void roomFeedback() {
+    public void roomFeedback(boolean isCorrect) {
         if (!isCorrect) {
             System.out.println("The correct answer was: Daily Stand Up.");
             System.out.println("In Scrum, a daily stand up is a short, informal meeting where the team members share their progress and problems.");
             System.out.println("This helps the team to stay on track and keep the project on track.");
         }
     }
-}
 
-    //@Override
-    //public void question() {
-        //System.out.println("In order to tell the people what to do this day, what is the name of the first thing you should do with this team?");
-        //System.out.println("Type your answer: ");
-    //}
-//}
+    @Override
+    public void question() {
+        System.out.println("In order to tell the people what to do this day, what is the name of the first thing you should do with this team?");
+        System.out.println("Type your answer: ");
+    }
+}

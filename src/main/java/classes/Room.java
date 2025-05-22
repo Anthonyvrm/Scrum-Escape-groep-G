@@ -2,19 +2,22 @@ package classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public abstract class Room implements Subject, IRoom{
     protected String name;
     protected Monster monster;
     protected boolean isCorrect;
-    private List<QuestionObserver> questionObservers = new ArrayList<>();
+    private static List<QuestionObserver> questionObservers = new ArrayList<>();
     protected IRoom questionStrategy;
 
-    public Room(String name, Monster monster, boolean isCorrect) {
+    public Room(String name, Monster monster, boolean isCorrect, IRoom questionStrategy) {
         this.name = name;
         this.monster = monster;
         this.isCorrect = isCorrect;
+        this.questionStrategy = questionStrategy;
     }
+    Scanner scanner = new Scanner(System.in)
 
     public void setQuestionStrategy(IRoom questionStrategy) {
         this.questionStrategy = questionStrategy;
@@ -44,7 +47,24 @@ public abstract class Room implements Subject, IRoom{
     public void question() {
         questionStrategy.question();
     }
-    
+
+    public void introductionText() {
+        questionStrategy.introductionText();
+    }
+    public void roomTask() {
+        questionStrategy.roomTask();
+    }
+    public void roomCheckAnswer() {
+        this.isCorrect = questionStrategy.roomCheckAnswer(scanner);
+        notifyObservers(isCorrect);
+    }
+    public void roomResult() {
+        questionStrategy.roomResult(isCorrect);
+    }
+    public void roomFeedback() {
+        questionStrategy.roomFeedback(isCorrect);
+    }
+
     public final void runEscapeRoom() {
         introductionText();
         roomTask();
@@ -53,9 +73,5 @@ public abstract class Room implements Subject, IRoom{
         roomFeedback();
     }
 
-    public abstract void introductionText();
-    public abstract void roomTask();
-    public abstract void roomCheckAnswer();
-    public abstract void roomResult();
-    public abstract void roomFeedback();
+
 }

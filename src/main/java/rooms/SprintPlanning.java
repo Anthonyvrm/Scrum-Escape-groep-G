@@ -1,21 +1,10 @@
 package rooms;
 
 import classes.IRoom;
-import classes.Monster; //Scope Creep
-import classes.Player;
-import classes.Room;
-import monster.ScopeCreep;
 
 import java.util.Scanner;
 
-public class SprintPlanning extends Room implements IRoom {
-
-    public static Room sprintPlanningRoom;
-
-    public SprintPlanning(String name, Monster monster, boolean isCorrect) {
-        super(name, monster, isCorrect);
-    }
-
+public class SprintPlanning implements IRoom {
     @Override
     public void introductionText() {
         System.out.println("======== Sprint Planning Room ======== ");
@@ -36,22 +25,13 @@ public class SprintPlanning extends Room implements IRoom {
     }
 
     @Override
-    public void roomCheckAnswer() {
-
-        Scanner scanner = new Scanner(System.in);
+    public boolean roomCheckAnswer(Scanner scanner) {
         String answer = scanner.nextLine();
-        if (answer.equalsIgnoreCase("Planning Poker")) {
-            isCorrect = true;
-            notifyObservers(isCorrect);
-        } else {
-            isCorrect = false;
-            notifyObservers(isCorrect);
-        }
-
+        return answer.equalsIgnoreCase("Planning Poker");
     }
 
     @Override
-    public void roomResult() {
+    public void roomResult(boolean isCorrect) {
 
         if (isCorrect) {
             System.out.println();
@@ -73,7 +53,7 @@ public class SprintPlanning extends Room implements IRoom {
     }
 
     @Override
-    public void roomFeedback() {
+    public void roomFeedback(boolean isCorrect) {
         if (!isCorrect) {
             System.out.println("The correct answer was: Planning Poker.");
             System.out.println("In Scrum, Planning Poker is a technique used to estimate the effort required for tasks.");
@@ -83,11 +63,10 @@ public class SprintPlanning extends Room implements IRoom {
         }
 
     }
+
+    @Override
+    public void question() {
+        System.out.println("So as the Scrum Master... You should know this!");
+        System.out.println("To assign story points to tasks, what is the name of the game you play with the team?");
+    }
 }
-
-    //@Override
-    //public void question() {
-        //System.out.println("So as the Scrum Master... You should know this!");
-        //System.out.println("To assign story points to tasks, what is the name of the game you play with the team?");
-    //}
-

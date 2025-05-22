@@ -1,20 +1,10 @@
 package rooms;
 
 import classes.IRoom;
-import classes.Monster; //Stagnator
-import classes.Room;
-import monster.Stagnator;
 
 import java.util.Scanner;
 
-public class SprintRetrospective extends Room implements IRoom {
-    private final Scanner scanner = new Scanner(System.in);
-
-    public SprintRetrospective(String name, Monster monster, boolean isCorrect) {
-        super(name, monster, isCorrect);
-    }
-
-
+public class SprintRetrospective implements IRoom {
     @Override
     public void introductionText() {
         System.out.println("Welcome to the SprintRetrospective room!");
@@ -31,19 +21,13 @@ public class SprintRetrospective extends Room implements IRoom {
     }
 
     @Override
-    public void roomCheckAnswer() {
+    public boolean roomCheckAnswer(Scanner scanner) {
         String answer = scanner.nextLine();
-        if (answer.equalsIgnoreCase("B")) {
-            isCorrect = true;
-            notifyObservers(isCorrect);
-        } else {
-            isCorrect = false;
-            notifyObservers(isCorrect);
-        }
+        return answer.equalsIgnoreCase("B");
     }
 
     @Override
-    public void roomResult() {
+    public void roomResult(boolean isCorrect) {
         if (isCorrect) {
             System.out.println("Correct! You've shown the ability to reflect and improve.");
             System.out.println("Now go to the last room where you will face HELL!!!.");
@@ -56,7 +40,7 @@ public class SprintRetrospective extends Room implements IRoom {
     }
 
     @Override
-    public void roomFeedback() {
+    public void roomFeedback(boolean isCorrect) {
         if (!isCorrect) {
             System.out.println("The correct answer was: B) Better communication with the stakeholders is essential.");
             System.out.println("The purpose of the scrum team is to get the results the stakeholders wish for, that is why there involvements is important.");
@@ -64,16 +48,15 @@ public class SprintRetrospective extends Room implements IRoom {
             System.out.println("This helps ensure that future sprints are more effective.");
         }
     }
-}
 
-    //@Override
-    //public void question() {
-        //System.out.println("Question:");
-        //System.out.println("What can the Scrum Team learn from this experience?");
-        //System.out.println("A) The team should work harder");
-        //System.out.println("B) The team should regularly involve the stakeholders during Sprint Reviews.");
-        //System.out.println("C) That stakeholders don’t understand the technical work anyway, so it’s fine to exclude them.");
-        //System.out.println("D) That the Sprint Review is optional and can be skipped if the team is busy.");
-        //System.out.println("Type the letter of your answer: ");
-    //}
-//}
+    @Override
+    public void question() {
+        System.out.println("Question:");
+        System.out.println("What can the Scrum Team learn from this experience?");
+        System.out.println("A) The team should work harder");
+        System.out.println("B) The team should regularly involve the stakeholders during Sprint Reviews.");
+        System.out.println("C) That stakeholders don’t understand the technical work anyway, so it’s fine to exclude them.");
+        System.out.println("D) That the Sprint Review is optional and can be skipped if the team is busy.");
+        System.out.println("Type the letter of your answer: ");
+    }
+}
