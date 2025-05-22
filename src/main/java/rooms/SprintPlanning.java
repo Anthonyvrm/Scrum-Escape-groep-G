@@ -1,17 +1,21 @@
 package rooms;
 
 import StrategyClasses.OpenQuestion;
-import classes.IRoom;
-import classes.Monster; //Scope Creep
-import classes.Room;
-
+import classes.*;
 import java.util.Scanner;
 
 public class SprintPlanning extends Room implements IRoom {
+
+
     public SprintPlanning(Monster monster, boolean isCorrect) {
         super("Sprintplanning Room", monster, isCorrect);
         setQuestionStrategy(new OpenQuestion("To assign story points to tasks, what is the name of the game you play with the team?"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
+        //Dit is wat in het boek staat.
+        this.bookinfo = new BookInfo("It says: " + "What a horrible day, this room is full with calenders! This room is all about planning!");
+
+        //Dit is het wapen wat je mee krijgt, kunnen we van alles mee doen in specifieke kamers.
+        this.weapon = new Weapon();
     }
 
     @Override
@@ -29,6 +33,9 @@ public class SprintPlanning extends Room implements IRoom {
         System.out.println("======== Sprint Planning Room ======== ");
         System.out.println("Welcome to the Sprint Planning room!");
         System.out.println(" ");
+
+        //Hier pak je het object op. Deze methode staat in de abstracte klasse Room. (Wist geen betere plek).
+        interactWithObject();
 
     }
 

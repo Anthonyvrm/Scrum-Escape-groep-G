@@ -34,6 +34,7 @@ public class SprintReview extends Room implements IRoom {
     @Override
     public void introductionText() {
         System.out.println("Welcome to the SprintReview room!");
+        interactWithObject();
     }
 
     @Override

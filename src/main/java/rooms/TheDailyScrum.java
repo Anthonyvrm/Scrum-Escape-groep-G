@@ -37,6 +37,7 @@ public class TheDailyScrum extends Room implements IRoom {
     @Override
     public void introductionText() {
         System.out.println("Welcome to the TheDailyScrum room!");
+        interactWithObject();
     }
 
     @Override
