@@ -11,6 +11,8 @@ public abstract class Room implements Subject {
     private List<QuestionObserver> questionObservers = new ArrayList<>();
     protected IRoom questionStrategy;
     protected HintProvider hintProvider;
+    protected IBook bookinfo;
+    protected IWeapon weapon;
 
     public abstract String getFunnyHint();
     public abstract String getHelpHint();
@@ -26,6 +28,34 @@ public abstract class Room implements Subject {
         String input = scanner.nextLine();
         if (input.equalsIgnoreCase("Y")) {
             System.out.println("Hint: " + hintProvider.getHint());
+        }
+    }
+
+    public void interactWithObject() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("There are objects in front of you, would you like to use one? (Book/Weapon/No)");
+        String answer = scanner.nextLine().toLowerCase();
+
+        switch (answer) {
+            case "book":
+                if (bookinfo != null) {
+                    bookinfo.readBook();
+                } else {
+                    System.out.println("There is no book in this room!");
+                }
+                break;
+            case "weapon":
+                if (weapon != null) {
+                    weapon.attackWithWeapon();
+                } else {
+                    System.out.println("You have no weapon !");
+                }
+                break;
+                case "no":
+                    System.out.println("You decide to use no object...... not so smart....");
+                    break;
+            default:
+                System.out.println("Invalid input! urgh....");
         }
     }
 
