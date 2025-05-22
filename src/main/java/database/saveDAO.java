@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class saveDAO {
     public static void insertSave(Player player) {
         // SQL query to insert a new userstory into the Userstory table
-        String sql = "INSERT INTO Save (name, status, voortgang) VALUES(?,?,?)";
+        String sql = "INSERT OR REPLACE INTO Save (name, status, voortgang) VALUES(?,?,?)";
 
         // Set parameters for the INSERT statement using the Userstory object's properties
         try (Connection conn = DatabaseConnection.connect();

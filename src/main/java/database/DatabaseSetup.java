@@ -12,7 +12,7 @@ public class DatabaseSetup {
     CREATE TABLE IF NOT EXISTS Save (
         Status INTEGER NOT NULL,
         Name TEXT UNIQUE PRIMARY KEY NOT NULL,
-        Position INT NOT NULL
+        Voortgang INT NOT NULL
     );
     """;
 
