@@ -1,7 +1,5 @@
 package classes;
 
-import StrategyClasses.MultipleChoiceQuestion;
-import StrategyClasses.OpenQuestion;
 import monster.*;
 import rooms.*;
 import monster.ScopeCreep;

@@ -17,7 +17,7 @@ public abstract class Room implements Subject, IRoom{
         this.isCorrect = isCorrect;
         this.questionStrategy = questionStrategy;
     }
-    Scanner scanner = new Scanner(System.in)
+    Scanner scanner = new Scanner(System.in);
 
     public void setQuestionStrategy(IRoom questionStrategy) {
         this.questionStrategy = questionStrategy;
