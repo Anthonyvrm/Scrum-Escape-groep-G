@@ -111,7 +111,7 @@ public class Game {
             if (input.equalsIgnoreCase("go to next")) {
                 goToNextRoom();
                 player.setVoortgang(player.getVoortgang() + 1);
-                saveDAO.insertSave(player);
+                //saveDAO.insertSave(player);
             } else if (input.equalsIgnoreCase("status")) {
                 player.printStatus();
             } else {

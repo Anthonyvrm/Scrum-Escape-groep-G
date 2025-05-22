@@ -12,12 +12,12 @@ public class SprintPlanning extends Room implements IRoom {
 
     public static Room sprintPlanningRoom;
 
-    public SprintPlanning(String name, Monster monster, boolean isCorrect){
+    public SprintPlanning(String name, Monster monster, boolean isCorrect) {
         super(name, monster, isCorrect);
     }
 
     @Override
-    public void introductionText(){
+    public void introductionText() {
         System.out.println("======== Sprint Planning Room ======== ");
         System.out.println("Welcome to the Sprint Planning room!");
         System.out.println(" ");
@@ -83,10 +83,11 @@ public class SprintPlanning extends Room implements IRoom {
         }
 
     }
-
-    @Override
-    public void question() {
-        System.out.println("So as the Scrum Master... You should know this!");
-        System.out.println("To assign story points to tasks, what is the name of the game you play with the team?");
-    }
 }
+
+    //@Override
+    //public void question() {
+        //System.out.println("So as the Scrum Master... You should know this!");
+        //System.out.println("To assign story points to tasks, what is the name of the game you play with the team?");
+    //}
+

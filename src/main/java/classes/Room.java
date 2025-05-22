@@ -3,16 +3,21 @@ package classes;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Room implements Subject{
+public abstract class Room implements Subject, IRoom{
     protected String name;
     protected Monster monster;
     protected boolean isCorrect;
     private List<QuestionObserver> questionObservers = new ArrayList<>();
+    protected IRoom questionStrategy;
 
     public Room(String name, Monster monster, boolean isCorrect) {
         this.name = name;
         this.monster = monster;
         this.isCorrect = isCorrect;
+    }
+
+    public void setQuestionStrategy(IRoom questionStrategy) {
+        this.questionStrategy = questionStrategy;
     }
 
     public String getName() {
@@ -34,6 +39,10 @@ public abstract class Room implements Subject{
         for (QuestionObserver o : questionObservers) {
             o.update(isCorrect);
         }
+    }
+
+    public void question() {
+        questionStrategy.question();
     }
     
     public final void runEscapeRoom() {
