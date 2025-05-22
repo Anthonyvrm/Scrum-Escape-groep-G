@@ -31,6 +31,7 @@ public class ScrumBoard extends Room implements IRoom {
     @Override
     public void introductionText() {
         System.out.println("You are in the Scrum Board room! You can see many people talking about the project.");
+        interactWithObject();
     }
 
     @Override
