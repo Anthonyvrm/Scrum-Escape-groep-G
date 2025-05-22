@@ -1,5 +1,8 @@
 package rooms;
 
+import FactoryClasses.HintProviderFactory;
+import StrategyClasses.OpenQuestion;
+import classes.HintProvider;
 import classes.IRoom;
 import classes.Monster; //Trollo
 import classes.Room;
@@ -9,10 +12,22 @@ import java.util.Scanner;
 
 public class ScrumBoard extends Room implements IRoom {
 
-    public ScrumBoard(String name, Monster monster, boolean isCorrect) {
-        super(name, monster, isCorrect);
+
+    public ScrumBoard(Monster monster, boolean isCorrect) {
+        super("Scrumboard", monster, isCorrect);
+        setQuestionStrategy(new OpenQuestion("In order to tell the people what to do this day, what is the name of the first thing you should do with this team?\n"));
+        setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
     }
 
+    @Override
+    public String getHelpHint() {
+        return "Maybe if you did a stand-up this morning, you'd know the answer?";
+    }
+
+    @Override
+    public String getFunnyHint(){
+        return "Without legs you cant stand up!";
+    }
     @Override
     public void introductionText() {
         System.out.println("You are in the Scrum Board room! You can see many people talking about the project.");
@@ -35,6 +50,7 @@ public class ScrumBoard extends Room implements IRoom {
             notifyObservers(isCorrect);
         } else {
             isCorrect = false;
+            askForHint(scanner);
             notifyObservers(isCorrect);
         }
     }

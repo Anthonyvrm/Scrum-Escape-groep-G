@@ -1,5 +1,8 @@
 package rooms;
 
+import FactoryClasses.HintProviderFactory;
+import StrategyClasses.MultipleChoiceQuestion;
+import StrategyClasses.OpenQuestion;
 import classes.IRoom;
 import classes.Monster; //Slowness
 import classes.Room;
@@ -12,6 +15,22 @@ public class TheDailyScrum extends Room implements IRoom {
 
     public TheDailyScrum(String name, Monster monster, boolean isCorrect) {
         super(name, monster, isCorrect);
+        setQuestionStrategy(new MultipleChoiceQuestion("What is the main purpose of TheDailyScrum?\n" +
+                "A) To report to the Scrum Master.\n" +
+                "B) To plan the next sprint.\n" +
+                "C) To synchronize and create a plan for the next 24 hours.\n" +
+                "D) To assign tasks to developers.\n"));
+        setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
+    }
+
+    @Override
+    public String getFunnyHint(){
+        return "Funny hint Daily Scrum";
+    }
+
+    @Override
+    public String getHelpHint() {
+        return "Helphint DailyScrum";
     }
 
 
@@ -35,6 +54,7 @@ public class TheDailyScrum extends Room implements IRoom {
             notifyObservers(isCorrect);
         } else {
             isCorrect = false;
+            askForHint(scanner);
             notifyObservers(isCorrect);
         }
     }
@@ -59,6 +79,7 @@ public class TheDailyScrum extends Room implements IRoom {
         }
     }
 }
+
     //@Override
     //public void question() {
         //System.out.println("Question:");

@@ -1,5 +1,7 @@
 package rooms;
 
+import FactoryClasses.HintProviderFactory;
+import StrategyClasses.MultipleChoiceQuestion;
 import classes.IRoom;
 import classes.Monster; //Feedback Phantom
 import classes.Room;
@@ -11,6 +13,22 @@ public class SprintReview extends Room implements IRoom {
 
     public SprintReview(String name, Monster monster, boolean isCorrect) {
         super(name, monster, isCorrect);
+        setQuestionStrategy(new MultipleChoiceQuestion("To whom does the Scrum Team show their results during the Sprint Review?\n" +
+                "A) To the Scrum Master.\n" +
+                "B) Only to the Product Owner.\n" +
+                "C) To all the stakeholders.\n" +
+                "D) They dont show it to anybody outside the Scrum Team.\n"));
+        setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
+    }
+
+    @Override
+    public String getHelpHint() {
+        return "Maybe if you did a stand-up this morning, you'd know the answer?";
+    }
+
+    @Override
+    public String getFunnyHint(){
+        return "Without legs you cant stand up!";
     }
 
     @Override
@@ -32,6 +50,7 @@ public class SprintReview extends Room implements IRoom {
             notifyObservers(isCorrect);
         } else {
             isCorrect = false;
+            askForHint(scanner);
             notifyObservers(isCorrect);
         }
     }

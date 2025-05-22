@@ -1,5 +1,7 @@
 package rooms;
 
+import FactoryClasses.HintProviderFactory;
+import StrategyClasses.OpenQuestion;
 import classes.IRoom;
 import classes.Monster; //The Scrum Reaper
 import classes.Room;
@@ -10,7 +12,20 @@ public class TIARoom extends Room implements IRoom {
     private final Scanner scanner = new Scanner(System.in);
 
     public TIARoom(String name, Monster monster, boolean isCorrect) {
+
         super(name, monster, isCorrect);
+        setQuestionStrategy(new OpenQuestion("What does the 'T' in TIA stand for?"));
+        setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
+    }
+
+    @Override
+    public String getHelpHint() {
+        return "Help hint TIARoom";
+    }
+
+    @Override
+    public String getFunnyHint(){
+        return "Funny hint TIARoom";
     }
 
     @Override
@@ -36,6 +51,7 @@ public class TIARoom extends Room implements IRoom {
             notifyObservers(isCorrect);
         } else {
             isCorrect = false;
+            askForHint(scanner);
             notifyObservers(isCorrect);
         }
     }
