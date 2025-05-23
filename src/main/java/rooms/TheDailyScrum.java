@@ -3,9 +3,7 @@ package rooms;
 import FactoryClasses.HintProviderFactory;
 import StrategyClasses.MultipleChoiceQuestion;
 import StrategyClasses.OpenQuestion;
-import classes.IRoom;
-import classes.Monster; //Slowness
-import classes.Room;
+import classes.*;
 import monster.Slowness;
 
 import java.util.Scanner;
@@ -21,16 +19,18 @@ public class TheDailyScrum extends Room implements IRoom {
                 "C) To synchronize and create a plan for the next 24 hours.\n" +
                 "D) To assign tasks to developers.\n"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
+        this.bookinfo = new BookInfo("The book is called: Daily Scrum for dummies. Are daily stand ups useless or are they actually useful?");
+        this.weapon = new Weapon();
     }
 
     @Override
     public String getFunnyHint(){
-        return "Funny hint Daily Scrum";
+        return "You have no friends so work the entire day.";
     }
 
     @Override
     public String getHelpHint() {
-        return "Helphint DailyScrum";
+        return "Creating structure when working together is essential for a successful Scrum Team.";
     }
 
 

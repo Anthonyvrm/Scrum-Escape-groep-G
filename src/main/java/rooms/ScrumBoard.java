@@ -1,9 +1,7 @@
 package rooms;
 
 import StrategyClasses.OpenQuestion;
-import classes.IRoom;
-import classes.Monster; //Trollo
-import classes.Room;
+import classes.*;
 
 import java.util.Scanner;
 
@@ -12,6 +10,8 @@ public class ScrumBoard extends Room implements IRoom {
         super("Scrumboard Room", monster, isCorrect);
         setQuestionStrategy(new OpenQuestion("In order to tell the people what to do this day, what is the name of the first thing you should do with this team?\n"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
+        this.bookinfo = new BookInfo("Title : Trello for dummies.. Urgh what a horrible book, who even wants a project with clear structure?");
+        this.weapon = new Weapon();
     }
 
     @Override
