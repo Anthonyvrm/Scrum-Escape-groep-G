@@ -1,9 +1,7 @@
 package rooms;
 
 import StrategyClasses.MultipleChoiceQuestion;
-import classes.IRoom;
-import classes.Monster; //Stagnator
-import classes.Room;
+import classes.*;
 
 import java.util.Scanner;
 
@@ -16,16 +14,18 @@ public class SprintRetrospective extends Room implements IRoom {
                 "C) That stakeholders don’t understand the technical work anyway, so it’s fine to exclude them.\n" +
                 "D) That the Sprint Review is optional and can be skipped if the team is busy.\n"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
+        this.bookinfo = new BookInfo("The book is titled: Retrospective. Why would you reflect even reflect on your behaviour within the team?");
+        this.weapon = new Weapon();
     }
 
     @Override
     public String getHelpHint() {
-        return "Maybe if you did a stand-up this morning, you'd know the answer?";
+        return "include the important group of people deciding your project for some feedback here and there";
     }
 
     @Override
     public String getFunnyHint(){
-        return "Without legs you cant stand up!";
+        return "Quick tip you should probably include the people who decide your paycheck";
     }
 
     @Override
