@@ -4,6 +4,8 @@ import StrategyClasses.OpenQuestion;
 import classes.*;
 import java.util.Scanner;
 
+
+
 public class SprintPlanning extends Room implements IRoom {
     public SprintPlanning(Monster monster, boolean isCorrect) {
         super("Sprintplanning Room", monster, isCorrect);
@@ -58,6 +60,10 @@ public class SprintPlanning extends Room implements IRoom {
             isCorrect = false;
             askForHint(scanner);
             notifyObservers(isCorrect);
+            //!hier wordt nu het monster gevecht aangeroepen, eerst met dezelfde vraag die eerder is gesteld. daarna het monstergevecht.
+
+
+
         }
     }
 
