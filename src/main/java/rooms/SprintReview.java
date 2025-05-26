@@ -1,9 +1,8 @@
 package rooms;
 
 import StrategyClasses.MultipleChoiceQuestion;
-import classes.IRoom;
-import classes.Monster; //Feedback Phantom
-import classes.Room;
+import classes.*;
+
 import java.util.Scanner;
 
 public class SprintReview extends Room implements IRoom {
@@ -15,16 +14,18 @@ public class SprintReview extends Room implements IRoom {
                 "C) To all the stakeholders.\n" +
                 "D) They dont show it to anybody outside the Scrum Team.\n"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
+        this.bookinfo = new BookInfo("The book is called: Sprint Review. Why would you even review the sprint?");
+        this.weapon = new Weapon();
     }
 
     @Override
     public String getHelpHint() {
-        return "Maybe if you did a stand-up this morning, you'd know the answer?";
+        return "maybe letting the most important people in this project show what you are up to is a good idea?";
     }
 
     @Override
     public String getFunnyHint(){
-        return "Without legs you cant stand up!";
+        return "You should quickly show what you are doing before they use chatgpt instead of paying you ";
     }
 
     @Override

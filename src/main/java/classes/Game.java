@@ -41,56 +41,7 @@ public class Game {
         showStartingDialogue();
         playerStartingPosition(room);
         commandLoop();
-
-        //while(true) {
-            //System.out.println();
-            //String input = scanner.nextLine();
-            //handleCommands(input);
-        //}
-        //if (room.isCorrect()) {
-            //System.out.println("You have completed the room!");
-            //System.out.println("You can now go to the next room.");
-            //database.saveDAO.insertSave(player);
-
-
-
-       // } else {
-            //System.out.println("You have failed the room.");
-            //endGame();
-        //}
-   }
-
-    /*public void handleCommands(String input){
-        switch (input) {
-            case "go to room SprintPlanning":
-                SprintPlanning.createSprintPlanningRoom();
-                Room room = SprintPlanning.sprintPlanningRoom;
-                player.setPosition(room);
-                System.out.println("You have entered the SprintPlanning room.");
-                break;
-                /*
-            case "go to room TheDailyScrum":
-                player.setPosition(new TheDailyScrum());
-                System.out.println("You have entered the TheDailyScrum room.");
-                break;
-            case "go to room ScrumBoard":
-                player.setPosition(new ScrumBoard());
-                System.out.println("You have entered the ScrumBoard room.");
-                break;
-            case "go to room SprintReview":
-                player.setPosition(new SprintReview());
-                System.out.println("You have entered the SprintReview room.");
-                break;
-            case "go to room SprintRetrospective":
-                player.setPosition(new SprintRetrospective());
-                System.out.println("You have entered the SprintRetrospective room.");
-                break;
-            case "go to room TIARoom":
-                player.setPosition(new TIARoom());
-                System.out.println("You have entered the TIARoom room.");
-                break;*/
-      //  }
-    //}
+    }
 
     //Logica voor commando's
     private void commandLoop() {

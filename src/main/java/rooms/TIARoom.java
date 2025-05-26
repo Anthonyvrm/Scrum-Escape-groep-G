@@ -1,9 +1,7 @@
 package rooms;
 
 import StrategyClasses.OpenQuestion;
-import classes.IRoom;
-import classes.Monster; //The Scrum Reaper
-import classes.Room;
+import classes.*;
 
 import java.util.Scanner;
 
@@ -12,16 +10,18 @@ public class TIARoom extends Room implements IRoom {
         super("TIA Room", monster, isCorrect);
         setQuestionStrategy(new OpenQuestion("What does the 'T' in TIA stand for?"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
+        this.bookinfo = new BookInfo("The book is called: Transparency In Action. Why would you even be transparant to your team?");
+        this.weapon = new Weapon();
     }
 
     @Override
     public String getHelpHint() {
-        return "Help hint TIARoom";
+        return "All the people in the SCRUM process are honest with each other";
     }
 
     @Override
     public String getFunnyHint(){
-        return "Funny hint TIARoom";
+        return "This hint is as clear as the sky.";
     }
 
     @Override
