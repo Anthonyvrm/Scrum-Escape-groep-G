@@ -4,6 +4,7 @@ public class GameUI {
     public static void showGameTitle() {
         System.out.println("=========== Scrum Escape ===========");
     }
+
     public void showStartingDialogue(String playerName) {
         System.out.printf("%s.........\n", playerName);
         System.out.println("Wait I know you....");

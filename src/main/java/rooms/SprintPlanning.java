@@ -51,7 +51,7 @@ public class SprintPlanning extends Room implements IRoom {
     @Override
     public void roomCheckAnswer() {
         Scanner scanner = new Scanner(System.in);
-        String answer = scanner.nextLine();
+        String answer = scanner.nextLine().trim();
 
         if (answer.equalsIgnoreCase("Planning Poker")) {
             isCorrect = true;

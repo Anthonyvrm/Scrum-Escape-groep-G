@@ -40,7 +40,7 @@ public abstract class Room implements Subject {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("There are objects in front of you, would you like to use one? (Book/Weapon/No)");
-        String answer = scanner.nextLine().toLowerCase();
+        String answer = scanner.nextLine().trim().toLowerCase();
 
         switch (answer) {
             case "book":

@@ -49,7 +49,7 @@ public class TheDailyScrum extends Room implements IRoom {
 
     @Override
     public void roomCheckAnswer() {
-        String answer = scanner.nextLine();
+        String answer = scanner.nextLine().trim();
         if (answer.equalsIgnoreCase("C")) {
             isCorrect = true;
             notifyObservers(isCorrect);

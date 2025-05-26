@@ -43,7 +43,7 @@ public class TIARoom extends Room implements IRoom {
     @Override
     public void roomCheckAnswer() {
         Scanner scanner = new Scanner(System.in);
-        String answer = scanner.nextLine();
+        String answer = scanner.nextLine().trim();
 
         if (answer.equalsIgnoreCase("Transparency")) {
             isCorrect = true;
