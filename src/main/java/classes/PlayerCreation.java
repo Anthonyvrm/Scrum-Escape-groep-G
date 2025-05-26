@@ -2,8 +2,9 @@ package classes;
 
 import java.util.Scanner;
 
-public class StartGame {
+public class PlayerCreation {
     public static Player createCharacter() {
+        GameUI.showGameTitle();
         Player player = new Player();
         System.out.println("Starting Character Creation...");
         System.out.println();
