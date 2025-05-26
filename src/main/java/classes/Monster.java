@@ -1,6 +1,6 @@
 package classes;
 
-public abstract class Monster {
+public class Monster {
     private int damage;
     private int healthPoints;
     private String name;
