@@ -42,9 +42,10 @@ public class Monster {
         //! hier logica dat de monster een dobbelsteen gooit en damage krijgt.
     }
 
-    public void dealDamage(Player player){
+    public void dealDamage(Player player, double damageModifier){
         monsterStrategy.dealDamageQuote();
-        player.setStatus(player.getStatus() - damage);
+        int finalDamage = (int) (damage * damageModifier);
+        player.setStatus(player.getStatus() - finalDamage);
         if(player.getStatus() <= 0) {
             System.out.println("You have been defeated by " + name + "!");
             System.out.println("G A M E   O V E R . . .");

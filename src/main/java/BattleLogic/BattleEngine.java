@@ -26,7 +26,7 @@ public class BattleEngine {
 
     private void setupCommands() {
         inputHandler.registerCommand("Attack", new SlashCommand(player, monster));
-        //inputHandler.registerCommand("Block", new BlockCommand(player));
+        inputHandler.registerCommand("Block", new BlockCommand(player, monster));
     }
     public void runBattle() {
         while (true) {
