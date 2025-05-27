@@ -1,10 +1,13 @@
 package Game;
 
+import Commands.JokerCommand;
 import Commands.NextRoomCommand;
 import Commands.StatusCommand;
+import Joker.*;
 import classes.*;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class GameEngine {
     private final Player player;
@@ -30,6 +33,7 @@ public class GameEngine {
     private void setupCommands() {
         inputHandler.registerCommand("go to next", new NextRoomCommand(roomNavigator, player));
         inputHandler.registerCommand("status", new StatusCommand(player));
+        inputHandler.registerCommand("joker", new JokerCommand(player, gameUI));
     }
 
     public void startGame() {
@@ -46,6 +50,14 @@ public class GameEngine {
     private void runGameLoop() {
         while (true) {
             inputHandler.handleInput();
+        }
+    }
+
+    private void useJoker() {
+        if (player.getJoker() != null) {
+            player.getJoker().useJokerIn(player.getPosition());
+        } else {
+            gameUI.showMessage("You have no joker available!");
         }
     }
 }

@@ -50,8 +50,6 @@ public class CLI {
             room.registerObserver(new StatusObserver(player, room));
         }
 
-
-
         // Create main game instance
         Game game = new Game(player);
         game.setRooms(allRooms);

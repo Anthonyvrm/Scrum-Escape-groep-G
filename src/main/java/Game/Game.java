@@ -1,11 +1,13 @@
 package Game;
 
+import Joker.Joker;
 import classes.Player;
 import classes.Room;
 
 import java.util.List;
 
 public class Game {
+    private Joker playerJoker;
     private final Player player;
     private final GameEngine gameEngine;
 
@@ -28,6 +30,12 @@ public class Game {
     public void setRooms(List<Room> rooms) {
         if (gameEngine != null) {
             gameEngine.setRooms(rooms);
+        }
+    }
+
+    public void useJoker() {
+        if (playerJoker != null) {
+            playerJoker.useJokerIn(player.getPosition());
         }
     }
 

@@ -34,6 +34,9 @@ public class Monster {
         //! hier logica dat je de dobbelsteen gooit en damage krijgt.
 
     }
+    public int getHealthPoints() {
+        return healthPoints;
+    }
 
     public void monsterThrowsDice() {
         //! hier logica dat de monster een dobbelsteen gooit en damage krijgt.
@@ -52,9 +55,10 @@ public class Monster {
         }
     }
 
-    public void takeDamage(){
+    public void takeDamage(int damage){
+
         monsterStrategy.takeDamageQuote();
-        healthPoints -= 5;
+        healthPoints -= damage;
         if(healthPoints <= 0) {
             System.out.println("You have defeated " + name + "!");
         }
