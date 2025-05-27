@@ -1,4 +1,7 @@
-package classes;
+package Game;
+
+import classes.Player;
+import classes.Room;
 
 import java.util.List;
 

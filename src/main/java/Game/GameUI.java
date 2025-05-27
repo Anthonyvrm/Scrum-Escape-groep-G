@@ -1,4 +1,4 @@
-package classes;
+package Game;
 
 public class GameUI {
     public static void showGameTitle() {

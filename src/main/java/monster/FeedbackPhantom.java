@@ -1,7 +1,6 @@
 package monster;
 
-import classes.IMonster;
-import classes.Monster;
+import Interface.IMonster;
 
 //FeedBack Phantom is een spookachtig wezen dat verschijnt zodra het team feedback ontvangt… maar er niets mee doet.
 //Hij spookt door de kamer met vage opmerkingen, onduidelijke verwachtingen en eindeloze meningen zonder actie.

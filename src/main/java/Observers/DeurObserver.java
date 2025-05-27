@@ -1,4 +1,7 @@
-package classes;
+package Observers;
+
+import Interface.QuestionObserver;
+import classes.Room;
 
 public class DeurObserver implements QuestionObserver {
     private Room room;

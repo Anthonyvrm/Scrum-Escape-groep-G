@@ -1,7 +1,6 @@
 package monster;
 
-import classes.IMonster;
-import classes.Monster;
+import Interface.IMonster;
 
 public class TheScrumReaper implements IMonster {
     @Override

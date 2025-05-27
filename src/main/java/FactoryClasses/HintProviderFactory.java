@@ -1,6 +1,6 @@
 package FactoryClasses;
 
-import classes.HintProvider;
+import Interface.HintProvider;
 import classes.Room;
 
 import java.util.Random;

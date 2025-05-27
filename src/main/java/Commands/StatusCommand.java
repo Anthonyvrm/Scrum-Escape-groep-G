@@ -1,4 +1,7 @@
-package classes;
+package Commands;
+
+import Interface.Command;
+import classes.Player;
 
 public class StatusCommand implements Command {
     private final Player player;

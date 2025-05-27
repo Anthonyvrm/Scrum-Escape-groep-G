@@ -1,4 +1,8 @@
-package classes;
+package Observers;
+
+import Interface.QuestionObserver;
+import classes.Player;
+import classes.Room;
 
 public class StatusObserver implements QuestionObserver {
     private Player player;

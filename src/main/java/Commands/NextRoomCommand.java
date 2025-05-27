@@ -1,4 +1,8 @@
-package classes;
+package Commands;
+
+import Interface.Command;
+import classes.Player;
+import classes.RoomNavigator;
 
 public class NextRoomCommand implements Command {
     private final RoomNavigator roomNavigator;
