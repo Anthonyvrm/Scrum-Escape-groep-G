@@ -1,5 +1,9 @@
 package classes;
 
+import Game.Game;
+import Observers.DeurObserver;
+import Observers.MonsterObserver;
+import Observers.StatusObserver;
 import monster.*;
 import rooms.*;
 import java.util.ArrayList;

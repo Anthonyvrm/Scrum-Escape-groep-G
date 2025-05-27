@@ -1,6 +1,6 @@
 package monster;
 
-import classes.IMonster;
+import Interface.IMonster;
 
 //Trollo is een chaotische trol dat door digitale borden kruipt, kaartjes versleept en verantwoordelijkheden vervaagt.
 //Hij leeft van onduidelijke statusupdates, vergeten taken en kaarten zonder eigenaar.

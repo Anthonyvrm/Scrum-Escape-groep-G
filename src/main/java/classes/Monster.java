@@ -1,5 +1,8 @@
 package classes;
 
+import Game.Game;
+import Interface.IMonster;
+
 public class Monster {
     private int damage;
     private int healthPoints;

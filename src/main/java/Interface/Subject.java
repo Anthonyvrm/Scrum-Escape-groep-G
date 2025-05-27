@@ -1,4 +1,4 @@
-package classes;
+package Interface;
 
 public interface Subject {
     void registerObserver(QuestionObserver questionObserver);

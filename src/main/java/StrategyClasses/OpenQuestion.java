@@ -1,6 +1,6 @@
 package StrategyClasses;
 
-import classes.IRoom;
+import Interface.IRoom;
 
 public class OpenQuestion implements IRoom {
     private final String question;

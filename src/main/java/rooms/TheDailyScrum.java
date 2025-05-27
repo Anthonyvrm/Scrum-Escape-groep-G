@@ -1,10 +1,8 @@
 package rooms;
 
-import FactoryClasses.HintProviderFactory;
+import Interface.IRoom;
 import StrategyClasses.MultipleChoiceQuestion;
-import StrategyClasses.OpenQuestion;
 import classes.*;
-import monster.Slowness;
 
 import java.util.Scanner;
 

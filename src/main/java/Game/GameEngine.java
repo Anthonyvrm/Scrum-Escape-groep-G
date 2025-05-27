@@ -1,4 +1,8 @@
-package classes;
+package Game;
+
+import Commands.NextRoomCommand;
+import Commands.StatusCommand;
+import classes.*;
 
 import java.util.List;
 

@@ -1,5 +1,7 @@
 
-package classes;
+package Game;
+
+import Interface.Command;
 
 import java.util.HashMap;
 import java.util.Map;

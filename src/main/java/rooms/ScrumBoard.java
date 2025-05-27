@@ -1,5 +1,6 @@
 package rooms;
 
+import Interface.IRoom;
 import StrategyClasses.OpenQuestion;
 import classes.*;
 

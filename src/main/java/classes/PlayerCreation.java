@@ -1,5 +1,7 @@
 package classes;
 
+import Game.GameUI;
+
 import java.util.Scanner;
 
 public class PlayerCreation {

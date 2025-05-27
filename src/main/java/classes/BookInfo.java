@@ -1,5 +1,7 @@
 package classes;
 
+import Interface.IBook;
+
 public class BookInfo implements IBook {
     private String info;
 

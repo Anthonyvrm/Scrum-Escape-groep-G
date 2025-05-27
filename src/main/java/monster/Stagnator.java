@@ -1,6 +1,6 @@
 package monster;
 
-import classes.IMonster;
+import Interface.IMonster;
 
 //Stagnator is een massief, rotsachtig monster dat elke poging tot verbetering blokkeert.
 //Hij zit roerloos midden in de kamer, zwaar van gewoonte en cynisme.

@@ -1,7 +1,6 @@
 package monster;
 
-import classes.IMonster;
-import classes.Monster;
+import Interface.IMonster;
 
 //Slowness is een schaduwachtig wezen dat zich voedt met inefficiëntie.
 //Elke keer dat een teamlid afwijkt van het doel van de stand-up, groeit Slowness groter en sterker.

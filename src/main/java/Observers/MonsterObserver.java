@@ -1,4 +1,7 @@
-package classes;
+package Observers;
+
+import Interface.QuestionObserver;
+import classes.Monster;
 
 public class MonsterObserver implements QuestionObserver {
     private Monster monster;

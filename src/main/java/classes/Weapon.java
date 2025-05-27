@@ -1,5 +1,7 @@
 package classes;
 
+import Interface.IWeapon;
+
 public class Weapon implements IWeapon {
     @Override
     public void attackWithWeapon() {
