@@ -10,6 +10,8 @@ public class Game {
     private Joker playerJoker;
     private final Player player;
     private final GameEngine gameEngine;
+    private static List<Room> allRooms;
+
 
 
     public Game(Room room, Player player) {
@@ -31,7 +33,12 @@ public class Game {
         if (gameEngine != null) {
             gameEngine.setRooms(rooms);
         }
+        Game.allRooms = rooms;
     }
+    public static List<Room> getRooms() {
+        return allRooms;
+    }
+
 
     public void useJoker() {
         if (playerJoker != null) {

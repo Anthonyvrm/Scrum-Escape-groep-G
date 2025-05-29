@@ -39,6 +39,10 @@ public abstract class Room implements Subject {
         }
     }
 
+    public void setIsCorrect(boolean isCorrect) {
+        this.isCorrect = isCorrect;
+    }
+
     public void interactWithObject() {
         if (bookinfo == null && weapon == null) {
             System.out.println("There are no objects in this room!");

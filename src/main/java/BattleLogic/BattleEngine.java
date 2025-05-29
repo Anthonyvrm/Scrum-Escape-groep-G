@@ -4,17 +4,19 @@ import Commands.NextRoomCommand;
 import Commands.*;
 import Commands.StatusCommand;
 import Game.GameInputHandler;
-import Game.GameUI;
+import Game.*;
 import classes.*;
 import classes.RoomNavigator;
 
 import java.util.Scanner;
 
 public class BattleEngine {
-    private final Player player;
+    private Player player;
 
-    private final BattleInputHandler inputHandler;
-    private final Monster monster;
+
+    private BattleInputHandler inputHandler;
+    private Monster monster;
+    private Game game;
     public BattleEngine(Player player, Monster monster) {
         this.player = player;
 
@@ -23,20 +25,55 @@ public class BattleEngine {
         setupCommands();
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+
 
     private void setupCommands() {
         inputHandler.registerCommand("Attack", new SlashCommand(player, monster));
         inputHandler.registerCommand("Block", new BlockCommand(player, monster));
     }
-    public void runBattle() {
+    public void runBattle(Room room, Player player) {
         while (true) {
             inputHandler.handleInput();
+            if (monster.getHealthPoints() <= 0) {
+                System.out.println("You defeated the " + monster.getClass().getSimpleName() + "!");
+
+                Scanner scanner = new Scanner(System.in);
+                  // markeer de kamer als voltooid
+                room.setIsCorrect(true);
+                System.out.print("Do you want to continue to the next room? (yes/no): ");
+                String answer = scanner.nextLine().trim().toLowerCase();
+                RoomNavigator navigator = new RoomNavigator(Game.getRooms(), player, new GameUI());
+                navigator.setCurrentRoomIndex(player.getVoortgang() + 1);
+
+
+                if (answer.equals("yes") || answer.equals("y")) {
+
+                    navigator.goToNextRoom();
+                } else {
+                    System.out.println("You chose to stay. You can continue exploring or type 'go to next' later.");
+                }
+
+                break;
+            } else if (player.getStatus() <= 0) {
+                System.out.println("You have been defeated by the " + monster.getClass().getSimpleName() + "!");
+                System.out.println("Game Over.");
+                break;
+            }
         }
     }
-    public void startBattle() {
+
+    public void startBattle(Room room, Player player) {
         player.printStatus();
         System.out.println(monster.getHealthPoints());
         System.out.println("You are now in battle!");
-        runBattle();
+        runBattle(room, player);
+
+
+
+
     }
 }

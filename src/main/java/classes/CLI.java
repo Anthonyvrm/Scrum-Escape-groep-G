@@ -46,7 +46,7 @@ public class CLI {
         // Register observers for each room
         for (Room room : allRooms) {
             room.registerObserver(new DeurObserver(room));
-            room.registerObserver(new MonsterObserver(room.monster));
+            room.registerObserver(new MonsterObserver(room.monster, player, room));
             room.registerObserver(new StatusObserver(player, room));
         }
 
