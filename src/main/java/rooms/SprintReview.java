@@ -18,6 +18,9 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
         this.bookinfo = new BookInfo("The book is called: Sprint Review. Why would you even review the sprint?");
         this.weapon = new Weapon();
+        this.reward = new RoomReward();
+        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+
     }
 
     @Override

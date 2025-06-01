@@ -13,6 +13,9 @@ public class ScrumBoard extends Room implements IRoom {
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
         this.bookinfo = new BookInfo("Title : Trello for dummies.. Urgh what a horrible book, who even wants a project with clear structure?");
         this.weapon = new Weapon();
+        this.reward = new RoomReward();
+        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+
     }
 
     @Override
