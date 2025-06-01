@@ -21,6 +21,13 @@ public class RoomNavigator {
         this.rooms = rooms;
         this.currentRoomIndex = 0;
     }
+    public void setCurrentRoomIndex(int currentRoomIndex) {
+        if (currentRoomIndex >= 0 && currentRoomIndex < rooms.size()) {
+            this.currentRoomIndex = currentRoomIndex;
+        } else {
+            throw new IndexOutOfBoundsException("Invalid room index: " + currentRoomIndex);
+        }
+    }
 
 
     public Room getCurrentRoom() {

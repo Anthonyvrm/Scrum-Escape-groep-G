@@ -1,12 +1,14 @@
 package rooms;
 
+import Interface.IJoker;
 import Interface.IRoom;
+import Interface.KeyableRoom;
 import StrategyClasses.MultipleChoiceQuestion;
 import classes.*;
 
 import java.util.Scanner;
 
-public class TheDailyScrum extends Room implements IRoom {
+public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
     private final Scanner scanner = new Scanner(System.in);
 
     public TheDailyScrum(Monster monster, boolean isCorrect) {
@@ -21,6 +23,13 @@ public class TheDailyScrum extends Room implements IRoom {
         this.weapon = new Weapon();
     }
 
+    @Override
+    public void addKey() {}
+
+    @Override
+    public void acceptJoker(IJoker joker) {
+        joker.applyTo(this); // this is a TheDailyScrum instance
+    }
     @Override
     public String getFunnyHint(){
         return "You have no friends so work the entire day.";

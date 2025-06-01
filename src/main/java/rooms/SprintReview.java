@@ -1,12 +1,13 @@
 package rooms;
 
 import Interface.IRoom;
+import Interface.KeyableRoom;
 import StrategyClasses.MultipleChoiceQuestion;
 import classes.*;
 
 import java.util.Scanner;
 
-public class SprintReview extends Room implements IRoom {
+public class SprintReview extends Room implements IRoom, KeyableRoom {
     public SprintReview(Monster monster, boolean isCorrect) {
         super("Sprint Review Room", monster, isCorrect);
         setQuestionStrategy(new MultipleChoiceQuestion("To whom does the Scrum Team show their results during the Sprint Review?\n" +
@@ -18,6 +19,11 @@ public class SprintReview extends Room implements IRoom {
         this.bookinfo = new BookInfo("The book is called: Sprint Review. Why would you even review the sprint?");
         this.weapon = new Weapon();
     }
+
+    @Override
+   public void addKey() {
+
+   }
 
     @Override
     public String getHelpHint() {

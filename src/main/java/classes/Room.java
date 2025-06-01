@@ -25,6 +25,11 @@ public abstract class Room implements Subject {
         this.isCorrect = isCorrect;
     }
 
+ //!Joker gedrag!
+    public void acceptJoker(IJoker joker) {
+        joker.applyTo(this); // Default gedrag
+    }
+
     public void askForHint(Scanner scanner) {
         System.out.println("Would you like a hint? Type 'Y' of 'N':");
         String input = scanner.nextLine();
@@ -32,6 +37,10 @@ public abstract class Room implements Subject {
         if (input.equalsIgnoreCase("Y")) {
             System.out.println("Hint: " + hintProvider.getHint());
         }
+    }
+
+    public void setIsCorrect(boolean isCorrect) {
+        this.isCorrect = isCorrect;
     }
 
     public void interactWithObject() {

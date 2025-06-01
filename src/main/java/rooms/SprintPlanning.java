@@ -1,5 +1,6 @@
 package rooms;
 
+import BattleLogic.BattleEngine;
 import Interface.IRoom;
 import StrategyClasses.OpenQuestion;
 import classes.*;
@@ -81,10 +82,15 @@ public class SprintPlanning extends Room implements IRoom {
             System.out.println("Thank you Scrum Master you have saved us....");
             System.out.println();
         } else {
+
             System.out.println();
             System.out.println("Incorrect. You hear a scary sound behind you...");
             System.out.println("You look behind you and , a wild Scope Screep appears!");
             System.out.println();
+
+
+
+
         }
     }
 
