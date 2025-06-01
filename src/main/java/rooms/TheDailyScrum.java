@@ -21,6 +21,9 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
         this.bookinfo = new BookInfo("The book is called: Daily Scrum for dummies. Are daily stand ups useless or are they actually useful?");
         this.weapon = new Weapon();
+        this.reward = new RoomReward();
+        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+
     }
 
     @Override

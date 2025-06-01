@@ -13,6 +13,9 @@ public class TIARoom extends Room implements IRoom {
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
         this.bookinfo = new BookInfo("The book is called: Transparency In Action. Why would you even be transparant to your team?");
         this.weapon = new Weapon();
+        this.reward = new RoomReward();
+        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+
     }
 
     @Override

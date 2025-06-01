@@ -17,6 +17,12 @@ public class SprintPlanning extends Room implements IRoom {
         this.bookinfo = new BookInfo("It says: " + "What a horrible day, this room is full with calenders! This room is all about planning!");
         //!Dit is het wapen wat je mee krijgt, kunnen we van alles mee doen in specifieke kamers.
         this.weapon = new Weapon();
+        this.reward = new RoomReward();
+        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+
+        // what the helli
+        //lol vgm can dit het fixen ja dat dus moment
+
     }
 
     @Override

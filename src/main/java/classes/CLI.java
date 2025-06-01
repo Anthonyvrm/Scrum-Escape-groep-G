@@ -20,17 +20,17 @@ public class CLI {
         Monster trollo = new Monster(1, 10, "Trollo", new Trollo());
         Monster theScrumReaper = new Monster(1, 25, "Scrum Reaper", new TheScrumReaper());
 
-        // Create rooms
-        Room sprintPlanning = new SprintPlanning(scopeCreep, false);
-        Room scrumBoard = new ScrumBoard(trollo, false);
-        Room theDailyScrum = new TheDailyScrum(slowness, false);
-        Room sprintReview = new SprintReview(feedbackPhantom, false);
-        Room sprintRetrospective = new SprintRetrospective(stagnator, false);
-        Room tiaRoom = new TIARoom(theScrumReaper, false);
 
+        // Create player
+        Player player = PlayerCreation.createCharacter();
 
+        Room sprintPlanning = new SprintPlanning(scopeCreep, false, player); ////WAAH
+        Room scrumBoard = new ScrumBoard(trollo, false, player);// we zijn echt te diep in dir project ik weet echt neit meer hoe dingen werken, fuck it neef // geen idee
+        Room theDailyScrum = new TheDailyScrum(slowness, false, player);// facts
+        Room sprintReview = new SprintReview(feedbackPhantom, false, player);
+        Room sprintRetrospective = new SprintRetrospective(stagnator, false, player);
+        Room tiaRoom = new TIARoom(theScrumReaper, false, player);
 
-        // Create room list
         List<Room> allRooms = new ArrayList<>(List.of(
                 sprintPlanning,
                 theDailyScrum,
@@ -40,8 +40,9 @@ public class CLI {
                 tiaRoom
         ));
 
-        // Create player
-        Player player = PlayerCreation.createCharacter();
+        for (Room room : allRooms) {
+            room.setPlayer(player);
+        }
 
         // Register observers for each room
         for (Room room : allRooms) {

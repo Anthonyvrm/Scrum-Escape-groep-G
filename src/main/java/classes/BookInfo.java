@@ -1,8 +1,8 @@
 package classes;
 
-import Interface.IBook;
+import Interface.IReadable;
 
-public class BookInfo implements IBook {
+public class BookInfo implements IReadable {
     private String info;
 
     public BookInfo(String info) {
@@ -10,7 +10,7 @@ public class BookInfo implements IBook {
     }
 
     @Override
-    public void readBook() {
+    public void showMessage() {
         //De info wordt meegegeven vanaf de constructor in de specifieke kamer.
         System.out.println(info);
     }
