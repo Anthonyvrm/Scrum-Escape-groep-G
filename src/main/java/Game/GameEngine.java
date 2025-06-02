@@ -52,13 +52,6 @@ public class GameEngine {
             inputHandler.handleInput();
         }
     }
-
-    private void useJoker() {
-        if (player.getJoker() != null) {
-            player.getJoker().useJokerIn(player.getPosition());
-        } else {
-            gameUI.showMessage("You have no joker available!");
-        }
-    }
 }
+
 
