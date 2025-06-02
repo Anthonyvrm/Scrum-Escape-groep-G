@@ -40,11 +40,11 @@ public class Game {
     }
 
 
-    public void useJoker() {
+    /*public void useJoker() {
         if (playerJoker != null) {
             playerJoker.useJokerIn(player.getPosition());
         }
-    }
+    }*/
 
     public void startGame(Room startingRoom) {
         if (gameEngine != null) {
