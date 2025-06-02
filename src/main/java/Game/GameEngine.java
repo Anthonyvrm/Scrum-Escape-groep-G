@@ -33,7 +33,7 @@ public class GameEngine {
     private void setupCommands() {
         inputHandler.registerCommand("go to next", new NextRoomCommand(roomNavigator, player));
         inputHandler.registerCommand("status", new StatusCommand(player));
-        inputHandler.registerCommand("joker", new JokerCommand(player, gameUI));
+        //inputHandler.registerCommand("joker", new JokerCommand(player, gameUI));
     }
 
     public void startGame() {

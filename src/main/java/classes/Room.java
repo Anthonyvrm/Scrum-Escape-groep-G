@@ -22,7 +22,7 @@ public abstract class Room implements Subject {
     public abstract String getFunnyHint();
     public abstract String getHelpHint();
 
-    public Room(String name, Monster monster, boolean isCorrect) {
+    public Room(String name, Monster monster, boolean isCorrect, Player player) {
         this.name = name;
         this.monster = monster;
         this.isCorrect = isCorrect;

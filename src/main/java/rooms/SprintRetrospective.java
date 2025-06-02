@@ -1,5 +1,7 @@
 package rooms;
 
+import Commands.JokerCommand;
+import Game.GameUI;
 import Interface.IRoom;
 import StrategyClasses.MultipleChoiceQuestion;
 import classes.*;
@@ -7,8 +9,8 @@ import classes.*;
 import java.util.Scanner;
 
 public class SprintRetrospective extends Room implements IRoom {
-    public SprintRetrospective(Monster monster, boolean isCorrect) {
-        super("Sprint Retrospective Room", monster, isCorrect);
+    public SprintRetrospective(Monster monster, boolean isCorrect, Player player) {
+        super("Sprint Retrospective Room", monster, isCorrect, player);
         setQuestionStrategy(new MultipleChoiceQuestion("What can the Scrum Team learn from this experience?\n" +
                 "A) The team should work harder\n" +
                 "B) The team should regularly involve the stakeholders during Sprint Reviews.\n" +
@@ -45,6 +47,8 @@ public class SprintRetrospective extends Room implements IRoom {
         System.out.println("Scenario:");
         System.out.println("The Scrum Team showed the results of their work after several sprints,");
         System.out.println("but the stakeholders were not happy with the results.");
+        JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
+        jokerCommand.execute();
         question();
     }
 

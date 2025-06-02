@@ -1,5 +1,8 @@
 package rooms;
 
+import Commands.JokerCommand;
+import Game.Game;
+import Game.GameUI;
 import Interface.IJoker;
 import Interface.IRoom;
 import Interface.KeyableRoom;
@@ -11,8 +14,8 @@ import java.util.Scanner;
 public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
     private final Scanner scanner = new Scanner(System.in);
 
-    public TheDailyScrum(Monster monster, boolean isCorrect) {
-        super("The Daily Scrum Room", monster, isCorrect);
+    public TheDailyScrum(Monster monster, boolean isCorrect, Player player) {
+        super("The Daily Scrum Room", monster, isCorrect, player);
         setQuestionStrategy(new MultipleChoiceQuestion("What is the main purpose of TheDailyScrum?\n" +
                 "A) To report to the Scrum Master.\n" +
                 "B) To plan the next sprint.\n" +
@@ -27,7 +30,13 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
     }
 
     @Override
-    public void addKey() {}
+    public void addKey() {
+        setIsCorrect(true);
+        notifyObservers(true);
+        RoomNavigator navigator = new RoomNavigator(Game.getRooms(), player, new GameUI());
+        navigator.setCurrentRoomIndex(player.getVoortgang() + 1);
+        navigator.goToNextRoom();
+    }
 
     @Override
     public void acceptJoker(IJoker joker) {
@@ -54,6 +63,8 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
     public void roomTask() {
         System.out.println("Scenario:");
         System.out.println("The Scrum Team gathers each morning to show their task progress to the Scrum Master.");
+        JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
+        jokerCommand.execute();
         question();
     }
 

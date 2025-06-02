@@ -23,7 +23,9 @@ public class SlashCommand implements Command {
             monster.takeDamage(2);
             System.out.println("The foe took 2 damage!");
             System.out.println("The foe's HP is now " + monster.getHealthPoints());
-            monster.dealDamage(player, 10); // Player takes 10% damage from monster's attack
+            monster.dealDamage(player, 10);
+            System.out.println("Your hp is now " + player.getStatus());
+
 
 
         } else if (chance == 20) {
