@@ -1,6 +1,8 @@
 package rooms;
 
 import BattleLogic.BattleEngine;
+import Commands.JokerCommand;
+import Game.GameUI;
 import Interface.IRoom;
 import StrategyClasses.OpenQuestion;
 import classes.*;
@@ -9,8 +11,8 @@ import java.util.Scanner;
 
 
 public class SprintPlanning extends Room implements IRoom {
-    public SprintPlanning(Monster monster, boolean isCorrect) {
-        super("Sprintplanning Room", monster, isCorrect);
+    public SprintPlanning(Monster monster, boolean isCorrect, Player player) {
+        super("Sprintplanning Room", monster, isCorrect, player);
         setQuestionStrategy(new OpenQuestion("To assign story points to tasks, what is the name of the game you play with the team?"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
         //!Dit is wat in het boek staat.
@@ -52,7 +54,10 @@ public class SprintPlanning extends Room implements IRoom {
         System.out.println("And someone just realized—we've forgotten the name of the game!");
         System.out.println("*A voice breaks from the corner, barely holding back tears*");
         System.out.println("We need your help, Scrum Master.....");
+
         System.out.println(" ");
+        JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
+        jokerCommand.execute();
         question();
     }
 

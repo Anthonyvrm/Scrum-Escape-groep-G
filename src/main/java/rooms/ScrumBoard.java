@@ -1,5 +1,7 @@
 package rooms;
 
+import Commands.JokerCommand;
+import Game.GameUI;
 import Interface.IRoom;
 import StrategyClasses.OpenQuestion;
 import classes.*;
@@ -7,8 +9,8 @@ import classes.*;
 import java.util.Scanner;
 
 public class ScrumBoard extends Room implements IRoom {
-    public ScrumBoard(Monster monster, boolean isCorrect) {
-        super("Scrumboard Room", monster, isCorrect);
+    public ScrumBoard(Monster monster, boolean isCorrect, Player player) {
+        super("Scrumboard Room", monster, isCorrect, player);
         setQuestionStrategy(new OpenQuestion("In order to tell the people what to do this day, what is the name of the first thing you should do with this team?\n"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
         this.bookinfo = new BookInfo("Title : Trello for dummies.. Urgh what a horrible book, who even wants a project with clear structure?");
@@ -39,6 +41,8 @@ public class ScrumBoard extends Room implements IRoom {
         System.out.println("Scenario: ");
         System.out.println("You have been transformed to a Scrum Master.");
         System.out.println("All the people are looking at the board, they are clueless as to what they need to do next.");
+        JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
+        jokerCommand.execute();
         question();
     }
 
