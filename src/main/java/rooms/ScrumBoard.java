@@ -48,18 +48,10 @@ public class ScrumBoard extends Room implements IRoom {
 
     @Override
     public void roomCheckAnswer() {
-        Scanner scanner = new Scanner(System.in);
-        String answer = scanner.nextLine().trim();
-
-        if (answer.equalsIgnoreCase("Daily Stand Up")) {
-            isCorrect = true;
-            notifyObservers(isCorrect);
-        } else {
-            isCorrect = false;
-            askForHint(scanner);
-            notifyObservers(isCorrect);
-        }
+        CheckAnswer checker = new CheckAnswer(new Scanner(System.in));
+        this.isCorrect = checker.isAnswerCorrect("Daily Stand Up", this);
     }
+
 
     @Override
     public void roomResult() {

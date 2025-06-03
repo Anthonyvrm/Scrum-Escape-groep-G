@@ -63,23 +63,9 @@ public class SprintPlanning extends Room implements IRoom {
 
     @Override
     public void roomCheckAnswer() {
-        Scanner scanner = new Scanner(System.in);
-        String answer = scanner.nextLine().trim();
-
-        if (answer.equalsIgnoreCase("Planning Poker")) {
-            isCorrect = true;
-            notifyObservers(isCorrect);
-        } else {
-            isCorrect = false;
-            askForHint(scanner);
-            notifyObservers(isCorrect);
-            //!hier wordt nu het monster gevecht aangeroepen, eerst met dezelfde vraag die eerder is gesteld. daarna het monstergevecht.
-
-
-
-        }
+        CheckAnswer checker = new CheckAnswer(new Scanner(System.in));
+        this.isCorrect = checker.isAnswerCorrect("Planning poker", this);
     }
-
     @Override
     public void roomResult() {
         if (isCorrect) {
@@ -98,9 +84,6 @@ public class SprintPlanning extends Room implements IRoom {
             System.out.println("Incorrect. You hear a scary sound behind you...");
             System.out.println("You look behind you and , a wild Scope Screep appears!");
             System.out.println();
-
-
-
 
         }
     }
