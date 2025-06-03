@@ -70,15 +70,8 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
 
     @Override
     public void roomCheckAnswer() {
-        String answer = scanner.nextLine().trim();
-        if (answer.equalsIgnoreCase("C")) {
-            isCorrect = true;
-            notifyObservers(isCorrect);
-        } else {
-            isCorrect = false;
-            askForHint(scanner);
-            notifyObservers(isCorrect);
-        }
+        CheckAnswer checker = new CheckAnswer(new Scanner(System.in));
+        this.isCorrect = checker.isAnswerCorrect("C", this);
     }
 
     @Override
