@@ -1,6 +1,8 @@
 package classes;
 
 import Interface.*;
+import Joker.Joker;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ public abstract class Room implements Subject {
     protected Player player;
     protected IRewardable reward;
 
+
     public abstract String getFunnyHint();
     public abstract String getHelpHint();
 
@@ -34,11 +37,13 @@ public abstract class Room implements Subject {
         this.player = player;
     }
 
+    public void applyKeyJoker(Joker joker) {
+        System.out.println("YOU CANNOT GET OUT LIKE THAT.");
+
+    }
+
 
 //!Joker gedrag!
-    public void acceptJoker(IJoker joker) {
-        joker.applyTo(this); // Default gedrag
-    }
 
     public void askForHint(Scanner scanner) {
         System.out.println("Would you like a hint? Type 'Y' of 'N':");

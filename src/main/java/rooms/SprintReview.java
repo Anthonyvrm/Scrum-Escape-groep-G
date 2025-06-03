@@ -5,6 +5,7 @@ import Game.Game;
 import Game.GameUI;
 import Interface.IRoom;
 import Interface.KeyableRoom;
+import Joker.Joker;
 import StrategyClasses.MultipleChoiceQuestion;
 import classes.*;
 
@@ -35,6 +36,13 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         navigator.goToNextRoom();
 
    }
+    @Override
+    public void applyKeyJoker(Joker joker) {
+        addKey();
+        joker.markJokerAsUsed();
+
+    }
+
 
     @Override
     public String getHelpHint() {

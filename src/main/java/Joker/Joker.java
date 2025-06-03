@@ -17,6 +17,9 @@ public abstract class Joker {
         }
     }
 
-    public abstract void useJokerIn(Room room);
+    public void useJokerIn(Room room) {
+        room.applyKeyJoker(this);
+    }
+
 
 }
