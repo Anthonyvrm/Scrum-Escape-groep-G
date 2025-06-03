@@ -33,7 +33,7 @@ public class SlashCommand implements Command {
             monster.takeDamage(5);
             System.out.println("The foe took 5 damage!");
             System.out.println("The foe's HP is now " + monster.getHealthPoints());
-            monster.dealDamage(player, 5);
+            monster.dealDamage(player, 10);
             System.out.println("Your hp is now " + player.getStatus());
         } else {
             System.out.println("You missed!");
