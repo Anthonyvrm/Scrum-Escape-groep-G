@@ -33,6 +33,8 @@ public class GameEngine {
     private void setupCommands() {
         inputHandler.registerCommand("go to next", new NextRoomCommand(roomNavigator, player));
         inputHandler.registerCommand("status", new StatusCommand(player));
+        inputHandler.availableCommands.add("- Go to next: Move to the next room");
+        inputHandler.availableCommands.add("- Status: Check your current status");
         //inputHandler.registerCommand("joker", new JokerCommand(player, gameUI));
     }
 
@@ -49,7 +51,7 @@ public class GameEngine {
 
     private void runGameLoop() {
         while (true) {
-            inputHandler.handleInput();
+            inputHandler.handleGameInput();
         }
     }
 }

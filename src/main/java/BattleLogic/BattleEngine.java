@@ -34,10 +34,12 @@ public class BattleEngine {
     private void setupCommands() {
         inputHandler.registerCommand("Attack", new SlashCommand(player, monster));
         inputHandler.registerCommand("Block", new BlockCommand(player, monster));
+        inputHandler.availableCommands.add("- Attack");
+        inputHandler.availableCommands.add("- Block");
     }
     public void runBattle(Room room, Player player) {
         while (true) {
-            inputHandler.handleInput();
+            inputHandler.handleBattleInput();
             if (monster.getHealthPoints() <= 0) {
                 System.out.println("You defeated the " + monster.getClass().getSimpleName() + "!");
 

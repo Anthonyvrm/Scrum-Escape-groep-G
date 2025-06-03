@@ -3,6 +3,8 @@ package Game;
 
 import Interface.Command;
 
+import javax.lang.model.type.ArrayType;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -10,8 +12,10 @@ import java.util.Scanner;
 public class GameInputHandler {
     private final Map<String, Command> commands = new HashMap<>();
     private final Scanner scanner;
+    protected ArrayList<String> availableCommands;
 
     public GameInputHandler(Scanner scanner) {
+        this.availableCommands = new ArrayList<>();
         this.scanner = scanner;
     }
 
@@ -19,21 +23,8 @@ public class GameInputHandler {
         commands.put(commandName.toLowerCase(), command);
     }
 
-    public void handleInput() {
-        System.out.println();
-        System.out.println("Available commands:");
-        System.out.println("- Go to next: Move to the next room");
-        System.out.println("- Status: Check your current status");
-        System.out.print("> ");
-
-        String input = scanner.nextLine().trim().toLowerCase();
-        Command command = commands.get(input);
-
-        if (command != null) {
-            command.execute();
-        } else {
-            System.out.println("Unknown command");
-        }
+    public void handleGameInput() {
+        InputHandler inputHandler = new InputHandler();
+        inputHandler.handleInput(availableCommands, scanner, commands);
     }
 }
-
