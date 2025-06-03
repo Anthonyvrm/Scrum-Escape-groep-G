@@ -1,8 +1,10 @@
 package classes;
 
+import Interface.IWeapon;
+
 public class Weapon implements IWeapon {
     @Override
-    public void attackWithWeapon() {
+    public void attack() {
         //Misschien nog logica dat je meer damage doet als je het wapen meeneemt?
         //Kunnen ook specifieke wapens in elke kamer aanmaken met andere damage.
 

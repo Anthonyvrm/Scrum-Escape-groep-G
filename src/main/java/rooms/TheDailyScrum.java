@@ -1,18 +1,21 @@
 package rooms;
 
-import FactoryClasses.HintProviderFactory;
+import Commands.JokerCommand;
+import Game.Game;
+import Game.GameUI;
+import Interface.IJoker;
+import Interface.IRoom;
+import Interface.KeyableRoom;
 import StrategyClasses.MultipleChoiceQuestion;
-import StrategyClasses.OpenQuestion;
 import classes.*;
-import monster.Slowness;
 
 import java.util.Scanner;
 
-public class TheDailyScrum extends Room implements IRoom {
+public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
     private final Scanner scanner = new Scanner(System.in);
 
-    public TheDailyScrum(Monster monster, boolean isCorrect) {
-        super("The Daily Scrum Room", monster, isCorrect);
+    public TheDailyScrum(Monster monster, boolean isCorrect, Player player) {
+        super("The Daily Scrum Room", monster, isCorrect, player);
         setQuestionStrategy(new MultipleChoiceQuestion("What is the main purpose of TheDailyScrum?\n" +
                 "A) To report to the Scrum Master.\n" +
                 "B) To plan the next sprint.\n" +
@@ -21,8 +24,24 @@ public class TheDailyScrum extends Room implements IRoom {
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
         this.bookinfo = new BookInfo("The book is called: Daily Scrum for dummies. Are daily stand ups useless or are they actually useful?");
         this.weapon = new Weapon();
+        this.reward = new RoomReward();
+        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+
     }
 
+    @Override
+    public void addKey() {
+        setIsCorrect(true);
+        notifyObservers(true);
+        RoomNavigator navigator = new RoomNavigator(Game.getRooms(), player, new GameUI());
+        navigator.setCurrentRoomIndex(player.getVoortgang() + 1);
+        navigator.goToNextRoom();
+    }
+
+    @Override
+    public void acceptJoker(IJoker joker) {
+        joker.applyTo(this); // this is a TheDailyScrum instance
+    }
     @Override
     public String getFunnyHint(){
         return "You have no friends so work the entire day.";
@@ -44,13 +63,22 @@ public class TheDailyScrum extends Room implements IRoom {
     public void roomTask() {
         System.out.println("Scenario:");
         System.out.println("The Scrum Team gathers each morning to show their task progress to the Scrum Master.");
+        JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
+        jokerCommand.execute();
         question();
     }
 
     @Override
     public void roomCheckAnswer() {
-        CheckAnswer checker = new CheckAnswer(new Scanner(System.in));
-        this.isCorrect = checker.isAnswerCorrect("C", this);
+        String answer = scanner.nextLine().trim();
+        if (answer.equalsIgnoreCase("C")) {
+            isCorrect = true;
+            notifyObservers(isCorrect);
+        } else {
+            isCorrect = false;
+            askForHint(scanner);
+            notifyObservers(isCorrect);
+        }
     }
 
     @Override

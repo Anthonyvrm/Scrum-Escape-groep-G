@@ -1,13 +1,18 @@
 package rooms;
 
+import Commands.JokerCommand;
+import Game.Game;
+import Game.GameUI;
+import Interface.IRoom;
+import Interface.KeyableRoom;
 import StrategyClasses.MultipleChoiceQuestion;
 import classes.*;
 
 import java.util.Scanner;
 
-public class SprintReview extends Room implements IRoom {
-    public SprintReview(Monster monster, boolean isCorrect) {
-        super("Sprint Review Room", monster, isCorrect);
+public class SprintReview extends Room implements IRoom, KeyableRoom {
+    public SprintReview(Monster monster, boolean isCorrect, Player player) {
+        super("Sprint Review Room", monster, isCorrect, player);
         setQuestionStrategy(new MultipleChoiceQuestion("To whom does the Scrum Team show their results during the Sprint Review?\n" +
                 "A) To the Scrum Master.\n" +
                 "B) Only to the Product Owner.\n" +
@@ -16,7 +21,20 @@ public class SprintReview extends Room implements IRoom {
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
         this.bookinfo = new BookInfo("The book is called: Sprint Review. Why would you even review the sprint?");
         this.weapon = new Weapon();
+        this.reward = new RoomReward();
+        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+
     }
+
+    @Override
+   public void addKey() {
+        setIsCorrect(true);
+        notifyObservers(true);
+        RoomNavigator navigator = new RoomNavigator(Game.getRooms(), player, new GameUI());
+        navigator.setCurrentRoomIndex(player.getVoortgang() + 1);
+        navigator.goToNextRoom();
+
+   }
 
     @Override
     public String getHelpHint() {
@@ -37,13 +55,15 @@ public class SprintReview extends Room implements IRoom {
     @Override
     public void roomTask() {
         System.out.println("In this room you will display your knowledge, about the subject in SCRUM: the Sprint Review!");
+        JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
+        jokerCommand.execute();
         question();
     }
 
     @Override
     public void roomCheckAnswer() {
         Scanner scanner = new Scanner(System.in);
-        String answer = scanner.nextLine();
+        String answer = scanner.nextLine().trim();
 
         if (answer.equalsIgnoreCase("C")) {
             isCorrect = true;

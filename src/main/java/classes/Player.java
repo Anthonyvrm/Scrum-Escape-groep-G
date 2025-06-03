@@ -1,4 +1,6 @@
 package classes;
+import Joker.Joker;
+
 import java.util.Scanner;
 
 public class Player {
@@ -6,6 +8,7 @@ public class Player {
     private String name;
     private Room position;
     private int voortgang;
+    private Joker joker;
 
     public Player (int status, String name, Room position, int voortgang) {
         this.status = status;
@@ -26,6 +29,14 @@ public class Player {
     }
 
     public Player () {}
+
+    public void setJoker(Joker joker) {
+        this.joker = joker;
+    }
+
+    public Joker getJoker() {
+        return joker;
+    }
 
     public void setStatus(int status) {
         this.status = status;

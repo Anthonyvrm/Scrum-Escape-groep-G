@@ -1,5 +1,7 @@
 package classes;
 
+import Interface.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,16 +13,31 @@ public abstract class Room implements Subject {
     private List<QuestionObserver> questionObservers = new ArrayList<>();
     protected IRoom questionStrategy;
     protected HintProvider hintProvider;
-    protected IBook bookinfo;
+    protected IReadable bookinfo;
     protected IWeapon weapon;
+    protected InteractWithObject interactableObjects;
+    protected Player player;
+    protected IRewardable reward;
 
     public abstract String getFunnyHint();
     public abstract String getHelpHint();
 
-    public Room(String name, Monster monster, boolean isCorrect) {
+    public Room(String name, Monster monster, boolean isCorrect, Player player) {
         this.name = name;
         this.monster = monster;
         this.isCorrect = isCorrect;
+        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+
+//!Joker gedrag!
+    public void acceptJoker(IJoker joker) {
+        joker.applyTo(this); // Default gedrag
     }
 
     public void askForHint(Scanner scanner) {
@@ -32,38 +49,49 @@ public abstract class Room implements Subject {
         }
     }
 
-    public void interactWithObject() {
-        if (bookinfo == null && weapon == null) {
-            System.out.println("There are no objects in this room!");
-            return;
-        }
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("There are objects in front of you, would you like to use one? (Book/Weapon/No)");
-        String answer = scanner.nextLine().toLowerCase();
-
-        switch (answer) {
-            case "book":
-                if (bookinfo != null) {
-                    bookinfo.readBook();
-                } else {
-                    System.out.println("There is no book in this room!");
-                }
-                break;
-            case "weapon":
-                if (weapon != null) {
-                    weapon.attackWithWeapon();
-                } else {
-                    System.out.println("You have no weapon !");
-                }
-                break;
-                case "no":
-                    System.out.println("You decide to use no object...... not so smart....");
-                    break;
-            default:
-                System.out.println("Invalid input! urgh....");
-        }
+    public void setIsCorrect(boolean isCorrect) {
+        this.isCorrect = isCorrect;
     }
+
+    public void interactWithObject() {
+        if (interactableObjects != null) {
+            interactableObjects.interactWithObject(this.player);
+        }
+}
+
+
+//public void interactWithObject() {
+        //if (bookinfo == null && weapon == null) {
+           // System.out.println("There are no objects in this room!");
+            //return;
+        //}
+
+        //Scanner scanner = new Scanner(System.in);
+        //System.out.println("There are objects in front of you, would you like to use one? (Book/Weapon/No)");
+        //String answer = scanner.nextLine().trim().toLowerCase();
+
+        //switch (answer) {
+            //case "book":
+                //if (bookinfo != null) {
+                    //bookinfo.showMessage();
+                //} else {
+                    //System.out.println("There is no book in this room!");
+                //}
+                //break;
+            //case "weapon":
+                //if (weapon != null) {
+                    //weapon.attack();
+                //} else {
+                    //System.out.println("You have no weapon !");
+                //}
+                //break;
+                //case "no":
+                    //System.out.println("You decide to use no object...... not so smart....");
+                    //break;
+            //default:
+                //System.out.println("Invalid input! urgh....");
+        //}
+    //}
 
     public void setQuestionStrategy(IRoom questionStrategy) {
         this.questionStrategy = questionStrategy;

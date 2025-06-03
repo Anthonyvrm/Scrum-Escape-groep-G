@@ -1,4 +1,8 @@
-package classes;
+package Observers;
+
+import Interface.QuestionObserver;
+import classes.Player;
+import classes.Room;
 
 public class StatusObserver implements QuestionObserver {
     private Player player;
@@ -11,14 +15,11 @@ public class StatusObserver implements QuestionObserver {
 
     @Override
     public void update(boolean isCorrect) {
-        System.out.printf("Name: %s | HP: %d | Locatie: %s\n",
-                player.getName(),
-                player.getStatus(),
-                player.getPosition().name
-        );
-
         if (!isCorrect) {
-            System.out.println("Wrong answer! look at your HP and Try again.");
+            player.setStatus(player.getStatus() - 5);
+            System.out.println("The monster has decreased your HP by 5.");
+            System.out.printf("Your HP is now %d.\n", player.getStatus()
+            );
             //!room.roomFeedback();
         }
     }

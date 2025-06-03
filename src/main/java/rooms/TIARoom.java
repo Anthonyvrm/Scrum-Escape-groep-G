@@ -1,17 +1,23 @@
 package rooms;
 
+import Commands.JokerCommand;
+import Game.GameUI;
+import Interface.IRoom;
 import StrategyClasses.OpenQuestion;
 import classes.*;
 
 import java.util.Scanner;
 
 public class TIARoom extends Room implements IRoom {
-    public TIARoom(Monster monster, boolean isCorrect) {
-        super("TIA Room", monster, isCorrect);
+    public TIARoom(Monster monster, boolean isCorrect, Player player) {
+        super("TIA Room", monster, isCorrect, player);
         setQuestionStrategy(new OpenQuestion("What does the 'T' in TIA stand for?"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
         this.bookinfo = new BookInfo("The book is called: Transparency In Action. Why would you even be transparant to your team?");
         this.weapon = new Weapon();
+        this.reward = new RoomReward();
+        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+
     }
 
     @Override
@@ -37,13 +43,15 @@ public class TIARoom extends Room implements IRoom {
     public void roomTask() {
         System.out.println("Answer the following question about TIA, :");
         System.out.println(" ");
+        JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
+        jokerCommand.execute();
         question();
     }
 
     @Override
     public void roomCheckAnswer() {
         Scanner scanner = new Scanner(System.in);
-        String answer = scanner.nextLine();
+        String answer = scanner.nextLine().trim();
 
         if (answer.equalsIgnoreCase("Transparency")) {
             isCorrect = true;
