@@ -51,7 +51,7 @@ public class TIARoom extends Room implements IRoom {
     @Override
     public void roomCheckAnswer() {
         CheckAnswer checker = new CheckAnswer(new Scanner(System.in));
-        this.isCorrect = checker.isAnswerCorrect("Transparency", this);
+        this.isCorrect = checker.isAnswerCorrect("Transparency", this); //Het correcte antwoord wordt meegegeven
     }
 
     @Override

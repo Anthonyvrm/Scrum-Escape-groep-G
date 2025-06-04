@@ -34,25 +34,29 @@ public class BattleEngine {
     private void setupCommands() {
         inputHandler.registerCommand("Attack", new SlashCommand(player, monster));
         inputHandler.registerCommand("Block", new BlockCommand(player, monster));
+        inputHandler.availableCommands.add("- Attack");
+        inputHandler.availableCommands.add("- Block");
     }
     public void runBattle(Room room, Player player) {
         while (true) {
-            inputHandler.handleInput();
+            inputHandler.handleBattleInput();
             if (monster.getHealthPoints() <= 0) {
                 System.out.println("You defeated the " + monster.getClass().getSimpleName() + "!");
 
                 Scanner scanner = new Scanner(System.in);
-                  // markeer de kamer als voltooid
                 room.setIsCorrect(true);
+                room.notifyObservers(true);
                 System.out.print("Do you want to continue to the next room? (yes/no): ");
                 String answer = scanner.nextLine().trim().toLowerCase();
-                RoomNavigator navigator = new RoomNavigator(Game.getRooms(), player, new GameUI());
-                navigator.setCurrentRoomIndex(player.getVoortgang() + 1);
+
+                player.setVoortgang(player.getVoortgang() + 1);
 
 
                 if (answer.equals("yes") || answer.equals("y")) {
+                    RoomNavigator navigator = new RoomNavigator(Game.getRooms(), player, new GameUI());
 
                     navigator.goToNextRoom();
+
                 } else {
                     System.out.println("You chose to stay. You can continue exploring or type 'go to next' later.");
                 }

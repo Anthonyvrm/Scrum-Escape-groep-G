@@ -19,7 +19,7 @@ public class SlashCommand implements Command {
         Random rand = new Random();
         System.out.println("You slash your foe with your sword!");
         int chance = rand.nextInt(20);
-        if (chance >= 5) {
+        if (chance >= 5 && chance <= 18) {
             monster.takeDamage(2);
             System.out.println("The foe took 2 damage!");
             System.out.println("The foe's HP is now " + monster.getHealthPoints());
@@ -28,15 +28,17 @@ public class SlashCommand implements Command {
 
 
 
-        } else if (chance == 20) {
+        } else if (chance == 19) {
             System.out.println("Critical hit!");
             monster.takeDamage(5);
             System.out.println("The foe took 5 damage!");
             System.out.println("The foe's HP is now " + monster.getHealthPoints());
-            monster.dealDamage(player, 5);
+            monster.dealDamage(player, 10);
+            System.out.println("Your hp is now " + player.getStatus());
         } else {
             System.out.println("You missed!");
             monster.dealDamage(player, 10);
+            System.out.println("Your hp is now " + player.getStatus());
         }
     }
 }

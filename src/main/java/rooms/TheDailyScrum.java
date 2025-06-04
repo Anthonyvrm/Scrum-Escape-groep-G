@@ -6,6 +6,7 @@ import Game.GameUI;
 import Interface.IJoker;
 import Interface.IRoom;
 import Interface.KeyableRoom;
+import Joker.Joker;
 import StrategyClasses.MultipleChoiceQuestion;
 import classes.*;
 
@@ -37,11 +38,15 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
         navigator.setCurrentRoomIndex(player.getVoortgang() + 1);
         navigator.goToNextRoom();
     }
-
     @Override
-    public void acceptJoker(IJoker joker) {
-        joker.applyTo(this); // this is a TheDailyScrum instance
+    public void applyKeyJoker(Joker joker) {
+        addKey();
+        joker.markJokerAsUsed();
+
     }
+
+
+
     @Override
     public String getFunnyHint(){
         return "You have no friends so work the entire day.";

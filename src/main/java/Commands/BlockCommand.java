@@ -20,23 +20,42 @@ public class BlockCommand implements Command {
         int diceRoll = random.nextInt(20);
         double damageModifier;
         double blockDamage = (double) diceRoll / 19;
-
+        System.out.println("You rolled a " + diceRoll + " on the dice.");
         if (diceRoll == 0) {
             damageModifier = 1.0;
             System.out.println("Block failed! You take full damage.");
-            System.out.println("Your HP is now " + player.getStatus());
         }
         else if (diceRoll == 19){
             damageModifier = 0.0;
             System.out.println("Perfect block! You take zero damage.");
-            System.out.println("Your HP is still " + player.getStatus());
         }
         else {
             damageModifier = 1.0 - blockDamage;
             System.out.println("You block the foe, but it's too late, you've taken damage!");
-            System.out.println("Your HP is now " + player.getStatus());
         }
-        monster.dealDamage(player, damageModifier);
+        monster.dealDamage(player, 10 * damageModifier);
+        System.out.println("Your HP is now " + player.getStatus());
+
+        if (diceRoll == 19) {
+            monster.takeDamage(4);
+            System.out.println("You have countered the monster and deal 4 damage!");
+            System.out.println("The foe's HP is now: " + monster.getHealthPoints());
+        }
+        else if (diceRoll >= 15) {
+            monster.takeDamage(2);
+            System.out.println("You have countered the monster and deal 2 damage!");
+            System.out.println("The foe's HP is now: " + monster.getHealthPoints());
+
+        }
+        else if (diceRoll == 0) {
+            System.out.println("You missed!");
+            System.out.println("The foe's HP is still: " + monster.getHealthPoints());
+        }
+        else {
+            monster.takeDamage(1);
+            System.out.println("You have countered the monster and deal 1 damage!");
+            System.out.println("The foe's HP is now: " + monster.getHealthPoints());
+        }
     }
 }
 

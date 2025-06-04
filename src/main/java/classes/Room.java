@@ -1,6 +1,8 @@
 package classes;
 
 import Interface.*;
+import Joker.Joker;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ public abstract class Room implements Subject {
     protected Player player;
     protected IRewardable reward;
 
+
     public abstract String getFunnyHint();
     public abstract String getHelpHint();
 
@@ -34,11 +37,13 @@ public abstract class Room implements Subject {
         this.player = player;
     }
 
+    public void applyKeyJoker(Joker joker) {
+        System.out.println("YOU CANNOT GET OUT LIKE THAT.");
+
+    }
+
 
 //!Joker gedrag!
-    public void acceptJoker(IJoker joker) {
-        joker.applyTo(this); // Default gedrag
-    }
 
     public void askForHint(Scanner scanner) {
         System.out.println("Would you like a hint? Type 'Y' of 'N':");
@@ -58,40 +63,6 @@ public abstract class Room implements Subject {
             interactableObjects.interactWithObject(this.player);
         }
 }
-
-
-//public void interactWithObject() {
-        //if (bookinfo == null && weapon == null) {
-           // System.out.println("There are no objects in this room!");
-            //return;
-        //}
-
-        //Scanner scanner = new Scanner(System.in);
-        //System.out.println("There are objects in front of you, would you like to use one? (Book/Weapon/No)");
-        //String answer = scanner.nextLine().trim().toLowerCase();
-
-        //switch (answer) {
-            //case "book":
-                //if (bookinfo != null) {
-                    //bookinfo.showMessage();
-                //} else {
-                    //System.out.println("There is no book in this room!");
-                //}
-                //break;
-            //case "weapon":
-                //if (weapon != null) {
-                    //weapon.attack();
-                //} else {
-                    //System.out.println("You have no weapon !");
-                //}
-                //break;
-                //case "no":
-                    //System.out.println("You decide to use no object...... not so smart....");
-                    //break;
-            //default:
-                //System.out.println("Invalid input! urgh....");
-        //}
-    //}
 
     public void setQuestionStrategy(IRoom questionStrategy) {
         this.questionStrategy = questionStrategy;
