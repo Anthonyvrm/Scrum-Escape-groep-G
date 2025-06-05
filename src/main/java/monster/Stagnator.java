@@ -13,6 +13,7 @@ public class Stagnator implements IMonster {
 
     }
 
+    // Prints a random quote when a monster takes damage.
     @Override
     public void takeDamageQuote(){
         int randomInt = (int)(Math.random() * 5);
@@ -35,6 +36,7 @@ public class Stagnator implements IMonster {
         }
     }
 
+    // Prints a random quote when a monster deals damage.
     @Override
     public void dealDamageQuote(){
         int randomInt = (int)(Math.random() * 5);

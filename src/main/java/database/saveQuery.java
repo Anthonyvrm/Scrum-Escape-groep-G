@@ -20,6 +20,7 @@ public class saveQuery {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery()) {
 
+            // Go through every record.
             while (rs.next()) {
                 Player player = new Player();
                 player.setName(rs.getString("name"));

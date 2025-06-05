@@ -6,6 +6,7 @@ import java.sql.Statement;
 
 public class DatabaseSetup {
     public static void createTables() {
+        // This table stores player save data such as status, player name, and progress.
         String createSaveTable = """
     CREATE TABLE IF NOT EXISTS Save (
         Status INTEGER NOT NULL,
@@ -13,7 +14,7 @@ public class DatabaseSetup {
         Voortgang INT NOT NULL
     );
     """;
-
+        // Try to connect to the database and execute the table creation
         try (Connection conn = DatabaseConnection.connect();
              Statement stmt = conn.createStatement()) {
             stmt.execute(createSaveTable);

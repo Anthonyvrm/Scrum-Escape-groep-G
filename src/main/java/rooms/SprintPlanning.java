@@ -11,8 +11,10 @@ import java.util.Scanner;
 
 
 public class SprintPlanning extends Room implements IRoom {
+    // Constructor initializes the room SprintPlanning.
     public SprintPlanning(Monster monster, boolean isCorrect, Player player) {
         super("Sprintplanning Room", monster, isCorrect, player);
+        // Set the question type of the room and the text.
         setQuestionStrategy(new OpenQuestion("To assign story points to tasks, what is the name of the game you play with the team?"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
         //!Dit is wat in het boek staat.
@@ -21,10 +23,6 @@ public class SprintPlanning extends Room implements IRoom {
         this.weapon = new Weapon();
         this.reward = new RoomReward();
         this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
-
-        // what the helli
-        //lol vgm can dit het fixen ja dat dus moment
-
     }
 
     @Override

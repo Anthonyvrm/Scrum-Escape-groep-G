@@ -1,10 +1,12 @@
 package Game;
 
 public class GameUI {
+    // Show game title.
     public static void showGameTitle() {
         System.out.println("=========== Scrum Escape ===========");
     }
 
+    // Display starting dialogue.
     public void showStartingDialogue(String playerName) {
         System.out.printf("%s.........\n", playerName);
         System.out.println("Wait I know you....");
@@ -15,10 +17,12 @@ public class GameUI {
         System.out.println("Oh wait, you have no choice..... WHAHAAHA!");
     }
 
+    // Displays message to the player.
     public void showMessage(String message) {
         System.out.println(message);
     }
 
+    // Ends the game.
     public static void endGame() {
         System.out.println("Thank you for playing!");
         System.exit(0);

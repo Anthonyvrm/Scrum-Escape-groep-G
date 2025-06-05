@@ -3,6 +3,8 @@ package classes;
 import Interface.IWeapon;
 
 public class Weapon implements IWeapon {
+
+    // Action when the player wants to use a weapon.
     @Override
     public void attack() {
         //Misschien nog logica dat je meer damage doet als je het wapen meeneemt?
