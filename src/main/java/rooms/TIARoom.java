@@ -2,6 +2,7 @@ package rooms;
 
 import Commands.JokerCommand;
 import Game.GameUI;
+import InteractWithObject.InteractWithObject;
 import Interface.IRoom;
 import StrategyClasses.OpenQuestion;
 import classes.*;
@@ -9,6 +10,7 @@ import classes.*;
 import java.util.Scanner;
 
 public class TIARoom extends Room implements IRoom {
+    // Constructor initializes the room TIARoom.
     public TIARoom(Monster monster, boolean isCorrect, Player player) {
         super("TIA Room", monster, isCorrect, player);
         setQuestionStrategy(new OpenQuestion("What does the 'T' in TIA stand for?"));
@@ -16,20 +18,23 @@ public class TIARoom extends Room implements IRoom {
         this.bookinfo = new BookInfo("The book is called: Transparency In Action. Why would you even be transparant to your team?");
         this.weapon = new Weapon();
         this.reward = new RoomReward();
-        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+        initializeInteractableObjects();
 
     }
 
+    // Return a helpful hint.
     @Override
     public String getHelpHint() {
         return "All the people in the SCRUM process are honest with each other";
     }
 
+    // Return a funny hint.
     @Override
     public String getFunnyHint(){
         return "This hint is as clear as the sky.";
     }
 
+    // Display introduction text to the player.
     @Override
     public void introductionText() {
         System.out.println("Welcome to the TIARoom!");
@@ -39,6 +44,7 @@ public class TIARoom extends Room implements IRoom {
         interactWithObject();
     }
 
+    // Describe scenario.
     @Override
     public void roomTask() {
         System.out.println("Answer the following question about TIA, :");
@@ -48,12 +54,14 @@ public class TIARoom extends Room implements IRoom {
         question();
     }
 
+    // Check the player's answer.
     @Override
     public void roomCheckAnswer() {
         CheckAnswer checker = new CheckAnswer(new Scanner(System.in));
         this.isCorrect = checker.isAnswerCorrect("Transparency", this); //Het correcte antwoord wordt meegegeven
     }
 
+    // Displays the result of the player's answer.
     @Override
     public void roomResult() {
         if (isCorrect) {
@@ -65,6 +73,7 @@ public class TIARoom extends Room implements IRoom {
         }
     }
 
+    // Display feedback to the player if the answer is false.
     @Override
     public void roomFeedback() {
         if (!isCorrect) {

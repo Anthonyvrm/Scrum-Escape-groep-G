@@ -3,6 +3,7 @@ package rooms;
 import Commands.JokerCommand;
 import Game.Game;
 import Game.GameUI;
+import InteractWithObject.InteractWithObject;
 import Interface.IRoom;
 import Interface.KeyableRoom;
 import Joker.Joker;
@@ -12,6 +13,7 @@ import classes.*;
 import java.util.Scanner;
 
 public class SprintReview extends Room implements IRoom, KeyableRoom {
+    // Constructor initializes the room SprintReview.
     public SprintReview(Monster monster, boolean isCorrect, Player player) {
         super("Sprint Review Room", monster, isCorrect, player);
         setQuestionStrategy(new MultipleChoiceQuestion("To whom does the Scrum Team show their results during the Sprint Review?\n" +
@@ -23,43 +25,49 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         this.bookinfo = new BookInfo("The book is called: Sprint Review. Why would you even review the sprint?");
         this.weapon = new Weapon();
         this.reward = new RoomReward();
-        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+        initializeInteractableObjects();
 
     }
 
+    // If the player uses a key, the player will be able to move to the next room.
     @Override
    public void addKey() {
+        // Set answer to correct, so the player can move to the next room.
         setIsCorrect(true);
         notifyObservers(true);
         RoomNavigator navigator = new RoomNavigator(Game.getRooms(), player, new GameUI());
         navigator.setCurrentRoomIndex(player.getVoortgang() + 1);
         navigator.goToNextRoom();
-
    }
+
+   // Apply Joker ability (key), the question gets automatically answered.
     @Override
     public void applyKeyJoker(Joker joker) {
         addKey();
         joker.markJokerAsUsed();
-
     }
 
 
+    // Return a helpful hint.
     @Override
     public String getHelpHint() {
         return "maybe letting the most important people in this project show what you are up to is a good idea?";
     }
 
+    // Return a funny hint.
     @Override
     public String getFunnyHint(){
         return "You should quickly show what you are doing before they use chatgpt instead of paying you ";
     }
 
+    // Display introduction text to the player.
     @Override
     public void introductionText() {
         System.out.println("Welcome to the SprintReview room!");
         interactWithObject();
     }
 
+    // Describe scenario.
     @Override
     public void roomTask() {
         System.out.println("In this room you will display your knowledge, about the subject in SCRUM: the Sprint Review!");
@@ -68,12 +76,14 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         question();
     }
 
+    // Check the player's answer.t=
     @Override
     public void roomCheckAnswer() {
         CheckAnswer checker = new CheckAnswer(new Scanner(System.in));
         this.isCorrect = checker.isAnswerCorrect("C", this);
     }
 
+    // Displays the result of the player's answer.
     @Override
     public void roomResult() {
         if (isCorrect) {
@@ -85,6 +95,7 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         }
     }
 
+    // Display feedback to the player if the answer is false.
     @Override
     public void roomFeedback() {
         if (!isCorrect) {

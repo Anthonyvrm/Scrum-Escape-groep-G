@@ -9,6 +9,7 @@ public class OpenQuestion implements IRoom {
         this.question = question;
     }
 
+    // Display open question.
     public void question () {
         System.out.println(question);
         System.out.print("Type your answer: ");

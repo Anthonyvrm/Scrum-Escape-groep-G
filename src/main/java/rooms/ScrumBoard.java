@@ -2,6 +2,7 @@ package rooms;
 
 import Commands.JokerCommand;
 import Game.GameUI;
+import InteractWithObject.InteractWithObject;
 import Interface.IRoom;
 import StrategyClasses.OpenQuestion;
 import classes.*;
@@ -9,33 +10,40 @@ import classes.*;
 import java.util.Scanner;
 
 public class ScrumBoard extends Room implements IRoom {
+    // Constructor initializes the room ScrumBoard.
     public ScrumBoard(Monster monster, boolean isCorrect, Player player) {
         super("Scrumboard Room", monster, isCorrect, player);
+
+        // Set the question type of the room and the text.
         setQuestionStrategy(new OpenQuestion("In order to tell the people what to do this day, what is the name of the first thing you should do with this team?\n"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
         this.bookinfo = new BookInfo("Title : Trello for dummies.. Urgh what a horrible book, who even wants a project with clear structure?");
         this.weapon = new Weapon();
         this.reward = new RoomReward();
-        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+        initializeInteractableObjects();
 
     }
 
+    // Return a helpful hint.
     @Override
     public String getHelpHint() {
         return "Maybe if you did a stand-up this morning, you'd know the answer?";
     }
 
+    // Return a funny hint.
     @Override
     public String getFunnyHint(){
         return "Without legs you cant stand up!";
     }
 
+    // Display introduction text to the player.
     @Override
     public void introductionText() {
         System.out.println("You are in the Scrum Board room! You can see many people talking about the project.");
         interactWithObject();
     }
 
+    // Describe scenario.
     @Override
     public void roomTask() {
         System.out.println("Scenario: ");
@@ -46,6 +54,7 @@ public class ScrumBoard extends Room implements IRoom {
         question();
     }
 
+    // Check the player's answer.
     @Override
     public void roomCheckAnswer() {
         CheckAnswer checker = new CheckAnswer(new Scanner(System.in));
@@ -53,6 +62,7 @@ public class ScrumBoard extends Room implements IRoom {
     }
 
 
+    // Displays the result of the player's answer.
     @Override
     public void roomResult() {
         if (isCorrect) {
@@ -65,6 +75,7 @@ public class ScrumBoard extends Room implements IRoom {
         }
     }
 
+    // Display feedback to the player if the answer is false.
     @Override
     public void roomFeedback() {
         if (!isCorrect) {

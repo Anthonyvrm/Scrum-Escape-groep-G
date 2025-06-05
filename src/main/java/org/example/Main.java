@@ -1,11 +1,12 @@
 package org.example;
 
-import classes.CLI;
+import Initializers.Initializer;
 
 public class Main {
     public static void main(String[] args) {
 
-        CLI.CLI();
+        // Start the Initializer.
+        Initializer.initializeGame();
 
     }
 }

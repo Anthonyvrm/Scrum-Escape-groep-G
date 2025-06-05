@@ -16,48 +16,33 @@ public class BlockCommand implements Command {
 
     @Override
     public void execute() {
-        Random random = new Random();
-        int diceRoll = random.nextInt(20);
-        double damageModifier;
-        double blockDamage = (double) diceRoll / 19;
-        System.out.println("You rolled a " + diceRoll + " on the dice.");
-        if (diceRoll == 0) {
-            damageModifier = 1.0;
-            System.out.println("Block failed! You take full damage.");
-        }
-        else if (diceRoll == 19){
-            damageModifier = 0.0;
-            System.out.println("Perfect block! You take zero damage.");
-        }
-        else {
-            damageModifier = 1.0 - blockDamage;
-            System.out.println("You block the foe, but it's too late, you've taken damage!");
-        }
-        monster.dealDamage(player, 10 * damageModifier);
+        int roll = new Random().nextInt(20);
+        double modifier = roll == 0 ? 1.0 : roll == 19 ? 0.0 : 1.0 - (roll / 19.0);
+
+        System.out.println("You rolled a " + roll + " on the dice.");
+        System.out.println(switch (roll) {
+            case 0 -> "Block failed! You take full damage.";
+            case 19 -> "Perfect block! You take zero damage.";
+            default -> "You block the foe, but it's too late, you've taken damage!";
+        });
+
+        monster.dealDamage(player, 10 * modifier);
         System.out.println("Your HP is now " + player.getStatus());
 
-        if (diceRoll == 19) {
-            monster.takeDamage(4);
-            System.out.println("You have countered the monster and deal 4 damage!");
-            System.out.println("The foe's HP is now: " + monster.getHealthPoints());
-        }
-        else if (diceRoll >= 15) {
-            monster.takeDamage(2);
-            System.out.println("You have countered the monster and deal 2 damage!");
-            System.out.println("The foe's HP is now: " + monster.getHealthPoints());
+        int counterDamage = switch (roll) {
+            case 19 -> 4;
+            case 15, 16, 17, 18 -> 2;
+            case 0 -> 0;
+            default -> 1;
+        };
 
-        }
-        else if (diceRoll == 0) {
+        if (counterDamage > 0) {
+            monster.takeDamage(counterDamage);
+            System.out.println("You have countered the monster and deal " + counterDamage + " damage!");
+        } else {
             System.out.println("You missed!");
-            System.out.println("The foe's HP is still: " + monster.getHealthPoints());
         }
-        else {
-            monster.takeDamage(1);
-            System.out.println("You have countered the monster and deal 1 damage!");
-            System.out.println("The foe's HP is now: " + monster.getHealthPoints());
-        }
+
+        System.out.println("The foe's HP is now: " + monster.getHealthPoints());
     }
 }
-
-
-

@@ -16,31 +16,34 @@ public class SlashCommand implements Command {
 
     @Override
     public void execute() {
-        Random rand = new Random();
+
+        int roll = new Random().nextInt(20);
+
         System.out.println("You slash your foe with your sword!");
-        int chance = rand.nextInt(20);
-        if (chance >= 5 && chance <= 18) {
-            monster.takeDamage(2);
-            System.out.println("The foe took 2 damage!");
-            System.out.println("The foe's HP is now " + monster.getHealthPoints());
-            monster.dealDamage(player, 10);
-            System.out.println("Your hp is now " + player.getStatus());
+        System.out.println("You rolled a " + roll + " on the dice.");
 
+        int damage = switch (roll) {
+            case 19 -> {
+                System.out.println("Critical hit!");
+                yield 5;
+            }
+            default -> (roll >= 5) ? 2 : 0;
+        };
 
+        if (damage > 0) {
 
-        } else if (chance == 19) {
-            System.out.println("Critical hit!");
-            monster.takeDamage(5);
-            System.out.println("The foe took 5 damage!");
-            System.out.println("The foe's HP is now " + monster.getHealthPoints());
-            monster.dealDamage(player, 10);
-            System.out.println("Your hp is now " + player.getStatus());
+            monster.takeDamage(damage);
+            System.out.println("The foe took " + damage + " damage!");
+
         } else {
+
             System.out.println("You missed!");
-            monster.dealDamage(player, 10);
-            System.out.println("Your hp is now " + player.getStatus());
         }
+
+        System.out.println("The foe's HP is now " + monster.getHealthPoints());
+
+        monster.dealDamage(player, 10);
+
+        System.out.println("Your HP is now " + player.getStatus());
     }
 }
-
-

@@ -1,8 +1,8 @@
 package rooms;
 
-import BattleLogic.BattleEngine;
 import Commands.JokerCommand;
 import Game.GameUI;
+import InteractWithObject.InteractWithObject;
 import Interface.IRoom;
 import StrategyClasses.OpenQuestion;
 import classes.*;
@@ -11,8 +11,10 @@ import java.util.Scanner;
 
 
 public class SprintPlanning extends Room implements IRoom {
+    // Constructor initializes the room SprintPlanning.
     public SprintPlanning(Monster monster, boolean isCorrect, Player player) {
         super("Sprintplanning Room", monster, isCorrect, player);
+        // Set the question type of the room and the text.
         setQuestionStrategy(new OpenQuestion("To assign story points to tasks, what is the name of the game you play with the team?"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));
         //!Dit is wat in het boek staat.
@@ -20,23 +22,22 @@ public class SprintPlanning extends Room implements IRoom {
         //!Dit is het wapen wat je mee krijgt, kunnen we van alles mee doen in specifieke kamers.
         this.weapon = new Weapon();
         this.reward = new RoomReward();
-        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
-
-        // what the helli
-        //lol vgm can dit het fixen ja dat dus moment
-
+        initializeInteractableObjects();
     }
 
+    // Return a helpful hint.
     @Override
     public String getHelpHint() {
         return "It’s a collaborative estimation technique where everyone 'plays' a card — and it’s not at a casino.";
     }
 
+    // Return a funny hint.
     @Override
     public String getFunnyHint(){
         return "Come on, I bet you plan to go to the casino soon!";
     }
 
+    // Display introduction text to the player.
     @Override
     public void introductionText() {
         System.out.println("======== Sprint Planning Room ======== ");
@@ -47,6 +48,7 @@ public class SprintPlanning extends Room implements IRoom {
         interactWithObject();
     }
 
+    // Describe scenario.
     @Override
     public void roomTask() {
         System.out.println("The team is waiting at the table for you.");
@@ -61,11 +63,14 @@ public class SprintPlanning extends Room implements IRoom {
         question();
     }
 
+    // Check the player's answer.
     @Override
     public void roomCheckAnswer() {
         CheckAnswer checker = new CheckAnswer(new Scanner(System.in));
         this.isCorrect = checker.isAnswerCorrect("Planning poker", this);
     }
+
+    // Displays the result of the player's answer.
     @Override
     public void roomResult() {
         if (isCorrect) {
@@ -88,6 +93,7 @@ public class SprintPlanning extends Room implements IRoom {
         }
     }
 
+    // Display feedback to the player if the answer is false.
     @Override
     public void roomFeedback() {
         if (!isCorrect) {
