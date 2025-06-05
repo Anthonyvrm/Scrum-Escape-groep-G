@@ -65,16 +65,16 @@ public class InteractWithObject {
 
             // The Player uses an object based on input.
             switch (input) {
-                case "book":
+                case "1": // Book.
                     useReadable();
                     break;
-                case "weapon":
+                case "2": // Weapon.
                     useWeapon();
                     break;
-                    case "reward":
+                    case "3": // Reward.
                     useReward(player);
                     break;
-                    case "exit":
+                    case "4": // Exit.
                         return;
                 default:
                     System.out.println("Invalid input! urgh....");

@@ -25,13 +25,13 @@ public class DisplayOptions {
 
         System.out.println("Available interactions:");
 
-        if (readableObject != null) System.out.println(("- Book (read information about this room"));
+        if (readableObject != null) System.out.println(("- 1: Book (read information about this room"));
 
-        if (weapon != null) System.out.println("- Weapon (use in combat)");
+        if (weapon != null) System.out.println("- 2: Weapon (use in combat)");
 
-        if (reward != null) System.out.println("- Reward (collect a reward)");
+        if (reward != null) System.out.println("- 3: Reward (collect a reward)");
 
-        System.out.println("- Exit (stop interacting)");
+        System.out.println("- 4: Exit (stop interacting)");
 
         System.out.println("What would you like to interact with?");
     }
