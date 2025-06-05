@@ -22,7 +22,7 @@ public class GameEngine {
         this.gameUI = new GameUI();
         this.inputHandler = new GameInputHandler(new java.util.Scanner(System.in));
         this.roomNavigator = new RoomNavigator(rooms, player, gameUI);
-        setupCommands();
+        //setupCommands();
     }
 
     public void setRooms(List<Room> rooms) {
@@ -33,16 +33,21 @@ public class GameEngine {
 
     // Registers commands the player can use and descriptions.
     private void setupCommands() {
-        inputHandler.registerCommand("go to next", new NextRoomCommand(roomNavigator, player));
-        inputHandler.registerCommand("status", new StatusCommand(player));
-        inputHandler.availableCommands.add("- Go to next: Move to the next room");
-        inputHandler.availableCommands.add("- Status: Check your current status");
+
+        inputHandler.registerCommand("1", new NextRoomCommand(roomNavigator, player));
+
+        inputHandler.registerCommand("2", new StatusCommand(player));
+
+        inputHandler.availableCommands.add("- 1: Move to the next room");
+
+        inputHandler.availableCommands.add("- 2: Check your current status");
         //inputHandler.registerCommand("joker", new JokerCommand(player, gameUI));
     }
 
     // Starts the game.
     public void startGame() {
-        gameUI.showGameTitle();
+
+        GameUI.showGameTitle();
         gameUI.showStartingDialogue(player.getName());
 
         // Set and enter the first room

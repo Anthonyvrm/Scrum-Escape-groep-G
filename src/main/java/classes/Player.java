@@ -11,7 +11,7 @@ public class Player {
     private Joker joker;
 
     // Constructor initializes player status, name, current room position and progress.
-    public Player (int status, String name, Room position, int voortgang) {
+    public Player(int status, String name, Room position, int voortgang) {
         this.status = status;
         this.name = name;
         this.position = position;
@@ -19,19 +19,20 @@ public class Player {
     }
 
     // Constructor with only health and name
-    public Player (int status, String name) {
+    public Player(int status, String name) {
         this.status = status;
         this.name = name;
     }
 
     // Constructor with health, name, and progress
-    public Player (int status, String name, int voortgang) {
+    public Player(int status, String name, int voortgang) {
         this.status = status;
         this.name = name;
         this.voortgang = voortgang;
     }
 
-    public Player () {}
+    public Player() {
+    }
 
     public void setJoker(Joker joker) {
         this.joker = joker;
@@ -75,13 +76,8 @@ public class Player {
 
     // Displays the Player's name, current hp and location.
     public void printStatus() {
-        System.out.printf("%s has %dHP left and is in room %s.", getName(), getStatus(), getPosition().getName());
-    }
 
-//    public void isAlive(){
-//        if(status <= 0) {
-//            System.out.println("G A M E   O V E R . . .");
-//            Game.endGame();
-//        }
-//    }
+        System.out.printf("%s has %dHP left and is in room %s.", getName(), getStatus(), getPosition().getName());
+
+    }
 }

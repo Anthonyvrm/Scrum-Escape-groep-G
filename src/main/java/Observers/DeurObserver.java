@@ -4,7 +4,7 @@ import Interface.QuestionObserver;
 import classes.Room;
 
 public class DeurObserver implements QuestionObserver {
-    private Room room;
+    private final Room room;
 
     // Constructor DeurObserver.
     public DeurObserver(Room room) {
@@ -15,6 +15,7 @@ public class DeurObserver implements QuestionObserver {
     // If the answer is correct, the door opens, otherwise it stays closed.
     @Override
     public void update(boolean isCorrect) {
+
         if (isCorrect) {
             System.out.println("The door is open.");
         }

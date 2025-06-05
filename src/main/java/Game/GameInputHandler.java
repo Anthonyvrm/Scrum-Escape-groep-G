@@ -13,6 +13,7 @@ public class GameInputHandler {
     // Map that stores commands.
     private final Map<String, Command> commands = new HashMap<>();
     private final Scanner scanner;
+
     // A list of available command descriptions.
     protected ArrayList<String> availableCommands;
 

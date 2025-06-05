@@ -1,14 +1,15 @@
-package classes;
+package InteractWithObject;
 
 import Interface.*;
-import Game.Game;
+import classes.Player;
+
 import java.util.Scanner;
 
 public class InteractWithObject {
     // Interfaces which belong each to a different interactable object.
-    private IReadable readableObject;
-    private IWeapon weapon;
-    private IRewardable reward;
+    private final IReadable readableObject;
+    private final IWeapon weapon;
+    private final IRewardable reward;
     Scanner scanner = new Scanner(System.in);
 
     // Constructor which initializes interactable room objects.
@@ -18,18 +19,9 @@ public class InteractWithObject {
         this.reward = reward;
     }
 
-    // Display available interaction choices to the player.
-    public void displayOptions() {
-        System.out.println("Available interactions:");
-        if (readableObject != null) System.out.println(("- Book (read information about this room"));
-        if (weapon != null) System.out.println("- Weapon (use in combat)");
-        if (reward != null) System.out.println("- Reward (collect a reward)");
-        System.out.println("- Exit (stop interacting)");
-        System.out.println("What would you like to interact with?");
-    }
-
     // Handle book interaction.
     private void useReadable() {
+
         if (readableObject != null) {
             readableObject.showMessage();
         } else {
@@ -39,6 +31,7 @@ public class InteractWithObject {
 
     // Handle weapon interaction.
     private void useWeapon() {
+
         if (weapon !=null ) {
             weapon.attack();
         } else {
@@ -48,6 +41,7 @@ public class InteractWithObject {
 
     // Handle reward interaction.
     private void useReward(Player player) {
+
         if (reward != null) {
             reward.grantReward(player);
         } else {
@@ -57,12 +51,17 @@ public class InteractWithObject {
 
     // Handle player input interaction with objects.
     public void interactWithObject(Player player) {
+        DisplayOptions displayOptions = new DisplayOptions(readableObject, weapon, reward);
+
         if (readableObject == null && weapon == null && reward == null) {
+
             System.out.println("There are no objects in this room!");
+
             return;
         }
-            displayOptions();
-            String input = scanner.nextLine().trim().toLowerCase();
+            displayOptions.displayOptions();
+
+        String input = scanner.nextLine().trim().toLowerCase();
 
             // The Player uses an object based on input.
             switch (input) {

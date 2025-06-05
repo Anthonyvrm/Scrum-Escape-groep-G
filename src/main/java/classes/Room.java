@@ -1,5 +1,6 @@
 package classes;
 
+import InteractWithObject.InteractWithObject;
 import Interface.*;
 import Joker.Joker;
 
@@ -10,11 +11,11 @@ import java.util.Scanner;
 
 public abstract class Room implements Subject {
     protected String name;
-    protected Monster monster;
+    public Monster monster;
     protected boolean isCorrect;
 
     // List with added observers.
-    private List<QuestionObserver> questionObservers = new ArrayList<>();
+    private final List<QuestionObserver> questionObservers = new ArrayList<>();
     protected IRoom questionStrategy;
     protected HintProvider hintProvider;
     protected IReadable bookinfo;
@@ -32,8 +33,13 @@ public abstract class Room implements Subject {
         this.name = name;
         this.monster = monster;
         this.isCorrect = isCorrect;
-        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+        this.player = player;
+        // interactableObjects will be initialized after bookinfo, weapon, and reward are set in subclasses
+    }
 
+    // Initialize interactable objects with the current bookinfo, weapon, and reward
+    protected void initializeInteractableObjects() {
+        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
     }
 
     // Set player in room.
@@ -49,11 +55,13 @@ public abstract class Room implements Subject {
 
     // Asks the player if they want a hint.
     public void askForHint(Scanner scanner) {
-        System.out.println("Would you like a hint? Type 'Y' of 'N':");
-        String input = scanner.nextLine();
 
+        System.out.println("Would you like a hint? Type 'Y' of 'N':");
+
+        String input = scanner.nextLine();
         if (input.equalsIgnoreCase("Y")) {
             System.out.println("Hint: " + hintProvider.getHint());
+
         }
     }
 

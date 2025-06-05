@@ -25,13 +25,18 @@ public class BattleInputHandler {
 
     // Register new command.
     public void registerCommand(String commandName, Command command) {
+
         commands.put(commandName.toLowerCase(), command);
+
     }
 
 
     // Handle player's battle input.
     public void handleBattleInput() {
+
         InputHandler inputHandler = new InputHandler();
+
         inputHandler.handleInput(availableCommands, scanner, commands);
+
     }
 }

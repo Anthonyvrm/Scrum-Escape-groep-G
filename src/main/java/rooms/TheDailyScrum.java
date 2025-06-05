@@ -3,7 +3,7 @@ package rooms;
 import Commands.JokerCommand;
 import Game.Game;
 import Game.GameUI;
-import Interface.IJoker;
+import InteractWithObject.InteractWithObject;
 import Interface.IRoom;
 import Interface.KeyableRoom;
 import Joker.Joker;
@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
     private final Scanner scanner = new Scanner(System.in);
 
+    // Constructor initializes the room TheDailyScrum.
     public TheDailyScrum(Monster monster, boolean isCorrect, Player player) {
         super("The Daily Scrum Room", monster, isCorrect, player);
         setQuestionStrategy(new MultipleChoiceQuestion("What is the main purpose of TheDailyScrum?\n" +
@@ -26,44 +27,48 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
         this.bookinfo = new BookInfo("The book is called: Daily Scrum for dummies. Are daily stand ups useless or are they actually useful?");
         this.weapon = new Weapon();
         this.reward = new RoomReward();
-        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+        initializeInteractableObjects();
 
     }
 
+    // If the player uses a key, the player will be able to move to the next room.
     @Override
     public void addKey() {
+        // Set answer to correct, so the player can move to the next room.
         setIsCorrect(true);
         notifyObservers(true);
         RoomNavigator navigator = new RoomNavigator(Game.getRooms(), player, new GameUI());
         navigator.setCurrentRoomIndex(player.getVoortgang() + 1);
         navigator.goToNextRoom();
     }
+
+    // Apply Joker ability (key), the question gets automatically answered.
     @Override
     public void applyKeyJoker(Joker joker) {
         addKey();
         joker.markJokerAsUsed();
-
     }
 
-
-
+    // Return a funny hint.
     @Override
     public String getFunnyHint(){
         return "You have no friends so work the entire day.";
     }
 
+    // Return a helpful hint.
     @Override
     public String getHelpHint() {
         return "Creating structure when working together is essential for a successful Scrum Team.";
     }
 
-
+    // Display introduction text to the player.
     @Override
     public void introductionText() {
         System.out.println("Welcome to the TheDailyScrum room!");
         interactWithObject();
     }
 
+    // Describe scenario.
     @Override
     public void roomTask() {
         System.out.println("Scenario:");
@@ -73,12 +78,14 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
         question();
     }
 
+    // Check the player's answer.
     @Override
     public void roomCheckAnswer() {
         CheckAnswer checker = new CheckAnswer(new Scanner(System.in));
         this.isCorrect = checker.isAnswerCorrect("C", this);
     }
 
+    // Displays the result of the player's answer.
     @Override
     public void roomResult() {
         if (isCorrect) {
@@ -89,6 +96,7 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
         }
     }
 
+    // Display feedback to the player if the answer is false.
     @Override
     public void roomFeedback() {
         if (!isCorrect) {

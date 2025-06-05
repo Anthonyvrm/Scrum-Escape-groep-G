@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class CheckAnswer {
     private final Scanner scanner;
 
+    // Constructor CheckAnswer.
     public CheckAnswer(Scanner scanner) {
         this.scanner = scanner;
     }

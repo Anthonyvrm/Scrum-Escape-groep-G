@@ -20,13 +20,17 @@ public class JokerCommand implements Command {
     // Executes the Joker command.
     @Override
     public void execute() {
+
         System.out.println("Do you want to use your joker?");
         Scanner scanner = new Scanner(System.in);
 
         // If the player wants a Joker and he has one.
         if (scanner.nextLine().trim().equalsIgnoreCase("yes")) {
+
             if (player.getJoker() != null) {
+
                 player.getJoker().useJokerIn(player.getPosition());
+
             } else {
                 // If the player doesn't have a Joker.
                 gameUI.showMessage("You have no joker available!");

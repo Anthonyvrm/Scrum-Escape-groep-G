@@ -2,6 +2,7 @@ package rooms;
 
 import Commands.JokerCommand;
 import Game.GameUI;
+import InteractWithObject.InteractWithObject;
 import Interface.IRoom;
 import StrategyClasses.OpenQuestion;
 import classes.*;
@@ -19,22 +20,23 @@ public class ScrumBoard extends Room implements IRoom {
         this.bookinfo = new BookInfo("Title : Trello for dummies.. Urgh what a horrible book, who even wants a project with clear structure?");
         this.weapon = new Weapon();
         this.reward = new RoomReward();
-        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+        initializeInteractableObjects();
 
     }
 
-    // Helpful hint.
+    // Return a helpful hint.
     @Override
     public String getHelpHint() {
         return "Maybe if you did a stand-up this morning, you'd know the answer?";
     }
 
-    // Funny hint.
+    // Return a funny hint.
     @Override
     public String getFunnyHint(){
         return "Without legs you cant stand up!";
     }
 
+    // Display introduction text to the player.
     @Override
     public void introductionText() {
         System.out.println("You are in the Scrum Board room! You can see many people talking about the project.");

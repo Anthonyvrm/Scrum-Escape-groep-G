@@ -1,44 +1,16 @@
-package classes;
+package PlayerCreation;
 
-import Game.GameUI;
 import Joker.*;
+import classes.Player;
 
 import java.util.Scanner;
 
-public class PlayerCreation {
-    public static Player createCharacter() {
-        GameUI.showGameTitle();
-        Player player = new Player();
-        System.out.println("Starting Character Creation...");
-        System.out.println();
-        System.out.println("Create your character!");
-        System.out.println();
-
-        // Ask player for their name.
-        whatIsYourName(player);
-
-        // Let player select Joker.
-        selectJoker(player);
-
-        // Set player hp.
-        player.setStatus(150);
-
-        // Return fully created player.
-        return player;
-    }
-
-    // Ask the Player to enter their name and add it to the player object.
-    public static void whatIsYourName(Player player) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("What is your name: ");
-        String name = scanner.nextLine();
-        player.setName(name);
-        System.out.println();
-    }
+public class PlayerSelectsJoker {
 
     // Ask Player to choose Joker, set joker on player.
-    private static void selectJoker(Player player) {
+    public void selectJoker(Player player) {
         Scanner scanner = new Scanner(System.in);
+
         Joker selectedJoker = null;
 
         System.out.println("Choose your joker for the game:");

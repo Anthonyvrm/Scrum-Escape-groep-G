@@ -15,6 +15,7 @@ public class Trollo implements IMonster {
     // Prints a random quote when a monster takes damage.
     @Override
     public void takeDamageQuote(){
+
         int randomInt = (int)(Math.random() * 5);
         switch (randomInt) {
             case 0:
@@ -38,6 +39,7 @@ public class Trollo implements IMonster {
     // Prints a random quote when a monster deals damage.
     @Override
     public void dealDamageQuote(){
+
         int randomInt = (int)(Math.random() * 5);
         switch (randomInt) {
             case 0:
@@ -55,6 +57,7 @@ public class Trollo implements IMonster {
             case 4:
                 System.out.println("I replaced your status labels... with emojis!");
                 break;
+
         }
     }
 }

@@ -34,6 +34,7 @@ public class TheScrumReaper implements IMonster {
     // Prints a random quote when a monster deals damage.
     @Override
     public void dealDamageQuote(){
+
         int randomInt = (int)(Math.random() * 5);
         switch (randomInt) {
             case 0:
@@ -51,6 +52,7 @@ public class TheScrumReaper implements IMonster {
             case 4:
                 System.out.println("I turn every review into ritual... without purpose.");
                 break;
+
         }
     }
 }

@@ -27,6 +27,7 @@ public class RoomNavigator {
 
     // Set current room index.
     public void setCurrentRoomIndex(int currentRoomIndex) {
+
         if (currentRoomIndex >= 0 && currentRoomIndex < rooms.size()) {
             this.currentRoomIndex = currentRoomIndex;
         } else {
@@ -41,12 +42,15 @@ public class RoomNavigator {
 
     // If current room is completed advance the player to the next room.
     public void goToNextRoom() {
+
         Room currentRoom = rooms.get(currentRoomIndex);
         roomChanged = false;
 
         // If the room is not completed, don't let the player advance.
         if (!currentRoom.isCorrect) {
+
             gameUI.showMessage("You gotta finish the room " + player.getName() + " !");
+
             return;
         }
 
@@ -55,13 +59,17 @@ public class RoomNavigator {
 
         // Advance the player to the next room or end the game.
         if (currentRoomIndex < rooms.size()) {
+
             Room nextRoom = rooms.get(currentRoomIndex);
             player.setPosition(nextRoom);
+
             gameUI.showMessage("You are going to the next room called: " + nextRoom.getName());
+
             nextRoom.runEscapeRoom();
+
         } else {
             gameUI.showMessage("You finished the game YIPPIEEE!");
-            gameUI.endGame();
+            GameUI.endGame();
         }
     }
 

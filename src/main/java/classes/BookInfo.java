@@ -3,7 +3,7 @@ package classes;
 import Interface.IReadable;
 
 public class BookInfo implements IReadable {
-    private String info;
+    private final String info;
 
     // Constructor initializes info.
     public BookInfo(String info) {

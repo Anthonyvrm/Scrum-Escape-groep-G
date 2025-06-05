@@ -19,8 +19,9 @@ public class NextRoomCommand implements Command {
     public void execute() {
         roomNavigator.goToNextRoom();
 
-        // If the room changed add progress to player.
+        // If the room changed add progress to the player.
         if (roomNavigator.wasRoomChanged()) {
+
             player.setVoortgang(player.getVoortgang() + 1);
         }
     }

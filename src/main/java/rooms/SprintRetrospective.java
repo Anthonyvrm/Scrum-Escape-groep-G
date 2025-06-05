@@ -2,6 +2,7 @@ package rooms;
 
 import Commands.JokerCommand;
 import Game.GameUI;
+import InteractWithObject.InteractWithObject;
 import Interface.IRoom;
 import StrategyClasses.MultipleChoiceQuestion;
 import classes.*;
@@ -9,6 +10,7 @@ import classes.*;
 import java.util.Scanner;
 
 public class SprintRetrospective extends Room implements IRoom {
+    // Constructor initializes the room SprintRetrospective.
     public SprintRetrospective(Monster monster, boolean isCorrect, Player player) {
         super("Sprint Retrospective Room", monster, isCorrect, player);
         setQuestionStrategy(new MultipleChoiceQuestion("What can the Scrum Team learn from this experience?\n" +
@@ -20,20 +22,23 @@ public class SprintRetrospective extends Room implements IRoom {
         this.bookinfo = new BookInfo("The book is titled: Retrospective. Why would you reflect even reflect on your behaviour within the team?");
         this.weapon = new Weapon();
         this.reward = new RoomReward();
-        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+        initializeInteractableObjects();
 
     }
 
+    // Return a helpful hint.
     @Override
     public String getHelpHint() {
         return "include the important group of people deciding your project for some feedback here and there";
     }
 
+    // Return a funny hint.
     @Override
     public String getFunnyHint(){
         return "Quick tip you should probably include the people who decide your paycheck";
     }
 
+    // Display introduction text to the player.
     @Override
     public void introductionText() {
         System.out.println("Welcome to the SprintRetrospective room!");
@@ -42,6 +47,7 @@ public class SprintRetrospective extends Room implements IRoom {
         interactWithObject();
     }
 
+    // Describe scenario.
     @Override
     public void roomTask() {
         System.out.println("Scenario:");
@@ -52,12 +58,14 @@ public class SprintRetrospective extends Room implements IRoom {
         question();
     }
 
+    // Check the player's answer.
     @Override
     public void roomCheckAnswer() {
         CheckAnswer checker = new CheckAnswer(new Scanner(System.in));
         this.isCorrect = checker.isAnswerCorrect("B", this);
     }
 
+    // Displays the result of the player's answer.
     @Override
     public void roomResult() {
         if (isCorrect) {
@@ -69,6 +77,7 @@ public class SprintRetrospective extends Room implements IRoom {
         }
     }
 
+    // Display feedback to the player if the answer is false.
     @Override
     public void roomFeedback() {
         if (!isCorrect) {

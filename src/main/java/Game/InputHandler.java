@@ -9,12 +9,15 @@ import java.util.Scanner;
 public class InputHandler {
         // Handle user input.
         public void handleInput(ArrayList<String> availableCommands, Scanner scanner, Map<String, Command> commands) {
-        System.out.println();
+
+            System.out.println();
         // Displays available commands
         System.out.println("Available commands:");
+
         for(String useableCommand : availableCommands) {
             System.out.println(useableCommand);
         }
+
         System.out.print("> ");
 
         // Read input and find command.

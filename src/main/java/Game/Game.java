@@ -42,12 +42,6 @@ public class Game {
         return allRooms;
     }
 
-
-    /*public void useJoker() {
-        if (playerJoker != null) {
-            playerJoker.useJokerIn(player.getPosition());
-        }
-    }*/
     // Starts the game.
     public void startGame(Room startingRoom) {
         if (gameEngine != null) {

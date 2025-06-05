@@ -15,6 +15,7 @@ public class FeedbackPhantom implements IMonster {
     // Prints a random quote when a monster takes damage.
     @Override
     public void takeDamageQuote(){
+
         int randomInt = (int)(Math.random() * 5);
         switch (randomInt) {
             case 0:
@@ -32,12 +33,14 @@ public class FeedbackPhantom implements IMonster {
             case 4:
                 System.out.println("Alright, alright... I don’t care... but that hurts.");
                 break;
+
         }
     }
 
     // Prints a random quote when a monster deals damage.
     @Override
     public void dealDamageQuote(){
+
         int randomInt = (int)(Math.random() * 5);
         switch (randomInt) {
             case 0:
@@ -55,6 +58,7 @@ public class FeedbackPhantom implements IMonster {
             case 4:
                 System.out.println("I just derailed your progress — you're welcome.");
                 break;
+
         }
     }
 }
