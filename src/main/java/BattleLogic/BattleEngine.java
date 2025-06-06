@@ -1,13 +1,8 @@
 package BattleLogic;
 
-import Commands.NextRoomCommand;
 import Commands.*;
-import Commands.StatusCommand;
-import Game.GameInputHandler;
 import Game.*;
 import classes.*;
-import classes.RoomNavigator;
-
 import java.util.Scanner;
 
 public class BattleEngine {
@@ -15,8 +10,6 @@ public class BattleEngine {
     private Player player;
     private final BattleInputHandler inputHandler;
     private final Monster monster;
-
-    private RoomNavigator roomNavigator;
 
     // Constructor initializes player, inputHandler and monster.
     public BattleEngine(Player player, Monster monster) {
@@ -26,12 +19,10 @@ public class BattleEngine {
         setupCommands();
     }
 
-
     public void setPlayer(Player player) {
         this.player = player;
     }
 
-    // Register commands for battle.
     private void setupCommands() {
         inputHandler.registerCommand("1", new SlashCommand(player, monster));
         inputHandler.registerCommand("2", new BlockCommand(player, monster));
@@ -39,73 +30,78 @@ public class BattleEngine {
         inputHandler.availableCommands.add("- 2: Block");
     }
 
-    // Handles battle loop.
+    // Main battle loop
     public void runBattle(Room room, Player player) {
-
         while (true) {
 
-            //Handles user input during battle.
             inputHandler.handleBattleInput();
-
-            // Check if the monster has been defeated.
-            if (monster.getHealthPoints() <= 0) {
-
-                System.out.println("You defeated the " + monster.getClass().getSimpleName() + "!");
-
-                Scanner scanner = new Scanner(System.in);
-
-                // Marks the room as completed.
-                room.setIsCorrect(true);
-                room.notifyObservers(true);
-
-
-                // Asks the player if he wants to continue.
-
-                System.out.print("Do you want to continue to the next room? (yes/no): ");
-
-                String answer = scanner.nextLine().trim().toLowerCase();
-
-                // Increases the progress of the player.
-
-                // Move to the next room if the player commands so.
-                if (answer.equals("yes") || answer.equals("y")) {
-
-                    //!
-
-                    RoomNavigator navigator = Game.getGameEngine().getRoomNavigator(); // zo bedoelde ik de main navigator zit in gmae engine
-                    int index = Game.getRooms().indexOf(room);
-                    navigator.setCurrentRoomIndex(index);
-                    navigator.goToNextRoom();
-
-                } else {
-
-                    System.out.println("You chose to stay. You can continue exploring or type 'go to next' later.");
-                }
-
+            
+            if (isMonsterDefeated()) {
+                handleVictory(room);
                 break;
-                // Check if the player has been defeated.
-            } else if (player.getStatus() <= 0) {
-
-                System.out.println("You have been defeated by the " + monster.getClass().getSimpleName() + "!");
-
-                System.out.println("Game Over.");
-
+            } else if (isPlayerDefeated()) {
+                handleDefeat();
                 break;
-
-
             }
         }
     }
 
-    // Starts the battle loop in the current room with the player.
+    private boolean isMonsterDefeated() {
+        return monster.getHealthPoints() <= 0;
+    }
+
+    private boolean isPlayerDefeated() {
+        return player.getStatus() <= 0;
+    }
+
+    private void handleVictory(Room room) {
+        markRoomAsCompleted(room);
+        handleNextRoomNavigation(room);
+    }
+
+    private void markRoomAsCompleted(Room room) {
+        room.setIsCorrect(true);
+        room.notifyObservers(true);
+    }
+
+    private void handleNextRoomNavigation(Room room) {
+        String answer = askForNextRoom();
+        if (shouldMoveToNextRoom(answer)) {
+            navigateToNextRoom(room);
+        } else {
+            System.out.println("You chose to stay. You can continue exploring or type 'go to next' later.");
+        }
+    }
+
+    private String askForNextRoom() {
+        System.out.print("Do you want to continue to the next room? (yes/no): ");
+        return scanner.nextLine().trim().toLowerCase();
+    }
+
+    private boolean shouldMoveToNextRoom(String answer) {
+        return answer.equals("yes") || answer.equals("y");
+    }
+
+    private void navigateToNextRoom(Room room) {
+        RoomNavigator navigator = Game.getGameEngine().getRoomNavigator();
+        int index = Game.getRooms().indexOf(room);
+        navigator.setCurrentRoomIndex(index);
+        navigator.goToNextRoom();
+    }
+
+    private void handleDefeat() {
+        System.out.println("You have been slain by " + monster.getClass().getSimpleName() + "!");
+        System.out.println("Game Over.");
+    }
+
     public void startBattle(Room room, Player player) {
-
-        player.printStatus();
-
-        System.out.println(monster.getHealthPoints());
-
-        System.out.println("You are now in battle!");
-
+        displayBattleStart();
         runBattle(room, player);
+    }
+
+    private void displayBattleStart() {
+        player.printStatus();
+        System.out.println(monster.getHealthPoints());
+        System.out.println("You are now in battle!");
     }
 }
