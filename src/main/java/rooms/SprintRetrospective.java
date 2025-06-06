@@ -41,7 +41,7 @@ public class SprintRetrospective extends Room implements IRoom {
     // Display introduction text to the player.
     @Override
     public void introductionText() {
-        System.out.println("Welcome to the SprintRetrospective room!");
+        System.out.println("====== SprintRetrospective room! =====");
         System.out.println("In this room, you will reflect on how a Scrum Team can learn from their experiences.");
         System.out.println("Use your knowledge to identify what can be improved by the Scrum Team.");
         interactWithObject();

@@ -11,10 +11,12 @@ import classes.RoomNavigator;
 import java.util.Scanner;
 
 public class BattleEngine {
+    private Scanner scanner = new Scanner(System.in);
     private Player player;
     private final BattleInputHandler inputHandler;
     private final Monster monster;
-    private Game game;
+
+    private RoomNavigator roomNavigator;
 
     // Constructor initializes player, inputHandler and monster.
     public BattleEngine(Player player, Monster monster) {
@@ -23,6 +25,7 @@ public class BattleEngine {
         this.monster = monster;
         setupCommands();
     }
+
 
     public void setPlayer(Player player) {
         this.player = player;
@@ -38,6 +41,7 @@ public class BattleEngine {
 
     // Handles battle loop.
     public void runBattle(Room room, Player player) {
+
         while (true) {
 
             //Handles user input during battle.
@@ -54,20 +58,23 @@ public class BattleEngine {
                 room.setIsCorrect(true);
                 room.notifyObservers(true);
 
+
                 // Asks the player if he wants to continue.
+
                 System.out.print("Do you want to continue to the next room? (yes/no): ");
 
                 String answer = scanner.nextLine().trim().toLowerCase();
 
                 // Increases the progress of the player.
-                player.setVoortgang(player.getVoortgang() + 1);
-
 
                 // Move to the next room if the player commands so.
                 if (answer.equals("yes") || answer.equals("y")) {
 
-                    RoomNavigator navigator = new RoomNavigator(Game.getRooms(), player, new GameUI());
+                    //!
 
+                    RoomNavigator navigator = Game.getGameEngine().getRoomNavigator(); // zo bedoelde ik de main navigator zit in gmae engine
+                    int index = Game.getRooms().indexOf(room);
+                    navigator.setCurrentRoomIndex(index);
                     navigator.goToNextRoom();
 
                 } else {
@@ -84,6 +91,8 @@ public class BattleEngine {
                 System.out.println("Game Over.");
 
                 break;
+
+
             }
         }
     }

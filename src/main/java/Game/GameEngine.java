@@ -14,7 +14,6 @@ public class GameEngine {
     private final GameUI gameUI;
     private final GameInputHandler inputHandler;
     private final RoomNavigator roomNavigator;
-    private List<Room> rooms;
 
     // Constructor to initialize the game engine with a player, UI, input handler, and room navigator and a list of rooms.
     public GameEngine(Player player, List<Room> rooms) {
@@ -25,8 +24,11 @@ public class GameEngine {
         //setupCommands();
     }
 
+    public RoomNavigator getRoomNavigator() {
+        return roomNavigator;
+    }
+
     public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
         this.roomNavigator.setRooms(rooms);
         setupCommands();
     }
@@ -61,8 +63,24 @@ public class GameEngine {
 
     // Runs game loop and waits for player commands.
     private void runGameLoop() {
+        Room previousRoom = roomNavigator.getCurrentRoom();
         while (true) {
+            // 1) Kijk of we van kamer gewisseld zijn (bijvoorbeeld omdat addKey() NextRoomCommand uitvoerde):
+            Room current = roomNavigator.getCurrentRoom();
+            if (current != previousRoom) {
+                // We weten dat we net in de vorige iteratie NextRoomCommand.execute() hebben aangeroepen
+                // (dus de index is opgeschoven). Start direct runEscapeRoom() van de nieuwe kamer:
+                player.setPosition(current);
+                current.runEscapeRoom();
+                // reset previousRoom zodat we dit blok niet elke lus blijven herhalen
+                previousRoom = current;
+                continue; // ga opnieuw draaien van de while‐lus (nu na het starten van nieuwe kamer)
+            }
+
+            // 2) Als we wél in dezelfde kamer zitten, wacht dan op een gebruikercommando:
             inputHandler.handleGameInput();
+            // als de gebruiker nú “1” intoetst, wordt NextRoomCommand.execute() aangeroepen,
+            // wat de kamer laat wisselen én op de volgende iteratie in de lus triggeren we runEscapeRoom()
         }
     }
 }

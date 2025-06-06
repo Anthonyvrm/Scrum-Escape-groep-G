@@ -1,6 +1,7 @@
 package rooms;
 
 import Commands.JokerCommand;
+import Commands.NextRoomCommand;
 import Game.Game;
 import Game.GameUI;
 import InteractWithObject.InteractWithObject;
@@ -31,20 +32,24 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
 
     // If the player uses a key, the player will be able to move to the next room.
     @Override
-   public void addKey() {
+   public void addKey(boolean used, Joker joker) {
         // Set answer to correct, so the player can move to the next room.
-        setIsCorrect(true);
-        notifyObservers(true);
-        RoomNavigator navigator = new RoomNavigator(Game.getRooms(), player, new GameUI());
-        navigator.setCurrentRoomIndex(player.getVoortgang() + 1);
-        navigator.goToNextRoom();
+        if (used) {
+            System.out.println("You used the key!");
+        }
+        else {
+            joker.markJokerAsUsed();
+            setIsCorrect(true);
+            notifyObservers(true);
+            RoomNavigator navigator = Game.getGameEngine().getRoomNavigator();
+            navigator.goToNextRoom();
+        }
    }
 
    // Apply Joker ability (key), the question gets automatically answered.
     @Override
     public void applyKeyJoker(Joker joker) {
-        addKey();
-        joker.markJokerAsUsed();
+        addKey(joker.getUsed(), joker);
     }
 
 
@@ -63,7 +68,7 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
     // Display introduction text to the player.
     @Override
     public void introductionText() {
-        System.out.println("Welcome to the SprintReview room!");
+        System.out.println("===== SprintReview room =====");
         interactWithObject();
     }
 
@@ -73,6 +78,9 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         System.out.println("In this room you will display your knowledge, about the subject in SCRUM: the Sprint Review!");
         JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
         jokerCommand.execute();
+        if (this.isCorrect) {
+            return;
+        }
         question();
     }
 

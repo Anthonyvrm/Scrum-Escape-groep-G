@@ -13,8 +13,13 @@ public class KeyJoker extends Joker {
 
         room.applyKeyJoker(this);
 
+        //if (room.wasUnlockedByKey()) {
+            //room.setIsCorrect(true);
+            //room.notifyObservers(true);
+           //Game.getGameEngine().getRoomNavigator().goToNextRoom();
+        }
     }
-}
+
 
 
 

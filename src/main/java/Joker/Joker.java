@@ -13,13 +13,19 @@ public abstract class Joker {
         this.used = false;
     }
 
+    public boolean getUsed() {
+        return used;
+    }
+
     // If the joker has been used throw exception, otherwise mark it.
     public void markJokerAsUsed() {
 
         if (used) {
-            throw new IllegalStateException("Joker has already been used.");
+            System.out.println("This joker has already been used.");
+            //throw new IllegalStateException("Joker has already been used.");
         } else {
             used = true;
+            System.out.println("Joker has been marked as used!");
         }
     }
 
@@ -28,3 +34,5 @@ public abstract class Joker {
         room.applyKeyJoker(this);
     }
 }
+
+

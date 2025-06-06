@@ -37,7 +37,7 @@ public class TIARoom extends Room implements IRoom {
     // Display introduction text to the player.
     @Override
     public void introductionText() {
-        System.out.println("Welcome to the TIARoom!");
+        System.out.println("===== TIA Room =====");
         System.out.println("This is the final challenge you must face before you have succeeded this test of intelligence and wisdom.");
         System.out.println("You have walked through every chamber and must now show your full understanding of the SCRUM process.");
         System.out.println("Good luck!");
