@@ -17,6 +17,10 @@ public class Monster {
         this.monsterStrategy = monsterStrategy;
     }
 
+    public String getName() {
+        return name;
+    }
+
     // Getter for current monster healthPoints.
     public int getHealthPoints() {
         return healthPoints;

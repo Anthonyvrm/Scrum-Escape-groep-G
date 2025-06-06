@@ -42,6 +42,8 @@ public class SlashCommand implements Command {
 
         System.out.println("The foe's HP is now " + monster.getHealthPoints());
 
+
+        System.out.println(monster.getName() + " attacks you and does 10 damage!");
         monster.dealDamage(player, 10);
 
         System.out.println("Your HP is now " + player.getStatus());
