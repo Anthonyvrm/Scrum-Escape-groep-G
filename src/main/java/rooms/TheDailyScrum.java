@@ -34,50 +34,26 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
 
     // If the player uses a key, the player will be able to move to the next room.
     @Override
-    public void addKey() {
+    public void addKey(boolean used, Joker joker) {
         // Set answer to correct, so the player can move to the next room.
         // 1) Markeer deze kamer als “klaar” (optioneel, voor observables)
-        setIsCorrect(true);
-        notifyObservers(true);
+        if (used) {
+            System.out.println("You used the joker already!");
+        }
+        else {
+            joker.markJokerAsUsed();
+            setIsCorrect(true);
+            notifyObservers(true);
+            RoomNavigator navigator = Game.getGameEngine().getRoomNavigator();
+            navigator.goToNextRoom();
 
-
-        //! ik snap niet waarom deze line hieronder niet werkt.
-        //roomnavigator.goToNextRoom();
-
-        // 2) Pak de centrale navigator en spring één kamer vooruit:
-        RoomNavigator navigator = Game.getGameEngine().getRoomNavigator();
-        NextRoomCommand nextCmd = new NextRoomCommand(navigator, player);
-        nextCmd.execute();
-
-        /*setIsCorrect(true);
-        notifyObservers(true);
-        RoomNavigator nav = Game.getGameEngine().getRoomNavigator();
-        NextRoomCommand nextCmd = new NextRoomCommand(nav, player);
-        nextCmd.execute();
-        Room nextRoom = nav.getCurrentRoom();
-        nextRoom.runEscapeRoom();
-
-         */
-        // test 7 got bend over door naar de volfende kamer te gaan
-
-
-        /*
-        int idx = Game.getRooms().indexOf(this);
-        nav.setCurrentRoomIndex(idx + 1);
-        Room nextRoom = nav.getCurrentRoom();
-        nav.goToNextRoom();
-        nextRoom.runEscapeRoom();
-
-         */
-
-
+        }
     }
 
     // Apply Joker ability (key), the question gets automatically answered.
     @Override
     public void applyKeyJoker(Joker joker) {
-        addKey();
-        joker.markJokerAsUsed();
+        addKey(joker.getUsed(), joker);
     }
 
     // Return a funny hint.
@@ -107,6 +83,7 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
         JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
         jokerCommand.execute();
         if (this.isCorrect) {
+            System.out.println("THIS IS CORRECT");
             return;
         }
 
@@ -116,8 +93,14 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
     // Check the player's answer.
     @Override
     public void roomCheckAnswer() {
+
+        System.out.println("Answer is getting checked..");
         CheckAnswer checker = new CheckAnswer(new Scanner(System.in));
         this.isCorrect = checker.isAnswerCorrect("C", this);
+
+        if (this.isCorrect) {
+            System.out.println("Answer has been checked and is correct.");
+        }
     }
 
     // Displays the result of the player's answer.

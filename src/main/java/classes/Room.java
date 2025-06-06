@@ -50,8 +50,12 @@ public abstract class Room implements Subject {
     // KeyJoker can only be used in 2 rooms, when asking to use it in another room this method will be called.
     // Which tells the player the attempt to use the joker has been failed.
     public void applyKeyJoker(Joker joker) {
-        System.out.println("YOU CANNOT GET OUT LIKE THAT.");
+
+            joker.markJokerAsUsed();
+            System.out.println("YOU CANNOT GET OUT LIKE THAT.");
+
     }
+
     private boolean unlockedByKey = false;
 
     public void setIsCorrectByKey() {

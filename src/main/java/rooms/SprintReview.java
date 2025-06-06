@@ -1,6 +1,7 @@
 package rooms;
 
 import Commands.JokerCommand;
+import Commands.NextRoomCommand;
 import Game.Game;
 import Game.GameUI;
 import InteractWithObject.InteractWithObject;
@@ -31,24 +32,24 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
 
     // If the player uses a key, the player will be able to move to the next room.
     @Override
-   public void addKey() {
+   public void addKey(boolean used, Joker joker) {
         // Set answer to correct, so the player can move to the next room.
-        setIsCorrect(true);
-        notifyObservers(true);
-        RoomNavigator nav = Game.getGameEngine().getRoomNavigator();
-        int idx = Game.getRooms().indexOf(this);
-        nav.setCurrentRoomIndex(idx);
-        nav.goToNextRoom();
-
-        Room nextRoom = nav.getCurrentRoom();
-        nextRoom.runEscapeRoom();
+        if (used) {
+            System.out.println("You used the key!");
+        }
+        else {
+            joker.markJokerAsUsed();
+            setIsCorrect(true);
+            notifyObservers(true);
+            RoomNavigator navigator = Game.getGameEngine().getRoomNavigator();
+            navigator.goToNextRoom();
+        }
    }
 
    // Apply Joker ability (key), the question gets automatically answered.
     @Override
     public void applyKeyJoker(Joker joker) {
-        addKey();
-        joker.markJokerAsUsed();
+        addKey(joker.getUsed(), joker);
     }
 
 

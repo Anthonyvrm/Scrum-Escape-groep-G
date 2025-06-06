@@ -70,6 +70,8 @@ public class BattleEngine {
                 // Move to the next room if the player commands so.
                 if (answer.equals("yes") || answer.equals("y")) {
 
+                    //!
+
                     RoomNavigator navigator = Game.getGameEngine().getRoomNavigator(); // zo bedoelde ik de main navigator zit in gmae engine
                     int index = Game.getRooms().indexOf(room);
                     navigator.setCurrentRoomIndex(index);
