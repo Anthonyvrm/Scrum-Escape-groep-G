@@ -11,7 +11,7 @@ public class HintJoker extends Joker implements IJoker {
     public void useJokerIn(Room room) {
         // Mark joker when used.
         markJokerAsUsed();
-        // Ask room to provode a hint.
+        // Ask room to provide a hint.
         room.askForHint(new Scanner(System.in));
 
     }

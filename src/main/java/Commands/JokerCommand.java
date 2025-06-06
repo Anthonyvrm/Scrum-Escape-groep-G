@@ -11,6 +11,7 @@ public class JokerCommand implements Command {
     private final Player player;
     private final GameUI gameUI;
 
+
     // Constructor JokerCommand.
     public JokerCommand(Player player, GameUI gameUI) {
         this.player = player;
@@ -28,7 +29,6 @@ public class JokerCommand implements Command {
         if (scanner.nextLine().trim().equalsIgnoreCase("yes")) {
 
             if (player.getJoker() != null) {
-
                 player.getJoker().useJokerIn(player.getPosition());
 
             } else {

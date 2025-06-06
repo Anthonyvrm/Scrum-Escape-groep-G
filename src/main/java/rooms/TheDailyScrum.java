@@ -1,6 +1,7 @@
 package rooms;
 
 import Commands.JokerCommand;
+import Commands.NextRoomCommand;
 import Game.Game;
 import Game.GameUI;
 import InteractWithObject.InteractWithObject;
@@ -35,11 +36,41 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
     @Override
     public void addKey() {
         // Set answer to correct, so the player can move to the next room.
+        // 1) Markeer deze kamer als “klaar” (optioneel, voor observables)
         setIsCorrect(true);
         notifyObservers(true);
-        RoomNavigator navigator = new RoomNavigator(Game.getRooms(), player, new GameUI());
-        navigator.setCurrentRoomIndex(player.getVoortgang() + 1);
-        navigator.goToNextRoom();
+
+
+        //! ik snap niet waarom deze line hieronder niet werkt.
+        //roomnavigator.goToNextRoom();
+
+        // 2) Pak de centrale navigator en spring één kamer vooruit:
+        RoomNavigator navigator = Game.getGameEngine().getRoomNavigator();
+        NextRoomCommand nextCmd = new NextRoomCommand(navigator, player);
+        nextCmd.execute();
+
+        /*setIsCorrect(true);
+        notifyObservers(true);
+        RoomNavigator nav = Game.getGameEngine().getRoomNavigator();
+        NextRoomCommand nextCmd = new NextRoomCommand(nav, player);
+        nextCmd.execute();
+        Room nextRoom = nav.getCurrentRoom();
+        nextRoom.runEscapeRoom();
+
+         */
+        // test 7 got bend over door naar de volfende kamer te gaan
+
+
+        /*
+        int idx = Game.getRooms().indexOf(this);
+        nav.setCurrentRoomIndex(idx + 1);
+        Room nextRoom = nav.getCurrentRoom();
+        nav.goToNextRoom();
+        nextRoom.runEscapeRoom();
+
+         */
+
+
     }
 
     // Apply Joker ability (key), the question gets automatically answered.
@@ -64,7 +95,7 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
     // Display introduction text to the player.
     @Override
     public void introductionText() {
-        System.out.println("Welcome to the TheDailyScrum room!");
+        System.out.println("====== TheDailyScrum room =====");
         interactWithObject();
     }
 
@@ -75,6 +106,10 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
         System.out.println("The Scrum Team gathers each morning to show their task progress to the Scrum Master.");
         JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
         jokerCommand.execute();
+        if (this.isCorrect) {
+            return;
+        }
+
         question();
     }
 

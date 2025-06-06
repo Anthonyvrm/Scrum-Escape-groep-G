@@ -34,6 +34,7 @@ public class DisplayOptions {
         System.out.println("- 4: Exit (stop interacting)");
 
         System.out.println("What would you like to interact with?");
+        System.out.println();
     }
 }
 

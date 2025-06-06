@@ -39,7 +39,7 @@ public class ScrumBoard extends Room implements IRoom {
     // Display introduction text to the player.
     @Override
     public void introductionText() {
-        System.out.println("You are in the Scrum Board room! You can see many people talking about the project.");
+        System.out.println("===== ScrumBoard Room =====");
         interactWithObject();
     }
 
@@ -52,7 +52,8 @@ public class ScrumBoard extends Room implements IRoom {
         JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
         jokerCommand.execute();
         question();
-    }
+        }
+
 
     // Check the player's answer.
     @Override

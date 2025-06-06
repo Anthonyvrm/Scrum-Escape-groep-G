@@ -14,7 +14,6 @@ public class GameEngine {
     private final GameUI gameUI;
     private final GameInputHandler inputHandler;
     private final RoomNavigator roomNavigator;
-    private List<Room> rooms;
 
     // Constructor to initialize the game engine with a player, UI, input handler, and room navigator and a list of rooms.
     public GameEngine(Player player, List<Room> rooms) {
@@ -25,8 +24,11 @@ public class GameEngine {
         //setupCommands();
     }
 
+    public RoomNavigator getRoomNavigator() {
+        return roomNavigator;
+    }
+
     public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
         this.roomNavigator.setRooms(rooms);
         setupCommands();
     }

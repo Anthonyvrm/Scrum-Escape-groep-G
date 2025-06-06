@@ -14,6 +14,7 @@ public class CheckAnswer {
 
     // Check if player input is the correct answer.
     public boolean isAnswerCorrect(String correctAnswer, Room room) {
+
         String answer = scanner.nextLine();
         boolean isCorrect = answer.equalsIgnoreCase(correctAnswer);
 
@@ -24,6 +25,7 @@ public class CheckAnswer {
 
         // Notify all observers about the answer.
         room.notifyObservers(isCorrect);
-        return isCorrect;
+
+        return isCorrect; // hier toch
     }
 }

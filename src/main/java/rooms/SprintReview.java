@@ -35,9 +35,13 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         // Set answer to correct, so the player can move to the next room.
         setIsCorrect(true);
         notifyObservers(true);
-        RoomNavigator navigator = new RoomNavigator(Game.getRooms(), player, new GameUI());
-        navigator.setCurrentRoomIndex(player.getVoortgang() + 1);
-        navigator.goToNextRoom();
+        RoomNavigator nav = Game.getGameEngine().getRoomNavigator();
+        int idx = Game.getRooms().indexOf(this);
+        nav.setCurrentRoomIndex(idx);
+        nav.goToNextRoom();
+
+        Room nextRoom = nav.getCurrentRoom();
+        nextRoom.runEscapeRoom();
    }
 
    // Apply Joker ability (key), the question gets automatically answered.
@@ -63,7 +67,7 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
     // Display introduction text to the player.
     @Override
     public void introductionText() {
-        System.out.println("Welcome to the SprintReview room!");
+        System.out.println("===== SprintReview room =====");
         interactWithObject();
     }
 
@@ -73,6 +77,9 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         System.out.println("In this room you will display your knowledge, about the subject in SCRUM: the Sprint Review!");
         JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
         jokerCommand.execute();
+        if (this.isCorrect) {
+            return;
+        }
         question();
     }
 

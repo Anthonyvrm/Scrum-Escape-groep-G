@@ -52,7 +52,16 @@ public abstract class Room implements Subject {
     public void applyKeyJoker(Joker joker) {
         System.out.println("YOU CANNOT GET OUT LIKE THAT.");
     }
+    private boolean unlockedByKey = false;
 
+    public void setIsCorrectByKey() {
+        this.isCorrect = true;
+        this.unlockedByKey = true;
+    }
+
+    public boolean wasUnlockedByKey() {
+        return unlockedByKey;
+    }
     // Asks the player if they want a hint.
     public void askForHint(Scanner scanner) {
 

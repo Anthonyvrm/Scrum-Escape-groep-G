@@ -59,25 +59,33 @@ public class InteractWithObject {
 
             return;
         }
-            displayOptions.displayOptions();
+        displayOptions.displayOptions();
 
-        String input = scanner.nextLine().trim().toLowerCase();
+            while (true) {
+            System.out.print("Enter your choice (1, 2, 3 or 4): ");
+            System.out.println ();
 
-            // The Player uses an object based on input.
-            switch (input) {
-                case "1": // Book.
-                    useReadable();
-                    break;
-                case "2": // Weapon.
-                    useWeapon();
-                    break;
-                    case "3": // Reward.
-                    useReward(player);
-                    break;
-                    case "4": // Exit.
-                        return;
-                default:
-                    System.out.println("Invalid input! urgh....");
+            // Check if input is an integer.
+            if (!scanner.hasNextInt()) {
+                System.out.println("Please enter a number.");
+                scanner.next();
+                continue;
+            }
+
+            int input = scanner.nextInt();
+                // The Player uses an object based on input.
+                switch (input) {
+                    case 1 -> { useReadable();// Book.
+                              return; }
+                    case 2 -> { useWeapon(); // Weapon.
+                              return; }
+                    case 3 -> { useReward(player); // Reward.
+                              return; }
+                    case 4 -> { System.out.println ("You chose not to interact with an object.");
+                              return; // Exit.
+                    }
+                    default -> System.out.println("Invalid input! Please choose 1, 2, 3 or 4.");
+                }
             }
         }
     }
