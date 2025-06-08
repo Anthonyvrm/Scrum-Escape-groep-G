@@ -23,16 +23,18 @@ public class MonsterObserver implements QuestionObserver {
         
         if (!isCorrect) {
             // If the answer is wrong, the monster appears and battle starts.
-            System.out.println(monster.getClass().getSimpleName() + " appeared!");
+            System.out.println(monster.getName() + " appeared!");
             BattleEngine battleEngine = new BattleEngine(player, monster);
             battleEngine.startBattle(room, player);
         }
         // Notify player when monster is defeated.
         else if (monster.getHealthPoints() <= 0) {
-            System.out.println("Monster already defeated.");
+            //System.out.println("Monster already defeated.");
         }
         else {
-            System.out.println(monster.getClass().getSimpleName() + " vanished!");
+
+            System.out.println(monster.getName() + " vanished!");
+            System.out.println();
         }
     }
 }

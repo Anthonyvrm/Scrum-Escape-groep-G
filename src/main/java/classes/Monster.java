@@ -28,6 +28,7 @@ public class Monster {
 
     // Called when monster deals damage to the Player.
     public void dealDamage(Player player, double damageModifier){
+
         // Trigger monster quote.
         System.out.print(name + ": ");
 
@@ -58,6 +59,7 @@ public class Monster {
         // Trigger monster quote.
         System.out.print(name + ": ");
         monsterStrategy.takeDamageQuote();
+
 
         // Reduce monster hp.
         healthPoints -= damage;

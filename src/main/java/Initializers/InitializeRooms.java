@@ -15,12 +15,12 @@ public class InitializeRooms {
 
     static List<Room> createRoomsInOrder(Player player) {
         // Create monsters
-        Monster scopeCreep = new Monster(1, 1, "Scope Creep", new ScopeCreep());
-        Monster slowness = new Monster(1, 1, "Slowness", new Slowness());
-        Monster trollo = new Monster(1, 1, "Trollo", new Trollo());
-        Monster feedbackPhantom = new Monster(1, 1, "Feedback Phantom", new FeedbackPhantom());
-        Monster stagnator = new Monster(1, 1, "Stagnator", new Stagnator());
-        Monster theScrumReaper = new Monster(1,    1, "Scrum Reaper", new TheScrumReaper());
+        Monster scopeCreep = new Monster(1, 10, "Scope Creep", new ScopeCreep());
+        Monster slowness = new Monster(1, 10, "Slowness", new Slowness());
+        Monster trollo = new Monster(1, 10, "Trollo", new Trollo());
+        Monster feedbackPhantom = new Monster(1, 10, "Feedback Phantom", new FeedbackPhantom());
+        Monster stagnator = new Monster(1, 10, "Stagnator", new Stagnator());
+        Monster theScrumReaper = new Monster(1,    20, "Scrum Reaper", new TheScrumReaper());
 
         // Create and return rooms in the required order
         return List.of(

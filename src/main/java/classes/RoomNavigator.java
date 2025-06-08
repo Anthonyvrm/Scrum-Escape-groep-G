@@ -64,6 +64,7 @@ public class RoomNavigator {
             player.setPosition(nextRoom);
 
             gameUI.showMessage("You are going to the next room called: " + nextRoom.getName());
+            gameUI.showMessage("");
 
             nextRoom.runEscapeRoom();
 

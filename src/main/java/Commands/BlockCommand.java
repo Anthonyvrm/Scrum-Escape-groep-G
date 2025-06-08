@@ -21,9 +21,9 @@ public class BlockCommand implements Command {
 
         System.out.println("You rolled a " + roll + " on the dice.");
         System.out.println(switch (roll) {
-            case 0 -> "Block failed! You take full damage.";
-            case 19 -> "Perfect block! You take zero damage.";
-            default -> "You block the foe, but it's too late, you've taken damage!";
+            case 0 -> "Block failed! You take full damage.\n";
+            case 19 -> "Perfect block! You take zero damage.\n";
+            default -> "You block the foe, but it's too late, you've taken damage!\n";
         });
 
         monster.dealDamage(player, 10 * modifier);
@@ -37,12 +37,13 @@ public class BlockCommand implements Command {
         };
 
         if (counterDamage > 0) {
+            System.out.println("You have countered " + monster.getName() + " and dealt " + counterDamage + " damage!");
             monster.takeDamage(counterDamage);
-            System.out.println("You have countered the monster and deal " + counterDamage + " damage!");
+            System.out.println();
         } else {
             System.out.println("You missed!");
         }
 
-        System.out.println("The foe's HP is now: " + monster.getHealthPoints());
+        System.out.println(monster.getName() + " HP is now: " + monster.getHealthPoints());
     }
 }

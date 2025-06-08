@@ -56,26 +56,29 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
     // Return a helpful hint.
     @Override
     public String getHelpHint() {
-        return "maybe letting the most important people in this project show what you are up to is a good idea?";
+        return "Maybe letting the most important people in this project show what you are up to is a good idea?\n";
     }
 
     // Return a funny hint.
     @Override
     public String getFunnyHint(){
-        return "You should quickly show what you are doing before they use chatgpt instead of paying you ";
+        return "You should quickly show what you are doing before they use chatgpt instead of paying you\n";
     }
 
     // Display introduction text to the player.
     @Override
     public void introductionText() {
         System.out.println("===== SprintReview room =====");
+        System.out.println();
         interactWithObject();
     }
 
     // Describe scenario.
     @Override
     public void roomTask() {
+        System.out.println();
         System.out.println("In this room you will display your knowledge, about the subject in SCRUM: the Sprint Review!");
+        System.out.println();
         JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
         jokerCommand.execute();
         if (this.isCorrect) {

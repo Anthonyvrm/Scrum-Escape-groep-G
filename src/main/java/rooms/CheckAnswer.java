@@ -30,9 +30,7 @@ public class CheckAnswer {
         room.notifyObservers(isCorrect);
 
         room.setIsCorrect(isCorrect);
-        System.out.println("Room completed is: " + isCorrect);
 
-        System.out.println("We are going to the next room");
         RoomNavigator navigator = Game.getGameEngine().getRoomNavigator();
         navigator.goToNextRoom();
 

@@ -53,6 +53,7 @@ public abstract class Room implements Subject {
 
             joker.markJokerAsUsed();
             System.out.println("YOU CANNOT GET OUT LIKE THAT.");
+            System.out.println();
 
     }
 
@@ -69,7 +70,7 @@ public abstract class Room implements Subject {
     // Asks the player if they want a hint.
     public void askForHint(Scanner scanner) {
 
-        System.out.println("Would you like a hint? Type 'Y' of 'N':");
+        System.out.println("Would you like a hint? Type 'Y' or 'N':");
 
         String input = scanner.nextLine();
         if (input.equalsIgnoreCase("Y")) {

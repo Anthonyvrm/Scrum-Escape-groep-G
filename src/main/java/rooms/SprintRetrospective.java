@@ -29,30 +29,34 @@ public class SprintRetrospective extends Room implements IRoom {
     // Return a helpful hint.
     @Override
     public String getHelpHint() {
-        return "include the important group of people deciding your project for some feedback here and there";
+        return "include the important group of people deciding your project for some feedback here and there\n";
     }
 
     // Return a funny hint.
     @Override
     public String getFunnyHint(){
-        return "Quick tip you should probably include the people who decide your paycheck";
+        return "Quick tip you should probably include the people who decide your paycheck\n";
     }
 
     // Display introduction text to the player.
     @Override
     public void introductionText() {
         System.out.println("====== SprintRetrospective room! =====");
+        System.out.println();
         System.out.println("In this room, you will reflect on how a Scrum Team can learn from their experiences.");
         System.out.println("Use your knowledge to identify what can be improved by the Scrum Team.");
+        System.out.println();
         interactWithObject();
     }
 
     // Describe scenario.
     @Override
     public void roomTask() {
+        System.out.println();
         System.out.println("Scenario:");
         System.out.println("The Scrum Team showed the results of their work after several sprints,");
         System.out.println("but the stakeholders were not happy with the results.");
+        System.out.println();
         JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
         jokerCommand.execute();
         question();

@@ -26,6 +26,7 @@ public abstract class Joker {
         } else {
             used = true;
             System.out.println("Joker has been marked as used!");
+            System.out.println();
         }
     }
 
