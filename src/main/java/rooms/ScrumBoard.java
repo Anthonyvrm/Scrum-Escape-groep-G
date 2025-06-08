@@ -27,28 +27,31 @@ public class ScrumBoard extends Room implements IRoom {
     // Return a helpful hint.
     @Override
     public String getHelpHint() {
-        return "Maybe if you did a stand-up this morning, you'd know the answer?";
+        return "Maybe if you did a stand-up this morning, you'd know the answer?\n";
     }
 
     // Return a funny hint.
     @Override
     public String getFunnyHint(){
-        return "Without legs you cant stand up!";
+        return "Without legs you cant stand up!\n";
     }
 
     // Display introduction text to the player.
     @Override
     public void introductionText() {
         System.out.println("===== ScrumBoard Room =====");
+        System.out.println();
         interactWithObject();
     }
 
     // Describe scenario.
     @Override
     public void roomTask() {
+        System.out.println();
         System.out.println("Scenario: ");
         System.out.println("You have been transformed to a Scrum Master.");
         System.out.println("All the people are looking at the board, they are clueless as to what they need to do next.");
+        System.out.println();
         JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
         jokerCommand.execute();
         question();

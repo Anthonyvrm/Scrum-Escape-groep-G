@@ -25,30 +25,33 @@ public class TIARoom extends Room implements IRoom {
     // Return a helpful hint.
     @Override
     public String getHelpHint() {
-        return "All the people in the SCRUM process are honest with each other";
+        return "All the people in the SCRUM process are honest with each other\n";
     }
 
     // Return a funny hint.
     @Override
     public String getFunnyHint(){
-        return "This hint is as clear as the sky.";
+        return "This hint is as clear as the sky.\n";
     }
 
     // Display introduction text to the player.
     @Override
     public void introductionText() {
         System.out.println("===== TIA Room =====");
+        System.out.println();
         System.out.println("This is the final challenge you must face before you have succeeded this test of intelligence and wisdom.");
         System.out.println("You have walked through every chamber and must now show your full understanding of the SCRUM process.");
         System.out.println("Good luck!");
+        System.out.println();
         interactWithObject();
     }
 
     // Describe scenario.
     @Override
     public void roomTask() {
+        System.out.println();
         System.out.println("Answer the following question about TIA, :");
-        System.out.println(" ");
+        System.out.println();
         JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
         jokerCommand.execute();
         question();

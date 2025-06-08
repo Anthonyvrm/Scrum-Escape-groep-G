@@ -59,27 +59,30 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
     // Return a funny hint.
     @Override
     public String getFunnyHint(){
-        return "You have no friends so work the entire day.";
+        return "You have no friends so work the entire day.\n";
     }
 
     // Return a helpful hint.
     @Override
     public String getHelpHint() {
-        return "Creating structure when working together is essential for a successful Scrum Team.";
+        return "Creating structure when working together is essential for a successful Scrum Team.\n";
     }
 
     // Display introduction text to the player.
     @Override
     public void introductionText() {
         System.out.println("====== TheDailyScrum room =====");
+        System.out.println();
         interactWithObject();
     }
 
     // Describe scenario.
     @Override
     public void roomTask() {
+        System.out.println();
         System.out.println("Scenario:");
         System.out.println("The Scrum Team gathers each morning to show their task progress to the Scrum Master.");
+        System.out.println();
         JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
         jokerCommand.execute();
         if (this.isCorrect) {
@@ -94,7 +97,6 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
     @Override
     public void roomCheckAnswer() {
 
-        System.out.println("Answer is getting checked..");
         CheckAnswer checker = new CheckAnswer(new Scanner(System.in));
         this.isCorrect = checker.isAnswerCorrect("C", this);
 

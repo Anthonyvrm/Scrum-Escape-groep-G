@@ -22,7 +22,7 @@ public class JokerCommand implements Command {
     @Override
     public void execute() {
 
-        System.out.println("Do you want to use your joker?");
+        System.out.println("Do you want to use your joker? (yes/no)");
         Scanner scanner = new Scanner(System.in);
 
         // If the player wants a Joker and he has one.
@@ -34,11 +34,13 @@ public class JokerCommand implements Command {
             } else {
                 // If the player doesn't have a Joker.
                 gameUI.showMessage("You have no joker available!");
+                gameUI.showMessage("");
             }
         }
         else {
             // Player declines to use a Joker.
             gameUI.showMessage("Okay, no problem!");
+            gameUI.showMessage("");
         }
     }
 }

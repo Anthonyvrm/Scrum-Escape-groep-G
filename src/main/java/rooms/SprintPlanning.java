@@ -28,21 +28,20 @@ public class SprintPlanning extends Room implements IRoom {
     // Return a helpful hint.
     @Override
     public String getHelpHint() {
-        return "It’s a collaborative estimation technique where everyone 'plays' a card — and it’s not at a casino.";
+        return "It’s a collaborative estimation technique where everyone 'plays' a card — and it’s not at a casino.\n";
     }
 
     // Return a funny hint.
     @Override
     public String getFunnyHint(){
-        return "Come on, I bet you plan to go to the casino soon!";
+        return "Come on, I bet you plan to go to the casino soon!\n";
     }
 
     // Display introduction text to the player.
     @Override
     public void introductionText() {
         System.out.println("======== Sprint Planning Room ======== ");
-        System.out.println("Welcome to the Sprint Planning room!");
-        System.out.println(" ");
+        System.out.println();
 
         //!Hier pak je het object op. Deze methode staat in de abstracte klasse Room. (Wist geen betere plek).
         interactWithObject();
@@ -51,13 +50,15 @@ public class SprintPlanning extends Room implements IRoom {
     // Describe scenario.
     @Override
     public void roomTask() {
+
+        System.out.println();
         System.out.println("The team is waiting at the table for you.");
         System.out.println("The tasks are overwhelming... we have no idea how to plan this.");
         System.out.println("And someone just realized—we've forgotten the name of the game!");
         System.out.println("*A voice breaks from the corner, barely holding back tears*");
         System.out.println("We need your help, Scrum Master.....");
+        System.out.println();
 
-        System.out.println(" ");
         JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
         jokerCommand.execute();
         question();

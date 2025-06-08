@@ -74,6 +74,7 @@ public class BattleEngine {
     }
 
     private String askForNextRoom() {
+        System.out.println();
         System.out.print("Do you want to continue to the next room? (yes/no): ");
         return scanner.nextLine().trim().toLowerCase();
     }
@@ -90,7 +91,7 @@ public class BattleEngine {
     }
 
     private void handleDefeat() {
-        System.out.println("You have been slain by " + monster.getClass().getSimpleName() + "!");
+        System.out.println("You have been slain by " + monster.getName() + "!");
         System.out.println("Game Over.");
     }
 
@@ -100,8 +101,10 @@ public class BattleEngine {
     }
 
     private void displayBattleStart() {
+        System.out.println();
         player.printStatus();
         System.out.println(monster.getHealthPoints());
+        System.out.println();
         System.out.println("You are now in battle!");
     }
 }

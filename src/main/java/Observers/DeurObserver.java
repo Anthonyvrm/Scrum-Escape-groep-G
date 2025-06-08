@@ -17,10 +17,14 @@ public class DeurObserver implements QuestionObserver {
     public void update(boolean isCorrect) {
 
         if (isCorrect) {
+            System.out.println();
             System.out.println("The door is open.");
+            System.out.println();
         }
         else {
+            System.out.println();
             System.out.println("The door is closed.");
+            System.out.println();
         }
     }
 }

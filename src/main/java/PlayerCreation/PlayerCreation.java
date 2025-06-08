@@ -18,7 +18,6 @@ public class PlayerCreation {
 
         Player player = new Player();
 
-        System.out.println("Starting Character Creation...");
         System.out.println();
         System.out.println("Create your character!");
         System.out.println();
@@ -34,15 +33,6 @@ public class PlayerCreation {
 
         // Return fully created player.
         return player;
-    }
-
-    // Ask the Player to enter their name and add it to the player object.
-    public static void whatIsYourName(Player player) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("What is your name: ");
-        String name = scanner.nextLine();
-        player.setName(name);
-        System.out.println();
     }
 }
 
