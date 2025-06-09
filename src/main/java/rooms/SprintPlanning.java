@@ -1,5 +1,6 @@
 package rooms;
 
+import Assistent.AssistantActivator;
 import Commands.JokerCommand;
 import Game.GameUI;
 import InteractWithObject.InteractWithObject;
@@ -11,8 +12,10 @@ import java.util.Scanner;
 
 
 public class SprintPlanning extends Room implements IRoom {
+    private AssistantActivator assistant;
+
     // Constructor initializes the room SprintPlanning.
-    public SprintPlanning(Monster monster, boolean isCorrect, Player player) {
+    public SprintPlanning(Monster monster, boolean isCorrect, Player player, AssistantActivator assistant) {
         super("Sprintplanning Room", monster, isCorrect, player);
         // Set the question type of the room and the text.
         setQuestionStrategy(new OpenQuestion("To assign story points to tasks, what is the name of the game you play with the team?"));
@@ -22,6 +25,7 @@ public class SprintPlanning extends Room implements IRoom {
         //!Dit is het wapen wat je mee krijgt, kunnen we van alles mee doen in specifieke kamers.
         this.weapon = new Weapon();
         this.reward = new RoomReward();
+        this.assistant = assistant;
         initializeInteractableObjects();
     }
 
@@ -42,9 +46,20 @@ public class SprintPlanning extends Room implements IRoom {
     public void introductionText() {
         System.out.println("======== Sprint Planning Room ======== ");
         System.out.println();
-
+        //!Hier vraag je voor een assistent om hulp te bieden.
+        askForAssistance();
         //!Hier pak je het object op. Deze methode staat in de abstracte klasse Room. (Wist geen betere plek).
         interactWithObject();
+    }
+
+    private void askForAssistance() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Would you like to get some assistance? (Y/N)");
+        if (scanner.nextLine().equalsIgnoreCase("Y")) {
+            System.out.println("Great! We will help you out.");
+            assistant.activateAssistant();
+            System.out.println();
+        }
     }
 
     // Describe scenario.

@@ -1,5 +1,7 @@
 package Initializers;
 
+import Assistent.AssistantAction;
+import Assistent.AssistantActivator;
 import Observers.DeurObserver;
 import Observers.MonsterObserver;
 import Observers.StatusObserver;
@@ -9,6 +11,7 @@ import classes.Room;
 import monster.*;
 import rooms.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InitializeRooms {
@@ -22,12 +25,25 @@ public class InitializeRooms {
         Monster stagnator = new Monster(1, 10, "Stagnator", new Stagnator());
         Monster theScrumReaper = new Monster(1,    20, "Scrum Reaper", new TheScrumReaper());
 
+        // Create assistants
+        List<AssistantAction> planningAssistantActions = new ArrayList<>();
+        planningAssistantActions.add(() -> System.out.println("Hint:"));
+        planningAssistantActions.add(() -> System.out.println("Hulpmiddel:"));
+        planningAssistantActions.add(() -> System.out.println("Motivatiequote:"));
+        AssistantActivator planningAssistant = new AssistantActivator(planningAssistantActions);
+
+        List<AssistantAction> reviewAssistantActions = new ArrayList<>();
+        reviewAssistantActions.add(() -> System.out.println("Hint:"));
+        reviewAssistantActions.add(() -> System.out.println("Hulpmiddel:"));
+        reviewAssistantActions.add(() -> System.out.println("Motivatiequote:"));
+        AssistantActivator reviewAssistant = new AssistantActivator(reviewAssistantActions);
+
         // Create and return rooms in the required order
         return List.of(
-                new SprintPlanning(scopeCreep, false, player),
+                new SprintPlanning(scopeCreep, false, player, planningAssistant),
                 new TheDailyScrum(slowness, false, player),
                 new ScrumBoard(trollo, false, player),
-                new SprintReview(feedbackPhantom, false, player),
+                new SprintReview(feedbackPhantom, false, player, reviewAssistant),
                 new SprintRetrospective(stagnator, false, player),
                 new TIARoom(theScrumReaper, false, player)
         );

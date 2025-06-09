@@ -1,5 +1,6 @@
 package rooms;
 
+import Assistent.AssistantActivator;
 import Commands.JokerCommand;
 import Commands.NextRoomCommand;
 import Game.Game;
@@ -14,8 +15,9 @@ import classes.*;
 import java.util.Scanner;
 
 public class SprintReview extends Room implements IRoom, KeyableRoom {
+    private AssistantActivator assistant;
     // Constructor initializes the room SprintReview.
-    public SprintReview(Monster monster, boolean isCorrect, Player player) {
+    public SprintReview(Monster monster, boolean isCorrect, Player player, AssistantActivator assistant) {
         super("Sprint Review Room", monster, isCorrect, player);
         setQuestionStrategy(new MultipleChoiceQuestion("To whom does the Scrum Team show their results during the Sprint Review?\n" +
                 "A) To the Scrum Master.\n" +
@@ -26,8 +28,8 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         this.bookinfo = new BookInfo("The book is called: Sprint Review. Why would you even review the sprint?");
         this.weapon = new Weapon();
         this.reward = new RoomReward();
+        this.assistant = assistant;
         initializeInteractableObjects();
-
     }
 
     // If the player uses a key, the player will be able to move to the next room.
@@ -70,7 +72,17 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
     public void introductionText() {
         System.out.println("===== SprintReview room =====");
         System.out.println();
+        //!Hier vraag je voor een assistent om hulp te bieden.
+        askForAssistance();
         interactWithObject();
+    }
+
+    private void askForAssistance() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Would you like to get some assistance? (Y/N)");
+        if (scanner.nextLine().equalsIgnoreCase("Y")) {
+            System.out.println("Great! We will help you out.");
+        }
     }
 
     // Describe scenario.
