@@ -32,7 +32,7 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         this.weapon = new Weapon();
         this.reward = new RoomReward();
         initializeInteractableObjects();
-        this.reviewAssistant = new AssistantActivator();
+        AssistantActivator reviewAssistant = new AssistantActivator();
         this.actions = reviewAssistant.createAssistantActions("Hint", "eduTool", "quote");
         reviewAssistant.setActions(this.actions);
     }
