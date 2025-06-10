@@ -1,5 +1,6 @@
 package rooms;
 
+import Assistent.AssistantAction;
 import Assistent.AssistantActivator;
 import Commands.JokerCommand;
 import Game.GameUI;
@@ -7,13 +8,14 @@ import InteractWithObject.InteractWithObject;
 import Interface.IRoom;
 import StrategyClasses.OpenQuestion;
 import classes.*;
+
+import java.util.List;
 import java.util.Scanner;
 
 
 
 public class SprintPlanning extends Room implements IRoom {
-    private AssistantActivator assistant;
-
+    private List<AssistantAction> actions;
     // Constructor initializes the room SprintPlanning.
     public SprintPlanning(Monster monster, boolean isCorrect, Player player, AssistantActivator assistant) {
         super("Sprintplanning Room", monster, isCorrect, player);
@@ -25,8 +27,10 @@ public class SprintPlanning extends Room implements IRoom {
         //!Dit is het wapen wat je mee krijgt, kunnen we van alles mee doen in specifieke kamers.
         this.weapon = new Weapon();
         this.reward = new RoomReward();
-        this.assistant = assistant;
         initializeInteractableObjects();
+        AssistantActivator planningAssistant = new AssistantActivator();
+        this.actions = planningAssistant.createAssistantActions("Hint", "eduTool", "quote");
+        planningAssistant.setActions(this.actions);
     }
 
     // Return a helpful hint.

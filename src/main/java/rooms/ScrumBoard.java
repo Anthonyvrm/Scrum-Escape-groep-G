@@ -21,7 +21,6 @@ public class ScrumBoard extends Room implements IRoom {
         this.weapon = new Weapon();
         this.reward = new RoomReward();
         initializeInteractableObjects();
-
     }
 
     // Return a helpful hint.

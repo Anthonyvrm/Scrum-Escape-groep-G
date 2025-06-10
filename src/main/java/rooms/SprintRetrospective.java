@@ -24,6 +24,7 @@ public class SprintRetrospective extends Room implements IRoom {
         this.reward = new RoomReward();
         initializeInteractableObjects();
 
+
     }
 
     // Return a helpful hint.
