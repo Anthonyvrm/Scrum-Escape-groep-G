@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class AssistantActivator {
     private List<AssistantAction> actions;
 
+
     //constructor
     public AssistantActivator(List<AssistantAction> actions) {
         this.actions = actions;

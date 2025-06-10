@@ -17,10 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static Assistent.AskForAssistance.askForAssistance;
 
 public class SprintReview extends Room implements IRoom, KeyableRoom {
     List<AssistantAction> actions = new ArrayList<>();
+    private AssistantActivator reviewAssistant;
     // Constructor initializes the room SprintReview.
     public SprintReview(Monster monster, boolean isCorrect, Player player) {
         super("Sprint Review Room", monster, isCorrect, player);
@@ -34,7 +34,7 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         this.weapon = new Weapon();
         this.reward = new RoomReward();
         initializeInteractableObjects();
-        AssistantActivator reviewAssistant = new AssistantActivator();
+        this.reviewAssistant = new AssistantActivator();
         this.actions = reviewAssistant.createAssistantActions("Hint", "eduTool", "quote");
         reviewAssistant.setActions(this.actions);
     }
@@ -80,19 +80,9 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         System.out.println("===== SprintReview room =====");
         System.out.println();
         //!Hier vraag je voor een assistent om hulp te bieden.
-        askForAssistance();
+        reviewAssistant.askForAssistance();
         interactWithObject();
     }
-/*
-    private void askForAssistance() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Would you like to get some assistance? (Y/N)");
-        if (scanner.nextLine().equalsIgnoreCase("Y")) {
-            System.out.println("Great! We will help you out.");
-            assistant.activateAssistant();
-        }
-    }
- */
 
     // Describe scenario.
     @Override
