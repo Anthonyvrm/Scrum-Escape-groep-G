@@ -12,6 +12,7 @@ import classes.*;
 import java.util.List;
 import java.util.Scanner;
 
+import static Assistent.AskForAssistance.askForAssistance;
 
 
 public class SprintPlanning extends Room implements IRoom {
@@ -55,16 +56,17 @@ public class SprintPlanning extends Room implements IRoom {
         //!Hier pak je het object op. Deze methode staat in de abstracte klasse Room. (Wist geen betere plek).
         interactWithObject();
     }
-
+/*
     private void askForAssistance() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Would you like to get some assistance? (Y/N)");
         if (scanner.nextLine().equalsIgnoreCase("Y")) {
             System.out.println("Great! We will help you out.");
-            assistant.activateAssistant();
+            activateAssistant();
             System.out.println();
         }
     }
+ */
 
     // Describe scenario.
     @Override

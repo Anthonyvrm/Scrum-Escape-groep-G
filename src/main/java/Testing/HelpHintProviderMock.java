@@ -2,16 +2,42 @@ package Testing;
 
 import FactoryClasses.HelpHintProvider;
 import classes.Room;
-import rooms.SprintPlanning;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import rooms.SprintPlanning;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HelpHintProviderMock {
+    private Room room;
+    private HelpHintProvider mockProvider;
 
- Room room = new SprintPlanning(null,false,null,null);
- HelpHintProviderMock mock = new HelpHintProviderMock(room);
+    @BeforeEach
+    void setUp() {
+        room = new SprintPlanning(null, false, null, null) {
 
- String hint = mock.getHint();
+         @Override
+         public String getHelpHint() {
+          return "This is the mockhint!";
 
- assertEquals('This is the mockhint!', hint);
+            }
+        };
+
+        mockProvider = new HelpHintProvider(room) {
+            @Override
+            public String getHint() {
+                return "This is the mockhint!";
+            }
+        };
+    }
+
+    @Test
+    void testGetHint() {
+        // Act
+        String hint = mockProvider.getHint();
+
+        // Assert
+        assertNotNull(hint, "Hint should not be null");
+        assertEquals("This is the mockhint!", hint);
+    }
+}

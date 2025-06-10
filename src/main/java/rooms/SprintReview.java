@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static Assistent.AskForAssistance.askForAssistance;
+
 public class SprintReview extends Room implements IRoom, KeyableRoom {
     List<AssistantAction> actions = new ArrayList<>();
     // Constructor initializes the room SprintReview.
@@ -78,7 +80,7 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         System.out.println("===== SprintReview room =====");
         System.out.println();
         //!Hier vraag je voor een assistent om hulp te bieden.
-        reviewAssistant.askForAssistance();
+        askForAssistance();
         interactWithObject();
     }
 /*
