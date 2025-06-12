@@ -11,7 +11,7 @@ import java.util.Scanner;
 public abstract class Room implements Subject {
     protected String name;
     public Monster monster;
-    protected boolean isCorrect;
+    public boolean isCorrect;
 
     // List with added observers.
     private final List<QuestionObserver> questionObservers = new ArrayList<>();
