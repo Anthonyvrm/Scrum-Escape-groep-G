@@ -20,22 +20,15 @@ public class InitializeRooms {
         // Create monsters
         Monster scopeCreep = new Monster(1, 10, "Scope Creep", new ScopeCreep());
         Monster slowness = new Monster(1, 10, "Slowness", new Slowness());
-        Monster trollo = new Monster(1, 10, "Trollo", new Trollo());
-        Monster feedbackPhantom = new Monster(1, 10, "Feedback Phantom", new FeedbackPhantom());
-        Monster stagnator = new Monster(1, 10, "Stagnator", new Stagnator());
-        Monster theScrumReaper = new Monster(1,    20, "Scrum Reaper", new TheScrumReaper());
+        Monster trollo = new Monster(2, 10, "Trollo", new Trollo());
+        Monster feedbackPhantom = new Monster(3, 10, "Feedback Phantom", new FeedbackPhantom());
+        Monster stagnator = new Monster(4, 10, "Stagnator", new Stagnator());
+        Monster theScrumReaper = new Monster(6,    20, "Scrum Reaper", new TheScrumReaper());
 
-        // Create assistants
-        //! dit is ook duplicate code.
-        List<AssistantAction> planningAssistantActions = new ArrayList<>();
-        planningAssistantActions.add(() -> System.out.println("Hint:"));
-        planningAssistantActions.add(() -> System.out.println("Hulpmiddel:"));
-        planningAssistantActions.add(() -> System.out.println("Motivatiequote:"));
-        AssistantActivator planningAssistant = new AssistantActivator(planningAssistantActions);
 
         // Create and return rooms in the required order
         return List.of(
-                new SprintPlanning(scopeCreep, false, player, planningAssistant),
+                new SprintPlanning(scopeCreep, false, player),
                 new TheDailyScrum(slowness, false, player),
                 new ScrumBoard(trollo, false, player),
                 new SprintReview(feedbackPhantom, false, player),

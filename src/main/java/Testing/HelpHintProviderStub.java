@@ -12,7 +12,7 @@ public class HelpHintProviderStub extends HelpHintProvider {
     // Constructor HelpHintProvider
     public HelpHintProviderStub(Room room) {
         super(room);
-        this.room = new SprintPlanning(null,false,null,null);
+        this.room = new SprintPlanning(null,false,null);
     }
 
     @Override

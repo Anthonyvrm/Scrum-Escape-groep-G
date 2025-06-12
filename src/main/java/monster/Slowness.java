@@ -9,11 +9,6 @@ import Interface.IMonster;
 //Mogelijke defeat line: "My time... has run out..."
 
 public class Slowness implements IMonster {
-    @Override
-    public void exercise() {
-
-    }
-
     // Prints a random quote when a monster takes damage.
     @Override
     public void takeDamageQuote() {

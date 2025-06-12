@@ -2,9 +2,6 @@ package Joker;
 
 import classes.Room;
 
-import java.lang.classfile.instruction.ExceptionCatch;
-import java.lang.reflect.UndeclaredThrowableException;
-
 public abstract class Joker {
     private boolean used;
 
@@ -13,7 +10,7 @@ public abstract class Joker {
         this.used = false;
     }
 
-    public boolean getUsed() {
+    public boolean isUsed() {
         return used;
     }
 
@@ -22,6 +19,7 @@ public abstract class Joker {
 
         if (used) {
             System.out.println("This joker has already been used.");
+
             //throw new IllegalStateException("Joker has already been used.");
         } else {
             used = true;

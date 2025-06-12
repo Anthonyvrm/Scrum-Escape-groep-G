@@ -16,13 +16,13 @@ public class SlashCommand implements Command {
 
     @Override
     public void execute() {
-
+        //rolls a dice with 20 sides
         int roll = new Random().nextInt(20);
 
         System.out.println("You rolled a " + roll + " on the dice.");
         System.out.println();
 
-
+        //calculates damage
         int damage = switch (roll) {
             case 19 -> {
                 System.out.println("Critical hit!");
@@ -32,30 +32,34 @@ public class SlashCommand implements Command {
             default -> (roll >= 5) ? 2 : 0;
         };
 
+        //deals damage to the monster
         if (damage > 0) {
-
             System.out.println(player.getName() + " attacks " + monster.getName());
             System.out.println(monster.getName()+  " took " + damage + " damage!");
             monster.takeDamage(damage);
-
         } else {
-
             System.out.println("You missed!");
         }
 
+        //prints the new monster's HP'
         System.out.println();
-        System.out.println(monster.getName() + " HP is : " + monster.getHealthPoints());
 
-        //! hier gaat het nog fout, de monster doet damage wanneer die ook dood is.
-        //! + hij doet altijd 10 dmg.
+        if (monster.getHealthPoints() < 0) {
+            System.out.println(monster.getName() + " HP is : " + 0);
+        } else {
+            System.out.println(monster.getName() + " HP is : " + monster.getHealthPoints());
+        }
 
-        System.out.println();
-        System.out.println(monster.getName() + " attacks you and does 10 damage!");
+        //deals damage to the player if the monster is still alive
+        if (monster.getHealthPoints() >= 0) {
+            System.out.println();
+            System.out.println(monster.getName() + " attacks you and does 10 damage!");
 
-        monster.dealDamage(player, 10);
+            monster.dealDamage(player, 1);
+        }
 
+        //prints the new player's HP'
         System.out.println(player.getName() + " HP is : " + player.getStatus());
-
         System.out.println();
     }
 }

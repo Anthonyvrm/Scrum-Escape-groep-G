@@ -17,7 +17,6 @@ public class CheckAnswer {
 
     // Check if player input is the correct answer.
     public boolean isAnswerCorrect(String correctAnswer, Room room) {
-
         String answer = scanner.nextLine().trim();
         boolean isCorrect = answer.equalsIgnoreCase(correctAnswer);
 
@@ -28,12 +27,12 @@ public class CheckAnswer {
 
         // Notify all observers about the answer.
         room.notifyObservers(isCorrect);
-
+        // set isCorrect in room.
         room.setIsCorrect(isCorrect);
-
+        // Navigate to next room.
         RoomNavigator navigator = Game.getGameEngine().getRoomNavigator();
         navigator.goToNextRoom();
 
-        return isCorrect; // hier toch
+        return isCorrect;
     }
 }

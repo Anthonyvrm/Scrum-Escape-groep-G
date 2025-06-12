@@ -16,7 +16,7 @@ public class SprintPlanning extends Room implements IRoom {
     private List<AssistantAction> actions;
     private AssistantActivator planningAssistant;
     // Constructor initializes the room SprintPlanning.
-    public SprintPlanning(Monster monster, boolean isCorrect, Player player, AssistantActivator assistant) {
+    public SprintPlanning(Monster monster, boolean isCorrect, Player player) {
         super("Sprintplanning Room", monster, isCorrect, player);
         // Set the question type of the room and the text.
         setQuestionStrategy(new OpenQuestion("To assign story points to tasks, what is the name of the game you play with the team?"));

@@ -7,8 +7,6 @@ import classes.Player;
 import java.util.Scanner;
 
 public class PlayerCreation {
-
-
     public static Player createCharacter() {
 
         PlayerSelectsJoker playerselectsjoker = new PlayerSelectsJoker();

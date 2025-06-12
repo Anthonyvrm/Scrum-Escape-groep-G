@@ -8,11 +8,6 @@ import Interface.IMonster;
 //Mogelijke defeat line: "This isn't over — I’ll be back next sprint planning..."
 
 public class ScopeCreep implements IMonster {
-    @Override
-    public void exercise(){
-
-    }
-
     // Prints a random quote when a monster takes damage.
     @Override
     public void takeDamageQuote(){

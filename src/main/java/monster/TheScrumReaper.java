@@ -3,11 +3,6 @@ package monster;
 import Interface.IMonster;
 
 public class TheScrumReaper implements IMonster {
-    @Override
-    public void exercise(){
-
-    }
-
     // Prints a random quote when a monster takes damage.
     @Override
     public void takeDamageQuote(){

@@ -7,11 +7,6 @@ import Interface.IMonster;
 //Zijn aanwezigheid zorgt ervoor dat niemand nog weet wat “To Do”, “Doing” of “Done” betekent.
 
 public class Trollo implements IMonster {
-    @Override
-    public void exercise(){
-
-    }
-
     // Prints a random quote when a monster takes damage.
     @Override
     public void takeDamageQuote(){

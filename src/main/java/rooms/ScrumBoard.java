@@ -13,7 +13,6 @@ public class ScrumBoard extends Room implements IRoom {
     // Constructor initializes the room ScrumBoard.
     public ScrumBoard(Monster monster, boolean isCorrect, Player player) {
         super("Scrumboard Room", monster, isCorrect, player);
-
         // Set the question type of the room and the text.
         setQuestionStrategy(new OpenQuestion("In order to tell the people what to do this day, what is the name of the first thing you should do with this team?\n"));
         setHintProvider(FactoryClasses.HintProviderFactory.createRandomHintProvider(this));

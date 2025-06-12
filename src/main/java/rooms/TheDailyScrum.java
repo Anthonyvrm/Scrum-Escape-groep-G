@@ -53,7 +53,7 @@ public class TheDailyScrum extends Room implements IRoom, KeyableRoom {
     // Apply Joker ability (key), the question gets automatically answered.
     @Override
     public void applyKeyJoker(Joker joker) {
-        addKey(joker.getUsed(), joker);
+        addKey(joker.isUsed(), joker);
     }
 
     // Return a funny hint.

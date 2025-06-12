@@ -7,7 +7,7 @@ public class Monster {
     private final int damage;
     private int healthPoints;
     private final String name;
-    private final IMonster monsterStrategy; // Monster babababab = new Monster(5, 10, "Babababab", new ScopeCreep())
+    private final IMonster monsterStrategy;
 
     // Constructor initializes damage, hp, name and behavior of the monster.
     public Monster(int damage, int healthPoints, String name, IMonster monsterStrategy){
@@ -24,6 +24,10 @@ public class Monster {
     // Getter for current monster healthPoints.
     public int getHealthPoints() {
         return healthPoints;
+    }
+
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
     }
 
     // Called when monster deals damage to the Player.
@@ -71,10 +75,5 @@ public class Monster {
         else {
             //mogelijke observer notifier.
         }
-    }
-
-    // Extra method, no usage.
-    public void exercise(){
-        monsterStrategy.exercise();
     }
 }
