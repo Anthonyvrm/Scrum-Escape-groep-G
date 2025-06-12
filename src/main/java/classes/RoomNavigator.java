@@ -74,9 +74,11 @@ public class RoomNavigator {
         }
     }
 
+
     // Returns whether the room ws changed.
     public boolean wasRoomChanged() {
         return roomChanged;
     }
 }
+
 
