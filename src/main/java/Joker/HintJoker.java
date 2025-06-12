@@ -13,15 +13,11 @@ public class HintJoker extends Joker implements IJoker {
         markJokerAsUsed();
         // Ask room to provide a hint.
         room.askForHint(new Scanner(System.in));
-
     }
 
     @Override
     public void applyTo(Room room) {
-
         markJokerAsUsed();
-
         room.askForHint(new Scanner(System.in));
-
     }
 }

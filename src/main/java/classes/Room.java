@@ -4,7 +4,6 @@ import InteractWithObject.InteractWithObject;
 import Interface.*;
 import Joker.Joker;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -39,7 +38,7 @@ public abstract class Room implements Subject {
 
     // Initialize interactable objects with the current bookinfo, weapon, and reward
     protected void initializeInteractableObjects() {
-        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward);
+        this.interactableObjects = new InteractWithObject(bookinfo, weapon, reward, monster);
     }
 
     // Set player in room.

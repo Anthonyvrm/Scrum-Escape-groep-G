@@ -8,7 +8,6 @@ public class GameUI {
 
     // Display starting dialogue.
     public void showStartingDialogue(String playerName) {
-
         System.out.println();
         System.out.printf("%s.........\n", playerName);
         System.out.println("Wait I know you....");
@@ -18,7 +17,6 @@ public class GameUI {
         System.out.printf("%s.... Are you sure, you want to start this journey?\n", playerName);
         System.out.println("Oh wait, you have no choice..... WHAHAAHA!");
         System.out.println();
-
     }
 
     // Displays message to the player.
@@ -28,7 +26,6 @@ public class GameUI {
 
     // Ends the game.
     public static void endGame() {
-
         System.out.println("Thank you for playing!");
         System.exit(0);
     }

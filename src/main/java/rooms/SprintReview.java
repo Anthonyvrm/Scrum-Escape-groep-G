@@ -1,5 +1,7 @@
 package rooms;
 
+import Assistent.AssistantAction;
+import Assistent.AssistantActivator;
 import Commands.JokerCommand;
 import Commands.NextRoomCommand;
 import Game.Game;
@@ -11,9 +13,14 @@ import Joker.Joker;
 import StrategyClasses.MultipleChoiceQuestion;
 import classes.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+
 public class SprintReview extends Room implements IRoom, KeyableRoom {
+    List<AssistantAction> actions = new ArrayList<>();
+    private AssistantActivator reviewAssistant;
     // Constructor initializes the room SprintReview.
     public SprintReview(Monster monster, boolean isCorrect, Player player) {
         super("Sprint Review Room", monster, isCorrect, player);
@@ -27,7 +34,9 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         this.weapon = new Weapon();
         this.reward = new RoomReward();
         initializeInteractableObjects();
-
+        this.reviewAssistant = new AssistantActivator();
+        this.actions = reviewAssistant.createAssistantActions("Hint", "eduTool", "quote");
+        reviewAssistant.setActions(this.actions);
     }
 
     // If the player uses a key, the player will be able to move to the next room.
@@ -49,7 +58,7 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
    // Apply Joker ability (key), the question gets automatically answered.
     @Override
     public void applyKeyJoker(Joker joker) {
-        addKey(joker.getUsed(), joker);
+        addKey(joker.isUsed(), joker);
     }
 
 
@@ -70,6 +79,8 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
     public void introductionText() {
         System.out.println("===== SprintReview room =====");
         System.out.println();
+        //!Hier vraag je voor een assistent om hulp te bieden.
+        reviewAssistant.askForAssistance();
         interactWithObject();
     }
 

@@ -7,11 +7,6 @@ import Interface.IMonster;
 //Hoe meer ongebruikte feedback, hoe sterker hij wordt.
 
 public class FeedbackPhantom implements IMonster {
-    @Override
-    public void exercise(){
-
-    }
-
     // Prints a random quote when a monster takes damage.
     @Override
     public void takeDamageQuote(){

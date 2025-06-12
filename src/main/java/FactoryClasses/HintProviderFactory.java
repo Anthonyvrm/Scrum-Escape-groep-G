@@ -11,11 +11,8 @@ public class HintProviderFactory {
         Random random = new Random();
         // Returns a randomized hint.
         if (random.nextBoolean()) {
-
             return new FunnyHintProvider(room);
-
         } else {
-
             return new HelpHintProvider(room);
         }
     }

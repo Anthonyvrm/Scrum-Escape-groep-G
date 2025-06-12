@@ -8,11 +8,6 @@ import Interface.IMonster;
 //Hij fluistert “zo doen we het altijd al” en onderdrukt initiatief, reflectie en groei.
 
 public class Stagnator implements IMonster {
-    @Override
-    public void exercise(){
-
-    }
-
     // Prints a random quote when a monster takes damage.
     @Override
     public void takeDamageQuote(){

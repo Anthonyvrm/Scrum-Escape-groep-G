@@ -1,14 +1,13 @@
 package classes;
 import Joker.Joker;
 
-import java.util.Scanner;
-
 public class Player {
     private int status;
     private String name;
     private Room position;
     private int voortgang;
     private Joker joker;
+    private Weapon weapon;
 
     // Constructor initializes player status, name, current room position and progress.
     public Player(int status, String name, Room position, int voortgang) {
@@ -33,6 +32,10 @@ public class Player {
 
     public Player() {
     }
+
+    public void setWeapon(Weapon weapon) { this.weapon = weapon;}
+
+    public Weapon getWeapon() { return this.weapon; }
 
     public void setJoker(Joker joker) {
         this.joker = joker;
@@ -76,8 +79,6 @@ public class Player {
 
     // Displays the Player's name, current hp and location.
     public void printStatus() {
-
         System.out.printf("%s has %dHP left and is in room %s.", getName(), getStatus(), getPosition().getName());
-
     }
 }

@@ -1,7 +1,9 @@
 package InteractWithObject;
 
 import Interface.*;
+import classes.Monster;
 import classes.Player;
+import classes.Room;
 
 import java.util.Scanner;
 
@@ -11,17 +13,20 @@ public class InteractWithObject {
     private final IWeapon weapon;
     private final IRewardable reward;
     Scanner scanner = new Scanner(System.in);
+    private Player player;
+    private Monster monster ;
 
     // Constructor which initializes interactable room objects.
-    public InteractWithObject(IReadable readableObject, IWeapon weapon, IRewardable reward) {
+    public InteractWithObject(IReadable readableObject, IWeapon weapon, IRewardable reward, Monster monster) {
         this.readableObject = readableObject;
         this.weapon = weapon;
         this.reward = reward;
+        this.monster = monster;
+        
     }
 
     // Handle book interaction.
     private void useReadable() {
-
         if (readableObject != null) {
             readableObject.showMessage();
         } else {
@@ -31,9 +36,8 @@ public class InteractWithObject {
 
     // Handle weapon interaction.
     private void useWeapon() {
-
         if (weapon !=null ) {
-            weapon.attack();
+            weapon.attack(monster);
         } else {
             System.out.println("There is no weapon in this room!");
         }
@@ -41,7 +45,6 @@ public class InteractWithObject {
 
     // Handle reward interaction.
     private void useReward(Player player) {
-
         if (reward != null) {
             reward.grantReward(player);
         } else {
@@ -54,14 +57,13 @@ public class InteractWithObject {
         DisplayOptions displayOptions = new DisplayOptions(readableObject, weapon, reward);
 
         if (readableObject == null && weapon == null && reward == null) {
-
             System.out.println("There are no objects in this room!");
-
             return;
         }
+
         displayOptions.displayOptions();
 
-            while (true) {
+        while (true) {
             System.out.print("Enter your choice (1, 2, 3 or 4): ");
             System.out.println ();
 

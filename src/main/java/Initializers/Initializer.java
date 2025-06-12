@@ -8,7 +8,7 @@ import classes.Room;
 import java.util.List;
 
 public class Initializer {
-
+    //activates player creation, room creation, roomobservers and calls the startGame() method
     public static void initializeGame() {
         Player player = createPlayer();
         List<Room> allRooms = InitializeRooms.createRoomsInOrder(player);
@@ -20,6 +20,7 @@ public class Initializer {
         return PlayerCreation.createCharacter();
     }
 
+    //Starts the game
     private static void startGame(Player player, List<Room> rooms) {
         Game game = new Game(player);
         game.setRooms(rooms);

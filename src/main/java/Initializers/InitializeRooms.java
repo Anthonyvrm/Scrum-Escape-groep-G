@@ -1,5 +1,7 @@
 package Initializers;
 
+import Assistent.AssistantAction;
+import Assistent.AssistantActivator;
 import Observers.DeurObserver;
 import Observers.MonsterObserver;
 import Observers.StatusObserver;
@@ -9,6 +11,7 @@ import classes.Room;
 import monster.*;
 import rooms.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InitializeRooms {
@@ -17,10 +20,11 @@ public class InitializeRooms {
         // Create monsters
         Monster scopeCreep = new Monster(1, 10, "Scope Creep", new ScopeCreep());
         Monster slowness = new Monster(1, 10, "Slowness", new Slowness());
-        Monster trollo = new Monster(1, 10, "Trollo", new Trollo());
-        Monster feedbackPhantom = new Monster(1, 10, "Feedback Phantom", new FeedbackPhantom());
-        Monster stagnator = new Monster(1, 10, "Stagnator", new Stagnator());
-        Monster theScrumReaper = new Monster(1,    20, "Scrum Reaper", new TheScrumReaper());
+        Monster trollo = new Monster(2, 10, "Trollo", new Trollo());
+        Monster feedbackPhantom = new Monster(3, 10, "Feedback Phantom", new FeedbackPhantom());
+        Monster stagnator = new Monster(4, 10, "Stagnator", new Stagnator());
+        Monster theScrumReaper = new Monster(6,    20, "Scrum Reaper", new TheScrumReaper());
+
 
         // Create and return rooms in the required order
         return List.of(

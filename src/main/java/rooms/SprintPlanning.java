@@ -1,16 +1,20 @@
 package rooms;
 
+import Assistent.AssistantAction;
+import Assistent.AssistantActivator;
 import Commands.JokerCommand;
 import Game.GameUI;
-import InteractWithObject.InteractWithObject;
 import Interface.IRoom;
 import StrategyClasses.OpenQuestion;
 import classes.*;
+import java.util.List;
 import java.util.Scanner;
 
 
 
 public class SprintPlanning extends Room implements IRoom {
+    private List<AssistantAction> actions;
+    private AssistantActivator planningAssistant;
     // Constructor initializes the room SprintPlanning.
     public SprintPlanning(Monster monster, boolean isCorrect, Player player) {
         super("Sprintplanning Room", monster, isCorrect, player);
@@ -23,6 +27,9 @@ public class SprintPlanning extends Room implements IRoom {
         this.weapon = new Weapon();
         this.reward = new RoomReward();
         initializeInteractableObjects();
+        this.planningAssistant = new AssistantActivator();
+        this.actions = planningAssistant.createAssistantActions("Hint", "eduTool", "quote");
+        planningAssistant.setActions(this.actions);
     }
 
     // Return a helpful hint.
@@ -42,7 +49,8 @@ public class SprintPlanning extends Room implements IRoom {
     public void introductionText() {
         System.out.println("======== Sprint Planning Room ======== ");
         System.out.println();
-
+        //!Hier vraag je voor een assistent om hulp te bieden.
+        planningAssistant.askForAssistance();
         //!Hier pak je het object op. Deze methode staat in de abstracte klasse Room. (Wist geen betere plek).
         interactWithObject();
     }

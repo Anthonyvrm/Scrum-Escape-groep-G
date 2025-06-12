@@ -23,6 +23,7 @@ public class BattleEngine {
         this.player = player;
     }
 
+    // Sets up the battle commands.
     private void setupCommands() {
         inputHandler.registerCommand("1", new SlashCommand(player, monster));
         inputHandler.registerCommand("2", new BlockCommand(player, monster));
@@ -54,22 +55,26 @@ public class BattleEngine {
         return player.getStatus() <= 0;
     }
 
+    // Handles the victory of the player.
     private void handleVictory(Room room) {
         markRoomAsCompleted(room);
         handleNextRoomNavigation(room);
     }
 
+    // Marks the room as completed.
     private void markRoomAsCompleted(Room room) {
         room.setIsCorrect(true);
         room.notifyObservers(true);
     }
 
+    // Handles the next room navigation.
     private void handleNextRoomNavigation(Room room) {
         String answer = askForNextRoom();
         if (shouldMoveToNextRoom(answer)) {
             navigateToNextRoom(room);
         } else {
             System.out.println("You chose to stay. You can continue exploring or type 'go to next' later.");
+
         }
     }
 
@@ -83,6 +88,7 @@ public class BattleEngine {
         return answer.equals("yes") || answer.equals("y");
     }
 
+    // Navigates to the next room.
     private void navigateToNextRoom(Room room) {
         RoomNavigator navigator = Game.getGameEngine().getRoomNavigator();
         int index = Game.getRooms().indexOf(room);
@@ -90,16 +96,19 @@ public class BattleEngine {
         navigator.goToNextRoom();
     }
 
+    // Handles the defeat of the monster.
     private void handleDefeat() {
         System.out.println("You have been slain by " + monster.getName() + "!");
         System.out.println("Game Over.");
     }
 
+    // Starts the battle.
     public void startBattle(Room room, Player player) {
         displayBattleStart();
         runBattle(room, player);
     }
 
+    // Displays the player's current status and the monster's health points.
     private void displayBattleStart() {
         System.out.println();
         player.printStatus();

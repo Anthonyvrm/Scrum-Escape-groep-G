@@ -16,6 +16,7 @@ public class BlockCommand implements Command {
 
     @Override
     public void execute() {
+        //Rolls a dice and calculates the modifier
         int roll = new Random().nextInt(20);
         double modifier = roll == 0 ? 1.0 : roll == 19 ? 0.0 : 1.0 - (roll / 19.0);
 
@@ -26,9 +27,11 @@ public class BlockCommand implements Command {
             default -> "You block the foe, but it's too late, you've taken damage!\n";
         });
 
+        //Deals damage to the player
         monster.dealDamage(player, 10 * modifier);
         System.out.println("Your HP is now " + player.getStatus());
 
+        //Deals damage to the monster
         int counterDamage = switch (roll) {
             case 19 -> 4;
             case 15, 16, 17, 18 -> 2;
@@ -44,6 +47,7 @@ public class BlockCommand implements Command {
             System.out.println("You missed!");
         }
 
+        //Prints the new monster's HP'
         System.out.println(monster.getName() + " HP is now: " + monster.getHealthPoints());
     }
 }
