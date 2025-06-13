@@ -62,4 +62,12 @@ public class RoomNavigatorTest {
             navigator.setCurrentRoomIndex(-1);
         });
     }
+
+    // Rand boven
+    @Test
+    public void testSetRoomIndexException2() {
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            navigator.setCurrentRoomIndex(6);
+        });
+    }
 }
