@@ -1,6 +1,7 @@
 package Game;
 
 public class GameUI {
+
     // Show game title.
     public static void showGameTitle() {
         System.out.println("=========== Scrum Escape ===========");
@@ -27,7 +28,8 @@ public class GameUI {
     // Ends the game.
     public static void endGame() {
         System.out.println("Thank you for playing!");
-        System.exit(0);
+            System.exit(0);
+        }
     }
-}
+
 
