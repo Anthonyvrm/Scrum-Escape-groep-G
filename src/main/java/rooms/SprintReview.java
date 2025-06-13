@@ -35,7 +35,7 @@ public class SprintReview extends Room implements IRoom, KeyableRoom {
         this.reward = new RoomReward();
         initializeInteractableObjects();
         this.reviewAssistant = new AssistantActivator();
-        this.actions = reviewAssistant.createAssistantActions("Hint", "eduTool", "quote");
+        this.actions = reviewAssistant.createAssistantActions("There is a lot at stake.", "These are all the people that are involved in the project. The ones that will change your code, if they suddenly have a different idea.", "Maybe, you do have to take them seriously! You got this!");
         reviewAssistant.setActions(this.actions);
     }
 

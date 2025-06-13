@@ -37,6 +37,7 @@ public class AssistantActivator {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Would you like to get some assistance? (Y/N)");
         if (scanner.nextLine().equalsIgnoreCase("Y")) {
+            System.out.println();
             System.out.println("Great! We will help you out.");
             this.activateAssistant();
         }

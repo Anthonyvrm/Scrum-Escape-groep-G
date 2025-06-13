@@ -29,6 +29,17 @@ public class SlashCommand implements Command {
                 System.out.println();
                 yield 5;
             }
+            case 18 -> {
+                System.out.println("Great hit!");
+                System.out.println();
+                yield 4;
+            }
+            case 17 -> {
+                System.out.println("Good hit!");
+                System.out.println();
+                yield 3;
+            }
+
             default -> (roll >= 5) ? 2 : 0;
         };
 

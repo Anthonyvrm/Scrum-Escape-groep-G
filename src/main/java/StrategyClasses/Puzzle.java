@@ -11,6 +11,7 @@ public class Puzzle implements IRoom {
 
     // Display puzzle question.
     public void question() {
+
         System.out.println(question);
         System.out.print("Type your answer: ");
     }

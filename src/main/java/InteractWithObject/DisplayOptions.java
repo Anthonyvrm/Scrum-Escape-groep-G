@@ -18,6 +18,7 @@ public class DisplayOptions {
 
     //Displays the options for players InteractableObject.
     public void displayOptions() {
+        System.out.println();
         System.out.println("Available interactions:");
         //If there's a book in the room show it.
         if (readableObject != null) System.out.println(("- 1: Book (read information about this room"));
