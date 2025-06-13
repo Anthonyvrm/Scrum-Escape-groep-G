@@ -17,6 +17,7 @@ public class CheckAnswer {
 
     // Check if player input is the correct answer.
     public boolean isAnswerCorrect(String correctAnswer, Room room) {
+
         String answer = scanner.nextLine().trim();
         boolean isCorrect = answer.equalsIgnoreCase(correctAnswer);
 

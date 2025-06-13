@@ -28,7 +28,7 @@ public class SprintPlanning extends Room implements IRoom {
         this.reward = new RoomReward();
         initializeInteractableObjects();
         this.planningAssistant = new AssistantActivator();
-        this.actions = planningAssistant.createAssistantActions("Hint", "eduTool", "quote");
+        this.actions = planningAssistant.createAssistantActions("The answer is similar to the most fun game in a casino.", "Fibonacci sequence (1, 2, 3, 5, 8, 13, 21, 34, etc.)", "You can do this !");
         planningAssistant.setActions(this.actions);
     }
 
@@ -69,8 +69,11 @@ public class SprintPlanning extends Room implements IRoom {
 
         JokerCommand jokerCommand = new JokerCommand(player, new GameUI());
         jokerCommand.execute();
-        question();
+            question();
+
+
     }
+
 
     // Check the player's answer.
     @Override
