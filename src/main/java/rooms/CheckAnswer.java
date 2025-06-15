@@ -20,10 +20,34 @@ public class CheckAnswer {
 
         String answer = scanner.nextLine().trim();
         boolean isCorrect = answer.equalsIgnoreCase(correctAnswer);
+        final int maxAttempts = 1;
+        int attempts = 0;
 
-        // If answer is incorrect give a hint.
-        if (!isCorrect) {
+        while (attempts < maxAttempts) {
+            System.out.println("Incorrect try again ("
+                    + (maxAttempts - attempts) + " attempts left):");
             room.askForHint(scanner);
+            room.question();
+            answer = scanner.nextLine().trim();
+            attempts++;
+            isCorrect = answer.equalsIgnoreCase(correctAnswer);
+            if (isCorrect) {
+                break;
+            } else if (attempts < maxAttempts) {
+                System.out.println("Incorrect try again ("
+                        + (maxAttempts - attempts) + " attempts left):");
+                room.askForHint(scanner);
+                room.question();
+                answer = scanner.nextLine().trim();
+                attempts++;
+                isCorrect = answer.equalsIgnoreCase(correctAnswer);
+            }
+        }
+        // ngl brein zo hard aan het koken dat ik neit weet hoe ik dit cleaner meot maken
+
+        if (!isCorrect) {
+            System.out.println("Out of attempts! The correct answer was: "
+                    + correctAnswer);
         }
 
         // Notify all observers about the answer.
