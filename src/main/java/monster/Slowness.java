@@ -11,52 +11,25 @@ import Interface.IMonster;
 public class Slowness implements IMonster {
     // Prints a random quote when a monster takes damage.
     @Override
-    public void takeDamageQuote() {
-
-        int randomInt = (int) (Math.random() * 5);
-        switch (randomInt) {
-            case 0:
-                System.out.println("Fine... keep your 'efficiency'...");
-                break;
-            case 1:
-                System.out.println("Your discipline... it's unbearable...");
-                break;
-            case 2:
-                System.out.println("That was... unnecessarily direct.");
-                break;
-            case 3:
-                System.out.println("You’re not supposed to stay on topic!");
-                break;
-            case 4:
-                System.out.println("I was just getting comfortable...");
-                break;
-
-        }
+    public String[] getTakeDamageQuotes() {
+        return new String[]{
+                "Fine... keep your 'efficiency'...",
+                "Your discipline... it's unbearable...",
+                "That was... unnecessarily direct.",
+                "You’re not supposed to stay on topic!",
+                "I was just getting comfortable..."
+        };
     }
 
     // Prints a random quote when a monster deals damage.
     @Override
-    public void dealDamageQuote() {
-
-        int randomInt = (int) (Math.random() * 5);
-        switch (randomInt) {
-            case 0:
-                System.out.println("Wait... before we move on, one more thing...");
-                break;
-            case 1:
-                System.out.println("I’m not sure this is relevant, but I’ll explain anyway...");
-                break;
-            case 2:
-                System.out.println("This won't take long... I promise.");
-                break;
-            case 3:
-                System.out.println("Actually, can we go back to something from last week?");
-                break;
-            case 4:
-                System.out.println("I drain your focus... one pointless tangent at a time.");
-                break;
-
-        }
-
+    public String[] getDealDamageQuotes() {
+        return new String[]{
+                "Wait... before we move on, one more thing...",
+                "I’m not sure this is relevant, but I’ll explain anyway...",
+                "This won't take long... I promise.",
+                "Actually, can we go back to something from last week?",
+                "I drain your focus... one pointless tangent at a time."
+        };
     }
 }

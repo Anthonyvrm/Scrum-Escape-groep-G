@@ -10,49 +10,25 @@ import Interface.IMonster;
 public class ScopeCreep implements IMonster {
     // Prints a random quote when a monster takes damage.
     @Override
-    public void takeDamageQuote(){
-
-        int randomInt = (int)(Math.random() * 5);
-        switch (randomInt) {
-            case 0:
-                System.out.println("You're hurting my creativity!");
-                break;
-            case 1:
-                System.out.println("No fair! I was about to add five more tasks!");
-                break;
-            case 2:
-                System.out.println("You mean... you actually stuck to the backlog?");
-                break;
-            case 3:
-                System.out.println("Hey! That change request was important!");
-                break;
-            case 4:
-                System.out.println("Stick to the goal, and you kill me...");
-                break;
-
-        }
+    public String[] getTakeDamageQuotes(){
+        return new String[]{
+                "You're hurting my creativity!",
+                "No fair! I was about to add five more tasks!",
+                "You mean... you actually stuck to the backlog?",
+                "Hey! That change request was important!",
+                "Stick to the goal, and you kill me..."
+        };
     }
 
     // Prints a random quote when a monster deals damage.
     @Override
-    public void dealDamageQuote(){
-        int randomInt = (int)(Math.random() * 5);
-        switch (randomInt) {
-            case 0:
-                System.out.println("Let’s do everything, right now!");
-                break;
-            case 1:
-                System.out.println("This task wasn’t here before? Surprise!");
-                break;
-            case 2:
-                System.out.println("Oh, and just one more thing...");
-                break;
-            case 3:
-                System.out.println("It wasn’t in the plan? It is now.");
-                break;
-            case 4:
-                System.out.println("Planning? That’s cute.");
-                break;
-        }
+    public String[] getDealDamageQuotes(){
+        return new String[]{
+                "Let's do everything, right now!",
+                "This task wasn't here before? Surprise!",
+                "Oh, and just one more thing...",
+                "It wasn't in the plan? It is now.",
+                "Planning? That's cute."
+        };
     }
 }

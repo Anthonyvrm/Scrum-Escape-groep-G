@@ -9,50 +9,25 @@ import Interface.IMonster;
 public class Trollo implements IMonster {
     // Prints a random quote when a monster takes damage.
     @Override
-    public void takeDamageQuote(){
-
-        int randomInt = (int)(Math.random() * 5);
-        switch (randomInt) {
-            case 0:
-                System.out.println("Are you updating the board?! Stop that!");
-                break;
-            case 1:
-                System.out.println("Labels? Assignments? Noooo!");
-                break;
-            case 2:
-                System.out.println("You can’t just... drag cards correctly!");
-                break;
-            case 3:
-                System.out.println("A checklist? That’s cheating!");
-                break;
-            case 4:
-                System.out.println("Wait — you're organizing?!");
-                break;
-        }
+    public String[] getTakeDamageQuotes() {
+        return new String[]{
+                "Are you updating the board?! Stop that!",
+                "Labels? Assignments? Noooo!",
+                "You can’t just... drag cards correctly!",
+                "A checklist? That’s cheating!",
+                "Wait — you're organizing?!"
+        };
     }
 
     // Prints a random quote when a monster deals damage.
     @Override
-    public void dealDamageQuote(){
-
-        int randomInt = (int)(Math.random() * 5);
-        switch (randomInt) {
-            case 0:
-                System.out.println("Oops! I moved your critical task to 'Later... maybe'.");
-                break;
-            case 1:
-                System.out.println("To Do? Doing? Who’s asking?");
-                break;
-            case 2:
-                System.out.println("I just archived your priority. You’re welcome.");
-                break;
-            case 3:
-                System.out.println("Let’s rename everything and act like it makes sense.");
-                break;
-            case 4:
-                System.out.println("I replaced your status labels... with emojis!");
-                break;
-
-        }
+    public String[] getDealDamageQuotes() {
+        return new String[]{
+                "Oops! I moved your critical task to 'Later... maybe'.",
+                "To Do? Doing? Who’s asking?",
+                "I just archived your priority. You’re welcome.",
+                "Let’s rename everything and act like it makes sense.",
+                "I replaced your status labels... with emojis!"
+        };
     }
 }

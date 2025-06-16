@@ -9,51 +9,25 @@ import Interface.IMonster;
 public class FeedbackPhantom implements IMonster {
     // Prints a random quote when a monster takes damage.
     @Override
-    public void takeDamageQuote(){
-
-        int randomInt = (int)(Math.random() * 5);
-        switch (randomInt) {
-            case 0:
-                System.out.println("Ugh... do I really have to pay attention?");
-                break;
-            case 1:
-                System.out.println("Such a waste... just like all feedback.");
-                break;
-            case 2:
-                System.out.println("Ugh... feedback again? Like I care...");
-                break;
-            case 3:
-                System.out.println("Meh... even when I’m hurt, I’m still doing nothing with feedback.");
-                break;
-            case 4:
-                System.out.println("Alright, alright... I don’t care... but that hurts.");
-                break;
-
-        }
+    public String[] getTakeDamageQuotes() {
+        return new String[]{
+                "Ugh... do I really have to pay attention?",
+                "Such a waste... just like all feedback.",
+                "Ugh... feedback again? Like I care...",
+                "Meh... even when I’m hurt, I’m still doing nothing with feedback.",
+                "Alright, alright... I don’t care... but that hurts."
+        };
     }
 
     // Prints a random quote when a monster deals damage.
     @Override
-    public void dealDamageQuote(){
-
-        int randomInt = (int)(Math.random() * 5);
-        switch (randomInt) {
-            case 0:
-                System.out.println("Feel that? That's what useless feedback does!");
-                break;
-            case 1:
-                System.out.println("Painful, isn’t it? Just like unclear expectations.");
-                break;
-            case 2:
-                System.out.println("Let me destroy your sprint with one badly timed opinion!");
-                break;
-            case 3:
-                System.out.println("Boom! Now you’re doubting everything you just built.");
-                break;
-            case 4:
-                System.out.println("I just derailed your progress — you're welcome.");
-                break;
-
-        }
+    public String[] getDealDamageQuotes(){
+        return new String[]{
+                "Feel that? That's what useless feedback does!",
+                "Painful, isn’t it? Just like unclear expectations.",
+                "Let me destroy your sprint with one badly timed opinion!",
+                "Boom! Now you’re doubting everything you just built.",
+                "I just derailed your progress — you're welcome."
+        };
     }
 }

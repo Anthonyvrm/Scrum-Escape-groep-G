@@ -3,6 +3,8 @@ package classes;
 import Game.Game;
 import Interface.IMonster;
 
+import java.util.Random;
+
 public class Monster {
     private final int damage;
     private int healthPoints;
@@ -36,7 +38,7 @@ public class Monster {
         // Trigger monster quote.
         System.out.print(name + ": ");
 
-        monsterStrategy.dealDamageQuote();
+        damageQuote(monsterStrategy.getDealDamageQuotes());
 
         // Calculate final damage.
         int finalDamage = (int) (damage * damageModifier);
@@ -62,7 +64,7 @@ public class Monster {
 
         // Trigger monster quote.
         System.out.print(name + ": ");
-        monsterStrategy.takeDamageQuote();
+        damageQuote(monsterStrategy.getTakeDamageQuotes());
 
 
         // Reduce monster hp.
@@ -75,5 +77,9 @@ public class Monster {
         else {
             //mogelijke observer notifier.
         }
+    }
+
+    public void damageQuote(String[] quotes) {
+        System.out.println(quotes[new Random().nextInt(quotes.length)]);
     }
 }
