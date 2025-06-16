@@ -39,6 +39,7 @@ public class AssistantActivator {
         if (scanner.nextLine().equalsIgnoreCase("Y")) {
             System.out.println();
             System.out.println("Great! We will help you out.");
+            System.out.println();
             this.activateAssistant();
         }
     }

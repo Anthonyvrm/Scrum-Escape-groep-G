@@ -35,13 +35,16 @@ public class PlayerSelectsJoker {
             switch (choice) {
                 case 1 -> {
                     selectedJoker = new HintJoker();
+                    System.out.println();
                     System.out.println("You selected the Hint Joker!");
                 }
                 case 2 -> {
                     selectedJoker = new KeyJoker();
+                    System.out.println();
                     System.out.println("You selected the Key Joker!");
                 }
                 case 3 -> {
+                    System.out.println();
                     System.out.println("You chose not to use a joker!"); //Joker == null!
                 }
                 default -> System.out.println("Invalid input! Please choose 1, 2 or 3.");

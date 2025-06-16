@@ -13,6 +13,7 @@ public class BookInfo implements IReadable {
     // Displays book info
     @Override
     public void showMessage() {
-         System.out.println(info);
+        System.out.println();
+        System.out.println(info);
     }
 }
