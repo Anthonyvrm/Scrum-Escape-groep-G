@@ -28,6 +28,8 @@ public class Monster {
         return healthPoints;
     }
 
+    public int getDamage() { return damage; }
+
     public void setHealthPoints(int healthPoints) {
         this.healthPoints = healthPoints;
     }

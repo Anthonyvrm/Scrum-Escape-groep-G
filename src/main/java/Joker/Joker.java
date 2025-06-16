@@ -24,12 +24,15 @@ public abstract class Joker {
     // Method to use the joker in the current Room.
     public void useJokerIn(Room room) {
         if (used) {
+            System.out.println();
             System.out.println("This joker has already been used.");
+            System.out.println();
             return;
 
             //throw new IllegalStateException("Joker has already been used.");
         } else {
             used = true;
+            System.out.println();
             System.out.println("Joker has been marked as used!");
             System.out.println();
             performJokerAction(room);

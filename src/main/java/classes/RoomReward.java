@@ -10,6 +10,7 @@ public class RoomReward implements IRewardable {
 
         int healthPoints = new Random().nextInt(5, 15);
         player.setStatus(player.getStatus() + healthPoints);
+        System.out.println();
         System.out.println("You found a health potion! + " + healthPoints + " HP");
         System.out.println("Current health: " + player.getStatus());
     }

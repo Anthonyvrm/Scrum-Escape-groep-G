@@ -64,9 +64,10 @@ public class SlashCommand implements Command {
         //deals damage to the player if the monster is still alive
         if (monster.getHealthPoints() >= 0) {
             System.out.println();
-            System.out.println(monster.getName() + " attacks you and does 10 damage!");
+            System.out.println(monster.getName() + "attacks you with " + monster.getDamage() + " damage!");
 
             monster.dealDamage(player, 1);
+            System.out.println();
         }
 
         //prints the new player's HP'

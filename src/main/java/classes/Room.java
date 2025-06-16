@@ -73,6 +73,7 @@ public abstract class Room implements Subject {
 
         String input = scanner.nextLine();
         if (input.equalsIgnoreCase("Y")) {
+            System.out.println();
             System.out.println("Hint: " + hintProvider.getHint());
 
         }

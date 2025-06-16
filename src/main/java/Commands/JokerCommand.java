@@ -29,12 +29,14 @@ public class JokerCommand implements Command {
                 player.getJoker().useJokerIn(player.getPosition());
             } else {
                 // If the player doesn't have a Joker.
+                System.out.println();
                 gameUI.showMessage("You have no joker available!");
                 gameUI.showMessage("");
             }
         }
         else {
             // Player declines to use a Joker.
+            System.out.println();
             gameUI.showMessage("Okay, no problem!");
             gameUI.showMessage("");
         }

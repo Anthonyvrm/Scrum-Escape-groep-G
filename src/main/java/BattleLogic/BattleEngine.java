@@ -58,7 +58,7 @@ public class BattleEngine {
     // Handles the victory of the player.
     private void handleVictory(Room room) {
         markRoomAsCompleted(room);
-        handleNextRoomNavigation(room);
+        navigateToNextRoom(room);
     }
 
     // Marks the room as completed.
@@ -68,6 +68,7 @@ public class BattleEngine {
     }
 
     // Handles the next room navigation.
+    /*
     private void handleNextRoomNavigation(Room room) {
         String answer = askForNextRoom();
         if (shouldMoveToNextRoom(answer)) {
@@ -77,12 +78,14 @@ public class BattleEngine {
 
         }
     }
-
+/*
     private String askForNextRoom() {
         System.out.println();
         System.out.print("Do you want to continue to the next room? (yes/no): ");
         return scanner.nextLine().trim().toLowerCase();
     }
+
+ */
 
     private boolean shouldMoveToNextRoom(String answer) {
         return answer.equals("yes") || answer.equals("y");
