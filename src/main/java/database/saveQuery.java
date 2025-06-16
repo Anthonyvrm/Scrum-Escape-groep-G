@@ -26,10 +26,36 @@ public class saveQuery {
                 player.setName(rs.getString("name"));
                 player.setStatus(rs.getInt("status"));
                 player.setVoortgang(rs.getInt("voortgang"));
+                players.add(player);
+
             }
         } catch (SQLException e) {
             System.out.println("Query failed: " + e.getMessage());
         }
         return players;
     }
+    public static Player getPlayerSave(String playerName) {
+        String sql = "SELECT * FROM Save WHERE name = ?";
+
+        try (Connection conn = DatabaseConnection.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, playerName);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    Player player = new Player();
+                    player.setName(rs.getString("name"));
+                    player.setStatus(rs.getInt("status"));
+                    player.setVoortgang(rs.getInt("voortgang"));
+                    return player;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Query failed: " + e.getMessage());
+        }
+        return null;
+    }
 }
+
+

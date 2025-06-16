@@ -15,9 +15,11 @@ public class DatabaseSetup {
     );
     """;
         // Try to connect to the database and execute the table creation
-        try (Connection conn = DatabaseConnection.connect();
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(createSaveTable);
+        try (Connection conn = DatabaseConnection.connect()) {
+            assert conn != null;
+            try (Statement stmt = conn.createStatement()) {
+                stmt.execute(createSaveTable);
+            }
         } catch (SQLException e) {
             System.out.println("Error creating table: " + e.getMessage());
         }
