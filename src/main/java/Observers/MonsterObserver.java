@@ -25,25 +25,10 @@ public class MonsterObserver implements QuestionObserver {
     public void update(boolean isCorrect) {
 
         if (!isCorrect) {
-            wrongAttempts++;
-            System.out.println("Incorrect answer! Attempts so far: " + wrongAttempts);
-
-            if (wrongAttempts >= MAX_WRONG_ATTEMPTS) {
-                System.out.println(monster.getName() + " appeared after too many wrong answers!");
-                BattleEngine battleEngine = new BattleEngine(player, monster);
-                battleEngine.startBattle(room, player);
-            } else {
-                System.out.println("Please try again!");
-                // At this point the game should ask the question again.
-                // Your game loop / Room class must allow re-asking.
-            }
-
-        } else {
-            // Correct answer → reset counter
-            wrongAttempts = 0;
-            System.out.println(monster.getName() + " vanished!");
-            System.out.println();
+            BattleEngine battleEngine = new BattleEngine(player, monster);
+            battleEngine.startBattle(room, player);
         }
+
     }
 
 }
