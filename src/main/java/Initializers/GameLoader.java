@@ -1,5 +1,6 @@
 package Initializers;
 
+import database.DeleteFinishedDAO;
 import database.saveQuery;
 import classes.Player;
 import classes.Room;
@@ -10,7 +11,23 @@ import java.util.Scanner;
 
 public class GameLoader {
 
+    public static void loadOrNew() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("=== Scrum Escape ===");
+        System.out.println("1) Start New Game");
+        System.out.println("2) Load Saved Game");
+        System.out.print("Choose an option: ");
+        int choice = scanner.nextInt();
+
+        if (choice == 2) {
+            GameLoader.loadGame();
+        } else {
+            Initializer.initializeGame();
+        }
+    }
     public static void loadGame() {
+        DeleteFinishedDAO.removeFinishedPlayer();
         List<Player> saves = saveQuery.getAllPlayers();
 
         if (saves.isEmpty()) {
@@ -20,6 +37,7 @@ public class GameLoader {
         }
 
         System.out.println("Select a save to load:");
+
         for (int i = 0; i < saves.size(); i++) {
             Player p = saves.get(i);
             System.out.printf(
