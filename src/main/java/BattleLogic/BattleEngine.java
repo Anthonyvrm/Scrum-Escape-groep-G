@@ -117,6 +117,10 @@ public class BattleEngine {
         player.printStatus();
         System.out.println(monster.getHealthPoints());
         System.out.println();
+        monster.getAsciiArt();
+        System.out.println();
         System.out.println("You are now in battle!");
+
+
     }
 }
