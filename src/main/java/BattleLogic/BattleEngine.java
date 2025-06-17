@@ -115,7 +115,6 @@ public class BattleEngine {
     private void displayBattleStart() {
         System.out.println();
         player.printStatus();
-        System.out.println(monster.getHealthPoints());
         System.out.println();
         monster.getAsciiArt();
         System.out.println();
