@@ -3,7 +3,7 @@ package database;
 import classes.Player;
 import database.DatabaseConnection;
 
-/*
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -21,10 +21,8 @@ public class saveDAO {
             pstmt.setInt(3, player.getVoortgang());
 
             pstmt.executeUpdate();
-            System.out.println("dao succes.");
         } catch (SQLException e) {
             System.out.println("Insert failed: " + e.getMessage());
         }
     }
 }
- */

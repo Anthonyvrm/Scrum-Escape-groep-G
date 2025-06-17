@@ -1,12 +1,9 @@
 package org.example;
 
-import Initializers.Initializer;
+import Initializers.GameLoader;
 
 public class Main {
     public static void main(String[] args) {
-
-        // Start the Initializer.
-        Initializer.initializeGame();
-
+        GameLoader.loadOrNew();
     }
 }

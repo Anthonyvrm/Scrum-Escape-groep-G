@@ -1,6 +1,7 @@
 package classes;
 
 import Game.GameUI;
+import database.saveDAO;
 
 import java.util.List;
 
@@ -47,7 +48,8 @@ public class RoomNavigator {
         roomChanged = false;
 
         // If the room is not completed, don't let the player advance.
-        if (!currentRoom.isCorrect) {
+        if (!currentRoom.isCorrect && currentRoomIndex == player.getVoortgang())
+        {
 
             gameUI.showMessage("You gotta finish the room " + player.getName() + " !");
 
@@ -56,6 +58,10 @@ public class RoomNavigator {
 
         currentRoomIndex++;
         roomChanged = true;
+
+        player.setVoortgang(currentRoomIndex);
+        saveDAO.insertSave(player);
+
 
         // Advance the player to the next room or end the game.
         if (currentRoomIndex < rooms.size()) {
