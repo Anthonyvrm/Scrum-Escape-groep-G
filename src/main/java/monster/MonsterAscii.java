@@ -1,7 +1,7 @@
 package monster;
 
 public class MonsterAscii {
-    public String[] trolloAscii() {
+    public static String[] trolloAscii() {
         return new String[]{
                 "",
                 "               ,      ,",
@@ -22,7 +22,7 @@ public class MonsterAscii {
         };
     }
 
-    public String[] feedbackPhantomAscii() {
+    public static String[] feedbackPhantomAscii() {
         return new String[]{
                 "",
                 "            .--,",
@@ -45,7 +45,7 @@ public class MonsterAscii {
         };
     }
 
-    public String[] scopeCreepAscii() {
+    public static String[] scopeCreepAscii() {
         return new String[]{
                 "",
                 "             .-'      '-.",
@@ -68,7 +68,7 @@ public class MonsterAscii {
         };
     }
 
-    public String[] slownessAscii() {
+    public static String[] slownessAscii() {
         return new String[]{
                 "",
                 "     \\¯¯¯¯¯¯¯¯/     ",
@@ -86,7 +86,7 @@ public class MonsterAscii {
         };
     }
 
-    public String[] stagnatorAscii() {
+    public static String[] stagnatorAscii() {
         return new String[]{
                 "",
                 "          _____",
@@ -107,7 +107,7 @@ public class MonsterAscii {
         };
     }
 
-    public String[] theScrumReaperAscii() {
+    public static String[] theScrumReaperAscii() {
         return new String[]{
                 "",
                 "                                           .\"\"--..__  ",

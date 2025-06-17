@@ -10,13 +10,15 @@ public class Monster {
     private int healthPoints;
     private final String name;
     private final IMonster monsterStrategy;
+    private final String[] asciiArt;
 
     // Constructor initializes damage, hp, name and behavior of the monster.
-    public Monster(int damage, int healthPoints, String name, IMonster monsterStrategy){
+    public Monster(int damage, int healthPoints, String name, IMonster monsterStrategy, String[] asciiArt){
         this.damage = damage;
         this.healthPoints = healthPoints;
         this.name = name;
         this.monsterStrategy = monsterStrategy;
+        this.asciiArt = asciiArt;
     }
 
     public String getName() {
@@ -78,6 +80,12 @@ public class Monster {
         }
         else {
             //mogelijke observer notifier.
+        }
+    }
+
+    public void getAsciiArt() {
+        for (String s : asciiArt) {
+            System.out.println(s);
         }
     }
 
